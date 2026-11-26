@@ -130,7 +130,6 @@ SC.ctl = () => {
  <div class="grp">Quick controls</div>
  ${card('', acRow('salon') + acRow('master') + acRow('guest') + row('Exterior lights', 'Courtesy and deck', sw(V.light.courtesy, 'light.set', 'courtesy', 'Exterior lights')) + row('Underwater lights', '', sw(V.light.uw, 'light.set', 'uw', 'Underwater lights')) + lightsLink() + link('All controls', 'AC, audio, circuits', 'ctls'))}
  ${card('', row('Seakeeper 9', SKL[V.sk.st], V.sk.st == 'off' || V.sk.st == 'spindown' ? `<button class="btn sm" ${at('cmd', 'sk.spin')}>Spin up</button>` : `<button class="btn sm" ${at('cmd', 'sk.stop')}>Stop</button>`) + link('Engines and tanks', 'Monitoring only', 'engs'))}
- ${locCard(1)}
  <div class="grp">Alerts</div>
  ${card('', al.length ? al.map(a => row(a, '', chip('err', 'Active'))).join('') : row('No active alerts.', ''))}
  ${V.guest ? `<button class="btn" ${at('sheet', 'vqguest')}>Owner PIN</button>` : `<div class="grp">Simulator</div>
