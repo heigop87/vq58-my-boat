@@ -68,5 +68,6 @@ s.shore.on = 0; assert.ok(VQ.plan(s, 'ready').some(c => c.t === 'gen.start'));
 { const s = VQ.fresh(), by = { who: 'Owner', device: 'Phone', role: 'owner' };
   assert.equal(VQ.ddm(25.5, 'N', 'S'), "25°30.000'N"); assert.equal(VQ.ddm(-80.14, 'E', 'W'), "80°8.400'W");
   VQ.run(s, { t: 'mode.ready' }, by); assert.equal(s.mode, 'ready'); VQ.run(s, { t: 'mode.done' }, by); assert.equal(s.mode, 'done'); }
+assert.ok(Math.abs(VQ.nm([[0, 0], [1 / 60, 0], [0, 0]]) - 2) < .01); // one minute of latitude is one nautical mile
 assert.deepEqual(VQ.tile(0, 0, 1), [1, 1]); assert.equal(Math.floor(VQ.tile(25.7707, -80.14, 15)[0]), 9089);
 console.log('rules ok');

@@ -105,3 +105,4 @@ Contacts, service history, invoices, documents, warranty dates, slip electric (s
 - Version 70: Location card heading reads PEGASU5 location (boat name from the record)
 - Version 71: Control screen, Location card moved to the end of Quick controls
 - Version 72: Location card removed from Control, it lives on the boat Overview only
+- Version 73: Trips card on the Overview with three mock Miami tracks on a bundled map (UNVERIFIED mock data, no Garmin GPX read yet)
