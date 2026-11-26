@@ -65,4 +65,7 @@ s = S(); assert.strictEqual(VQ.plan(s, 'ready')[0].t, 'sk.spin'); assert.ok(!VQ.
 s.modes.ready.gen = 1; assert.ok(!VQ.plan(s, 'ready').some(c => c.t === 'gen.start'));
 s.shore.on = 0; assert.ok(VQ.plan(s, 'ready').some(c => c.t === 'gen.start'));
 
+{ const s = VQ.fresh(), by = { who: 'Owner', device: 'Phone', role: 'owner' };
+  assert.equal(VQ.ddm(25.5, 'N', 'S'), "25°30.000'N"); assert.equal(VQ.ddm(-80.14, 'E', 'W'), "80°8.400'W");
+  VQ.run(s, { t: 'mode.ready' }, by); assert.equal(s.mode, 'ready'); VQ.run(s, { t: 'mode.done' }, by); assert.equal(s.mode, 'done'); }
 console.log('rules ok');

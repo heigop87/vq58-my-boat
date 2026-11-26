@@ -11,7 +11,7 @@ Object.assign(S.H, { port: V.eng.port.h, stbd: V.eng.stbd.h, gen: V.gen.h, sk: 8
 IT.forEach(i => { if (i.due != null) i.due = i.ev; });
 S.ab.f.year = 'New build'; // model year not confirmed, none invented
 I.ctl = '<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>';
-SIDE[0][1].splice(1, 0, ['ctl', 'Control']); SIDEK.push('ctl');
+SIDE[0][1].splice(1, 0, ['ctl', 'Control'], ['cams', 'Cameras']); SIDEK.push('ctl', 'cams');
 
 document.head.insertAdjacentHTML('beforeend', `<style>
 .vqt{display:grid;grid-template-columns:1fr;gap:12px;flex:none}
@@ -81,7 +81,16 @@ const sysChecks = () => [['Batteries above 50%', V.batt.soc >= 50], ['Bilges dry
 SH.vqchecks = () => ['Systems check', checks(sysChecks()) + btns()];
 const TANK_IC = { fuel: '<path d="M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M3 21h14M8 7h4v4H8zM15 11h2a2 2 0 0 1 2 2v4a1.5 1.5 0 0 0 3 0V9l-3-3"/>', water: '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>', hold: '<path d="M15 22a1 1 0 0 0 1-1v-1a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20v1a1 1 0 0 0 1 1z"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="12" r="1"/><path d="m12.5 17-.5-1-.5 1h1z"/>' }; // pump, drop, skull for black water
 SC.vqglance = () => `<div class="vqg" ${tap('go', 'engs')} aria-label="Open tanks">${[['fuel', 'Fuel'], ['water', 'Water'], ['hold', 'Black water']].map(([k, n]) => `<div><div class="s"><span role="img" aria-label="${n}" title="${n}">${svg(TANK_IC[k], 18)}</span><b>${V.tanks[k]}%</b></div><div class="meter"><i style="width:${V.tanks[k]}%;background:var(--ink)"></i></div></div>`).join('')}</div>`; // simulator levels until tank senders are read
-const modeBtns = () => `<div class="vq2"><button class="btn pri" ${at('cmd', 'mode.ready')}>Outing</button><button class="btn" ${at('cmd', 'mode.done')}>Back home</button></div>`;
+const MODE = { ready: 'Outing', done: 'Back home' };
+// The active mode is the last one run. shortcut: it does not clear when single switches change afterwards, compare live state once the boat reports it.
+const modeChip = () => V.mode ? chip('ok', MODE[V.mode] + ' active') : chip('', 'No mode active');
+const modeBtns = () => `<div class="vq2">${Object.keys(MODE).map(m => `<button class="btn${V.mode == m ? ' pri' : ''}" aria-pressed="${V.mode == m}" ${at('cmd', 'mode.' + m)}>${MODE[m]}${V.mode == m ? ' · On' : ''}</button>`).join('')}</div>`;
+// shortcut: simulator fix, UNVERIFIED, no tracker aboard yet. The live fix and last moved time come from the tracker over the VPN, never from the public site.
+// The map is an OpenStreetMap embed. The artifact viewer blocks embeds, so there it is the Map link only.
+const locCard = () => { const { lat, lon, moved } = V.pos, d = .004, when = new Date(moved).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+  return card('Location', (/github\.io$|^localhost$|^$/.test(location.hostname) ? `<iframe title="Map with the boat position" loading="lazy" style="width:100%;height:240px;border:0;border-radius:12px;display:block" src="https://www.openstreetmap.org/export/embed.html?bbox=${lon - d},${lat - d},${lon + d},${lat + d}&layer=mapnik&marker=${lat},${lon}"></iframe>` : '')
+    + row(VQ.ddm(lat, 'N', 'S') + ' ' + VQ.ddm(lon, 'E', 'W'), 'At the home slip', `<a class="btn sm" target="_blank" rel="noopener" href="https://maps.apple.com/?ll=${lat},${lon}&q=PEGASU5">Map</a>`)
+    + row('Last moved', 'Simulator position, no tracker yet', `<span class="t">${when}</span>`)); };
 // Mode run: one row per kind of step, shown in order. [title, what, ok, why]
 const STEP = { 'sk.spin': 'Seakeeper spins up, stays locked', 'sk.stop': 'Seakeeper spins down, stays powered', 'ac.set': 'Air conditioning', 'light.set': 'Lights', 'audio.set': 'Audio', 'cir.set': 'Circuits', 'gen.start': 'Generator starts' };
 const CIRN = { heater: 'Water heater', ice: 'Ice maker', outlets: 'Outlets' };
@@ -91,24 +100,28 @@ console.assert(runRows([{ t: 'light.set', id: 'salon', v: 1, ok: true }, { t: 'l
 SH.vqrun = m => { const h = S.sheet, rows = runRows(h.steps), el = Date.now() - h.at, n = h.steps.filter(s => s.ok).length;
   const li = (i, html) => `<div class="vqrun${el > 600 ? ' d' : ''}" style="animation-delay:${i * 450 - el}ms">${html}</div>`;
   return [m == 'ready' ? 'Outing' : 'Back home', rows.map(([t, w, ok, why], i) => li(i, row(t, ok ? w.join(', ') : why, chip(ok ? 'ok' : 'err', ok ? 'Done' : 'Skipped')))).join('') + li(rows.length, `<div class="note">${n} of ${h.steps.length} steps, dry run. Nothing was sent to the boat.</div>`) + btns()]; };
-SH.vqmodes = () => ['Get ready', `<div class="note">Outing preps the boat. Back home shuts it down. Both are dry run.</div>${modeBtns()}${btns()}`]; // Home quick action
+SH.vqmodes = () => ['Get ready', `<div class="note">Outing preps the boat. Back home shuts it down. Both are dry run.</div><div style="padding:8px 0">${modeChip()}</div>${modeBtns()}${btns()}`]; // Home quick action
 // Home screen block for the VQ58: system controls, systems check, then the two modes.
 SC.vqhome = () => `${V.guest ? `<div class="lock">${chip('', 'Guest mode')}</div>` : ''}
  ${tiles()}
  ${card('Controls', acRow('salon') + row('Exterior lights', 'Courtesy and deck', sw(V.light.courtesy, 'light.set', 'courtesy', 'Exterior lights')) + link('All controls', 'AC, lighting, audio, Seakeeper, cameras', 'ctl'))}
  ${(c => { const bad = c.filter(x => !x[1]); // Home shows only what failed; tap for every check
   return `<section class="card" ${tap('sheet', 'vqchecks')} style="cursor:pointer"><div class="ch" style="padding-top:0;min-height:56px"><h2>Systems check</h2><span style="display:flex;align-items:center;gap:8px">${chip(bad.length ? 'err' : 'ok', bad.length ? bad.length + ' to check' : 'All ' + c.length + ' pass')}<span class="chev"></span></span></div>${checks(bad)}</section>`; })(sysChecks())}
- ${card('Start a mode', `<div class="s" style="padding-bottom:4px">Outing spins up the Seakeeper and brings AC, lights and audio on. Back home shuts the boat down safely.</div>${modeBtns()}${link('Edit modes', 'Steps and checks', 'modes')}`)}`;
+ ${locCard()}
+ ${card('Cameras', link('View cameras', 'Cockpit, bow, engine room, swim platform', 'cams'))}
+ ${card('Start a mode', `<div class="s" style="padding-bottom:4px">Outing spins up the Seakeeper and brings AC, lights and audio on. Back home shuts the boat down safely.</div>${modeBtns()}${link('Edit modes', 'Steps and checks', 'modes')}`, modeChip())}`;
 
 SC.ctl = () => {
   const al = alerts();
   return topHd('Control', me()) + `<div class="body gl">
  <div class="lock">${chip('warn', 'Simulator, dry run')}${V.guest ? chip('', 'Guest mode') : ''}<span>No command reaches the boat</span></div>
- ${card('Start a mode', `<div class="s" style="padding-bottom:4px">Outing spins up the Seakeeper and brings AC, lights and audio on. Back home shuts the boat down safely.</div>${modeBtns()}${link('Edit modes', 'Steps and checks', 'modes')}`)}
+ ${locCard()}
+ ${card('Cameras', link('View cameras', 'Cockpit, bow, engine room, swim platform', 'cams'))}
+ ${card('Start a mode', `<div class="s" style="padding-bottom:4px">Outing spins up the Seakeeper and brings AC, lights and audio on. Back home shuts the boat down safely.</div>${modeBtns()}${link('Edit modes', 'Steps and checks', 'modes')}`, modeChip())}
  ${tiles()}
  <div class="grp">Quick controls</div>
  ${card('', acRow('salon') + acRow('master') + acRow('guest') + row('Exterior lights', 'Courtesy and deck', sw(V.light.courtesy, 'light.set', 'courtesy', 'Exterior lights')) + row('Underwater lights', '', sw(V.light.uw, 'light.set', 'uw', 'Underwater lights')) + lightsLink() + link('All controls', 'AC, audio, circuits', 'ctls'))}
- ${card('', row('Seakeeper 9', SKL[V.sk.st], V.sk.st == 'off' || V.sk.st == 'spindown' ? `<button class="btn sm" ${at('cmd', 'sk.spin')}>Spin up</button>` : `<button class="btn sm" ${at('cmd', 'sk.stop')}>Stop</button>`) + link('Cameras', '4 cameras', 'cams') + link('Engines and tanks', 'Monitoring only', 'engs'))}
+ ${card('', row('Seakeeper 9', SKL[V.sk.st], V.sk.st == 'off' || V.sk.st == 'spindown' ? `<button class="btn sm" ${at('cmd', 'sk.spin')}>Spin up</button>` : `<button class="btn sm" ${at('cmd', 'sk.stop')}>Stop</button>`) + link('Engines and tanks', 'Monitoring only', 'engs'))}
  <div class="grp">Alerts</div>
  ${card('', al.length ? al.map(a => row(a, '', chip('err', 'Active'))).join('') : row('No active alerts.', ''))}
  ${V.guest ? `<button class="btn" ${at('sheet', 'vqguest')}>Owner PIN</button>` : `<div class="grp">Simulator</div>
@@ -162,7 +175,7 @@ SC.lights = () => {
 };
 
 SC.cams = () => nav('Cameras') + `<div class="body">
- ${['Cockpit main', 'Bow', 'Engine room', 'Swim platform'].map(c => `<div class="grp">${c}</div><div class="vqcam">No feed in the simulator</div>`).join('')}
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px">${['Cockpit main', 'Bow', 'Engine room', 'Swim platform'].map(c => `<div><div class="grp">${c}</div><div class="vqcam">No feed in the simulator</div></div>`).join('')}</div>
  ${card('', row('Person detection alerts', 'Ignores birds, waves and shadows', sw(V.al.person, 'alert.set', 'person', 'Person detection alerts')))}
  </div>`;
 

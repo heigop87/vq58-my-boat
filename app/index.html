@@ -537,7 +537,7 @@ home(){
  const b2=S.bi==1;
  return topHd(b2?'Blue Heron':S.name,me()).replace('class="lt"',b2?'$&':'class="lt pg"')+
  `<div class="sub hs" style="display:flex;align-items:center;gap:8px"><span>${esc(f.make)} ${esc(f.model)}</span><span class="gt" ${tap('reg')} aria-label="Open registration documents" style="margin-left:auto;white-space:nowrap;cursor:pointer">${KYF}George Town</span></div><div class="body">
- ${b2?'':`<div class="seg" aria-label="Quick actions"><button ${at('go','lights')}>Lights</button><button ${at('go','engs')}>Engines</button><button ${at('go','cams')}>Cameras</button><button ${at('sheet','vqmodes')}>Get ready</button></div>`}
+ ${b2?'':`<div class="seg" aria-label="Quick actions"><button ${at('go','lights')}>Lights</button><button ${at('go','engs')}>Engines</button><button ${at('go','cams')}>Cameras</button><button ${at('sheet','vqmodes')}>${typeof V!='undefined'&&V.mode?(V.mode=='ready'?'Outing on':'Back home on'):'Get ready'}</button></div>`}
  <div class="boats" aria-label="Your boats, swipe to switch"><section class="hero">${stage(f.model,S.hero,S.name+', side view')}
  <div class="hmeta">${big(HM().map(([k,n,x])=>[S.H[k]??'–',S.H[k]==null?'':'h',n,tap('go',x?'sys:'+x:SC.engs?'engs':'sys:'+k)+` class="engtap" aria-label="Open ${n.toLowerCase()}, ${S.H[k]} hours"`]))}
  ${b2||!SC.vqglance?'':SC.vqglance()}
