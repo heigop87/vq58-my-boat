@@ -130,8 +130,8 @@ SC.ctl = () => {
  <div class="grp">Quick controls</div>
  ${card('', acRow('salon') + acRow('master') + acRow('guest') + row('Exterior lights', 'Courtesy and deck', sw(V.light.courtesy, 'light.set', 'courtesy', 'Exterior lights')) + row('Underwater lights', '', sw(V.light.uw, 'light.set', 'uw', 'Underwater lights')) + lightsLink() + link('All controls', 'AC, audio, circuits', 'ctls'))}
  ${card('', row('Seakeeper 9', SKL[V.sk.st], V.sk.st == 'off' || V.sk.st == 'spindown' ? `<button class="btn sm" ${at('cmd', 'sk.spin')}>Spin up</button>` : `<button class="btn sm" ${at('cmd', 'sk.stop')}>Stop</button>`) + link('Engines and tanks', 'Monitoring only', 'engs'))}
- <div class="grp">Alerts</div>
  ${locCard(1)}
+ <div class="grp">Alerts</div>
  ${card('', al.length ? al.map(a => row(a, '', chip('err', 'Active'))).join('') : row('No active alerts.', ''))}
  ${V.guest ? `<button class="btn" ${at('sheet', 'vqguest')}>Owner PIN</button>` : `<div class="grp">Simulator</div>
  ${card('', [['eng.port.on', 'Port engine running'], ['eng.stbd.on', 'Starboard engine running'], ['gen.co', 'CO alarm'], ['gen.fault', 'Generator fault'], ['shore.on', 'Shore power connected'], ['highWater', 'High water alarm']].map(([p, l]) => row(l, '', tg(p.split('.').reduce((a, k) => a[k], V), 'vqsim', p, l))).join('') + row('Guest mode', 'AC, lights, audio and cameras only', `<button class="btn sm" ${at('sheet', 'vqguest')}>Start</button>`) + link('Command log', V.log.length + ' entries', 'clog'))}
