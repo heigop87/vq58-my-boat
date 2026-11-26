@@ -93,3 +93,4 @@ Contacts, service history, invoices, documents, warranty dates, slip electric (s
 - Version 58: status pills are plain colored labels (no fill, capsule or dot); desktop Controls card matches the height of Systems check plus Start a mode.
 - Version 59: AC zones are now three, with the owner's names: Lounge, Primary Cabin, Guest Cabin (fourth zone removed).
 - Version 60: AC zones read Lounge, Primary Bedroom, Guest Bedroom; card is Bedroom AC; modes say AC, all zones.
+- Version 61: toolbar search and buttons share one height (40 px); Systems list and detail panel are the same height, each scrolls inside.
