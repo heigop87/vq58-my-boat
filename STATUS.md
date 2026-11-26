@@ -89,3 +89,4 @@ Contacts, service history, invoices, documents, warranty dates, slip electric (s
 - Version 54: Home and Control status tiles: Batteries, Shore power and Generator are one card (they all open Power); Bilges stays its own card. Tapping a control (for example AC temperature) no longer replays the header title shrink. Not checked: a real phone.
 - Version 55: Home Bilges tile is one compact row on phone (label, state, cycles today). Hosted on GitHub Pages from the `gh-pages` branch (app folder plus a doctype and reset header): https://heigop87.github.io/vq58-my-boat/ . Republish: copy `app/` to a temp dir, prepend the header, force push to `gh-pages`.
 - Version 56: Home header (phone): the flag and George Town sit on the boat name line from the start and only shrink on scroll.
+- Version 57: app fills the whole window on every device (no mockup frame, no Phone/Desktop switch); home screen app tags added so Add to Home Screen opens with no browser bars.
