@@ -99,3 +99,4 @@ Contacts, service history, invoices, documents, warranty dates, slip electric (s
 - Version 64: active mode shown on the mode buttons and Home; Location card (simulator position, last moved, map on the hosted site); Cameras gets its own card and sidebar entry.
 - Version 65: map only on Control (Overview keeps coordinates and Map link), map loads at once.
 - Version 66: black and white map on Control (grayscale filter on the map embed; Mapbox Light swaps in when a token is set), hosted site only
+- Version 67: Map button on Overview opens the in-app map on Control (hosted site); Apple Maps link only in the claude.ai viewer, which blocks embedded maps
