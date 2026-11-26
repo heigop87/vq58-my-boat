@@ -107,3 +107,4 @@ Contacts, service history, invoices, documents, warranty dates, slip electric (s
 - Version 72: Location card removed from Control, it lives on the boat Overview only
 - Version 73: Trips card on the Overview with three mock Miami tracks on a bundled map (UNVERIFIED mock data, no Garmin GPX read yet)
 - Version 74: Trips map on a bundled NOAA nautical chart, fuel burned and gallons per nm on each trip (UNVERIFIED mock gallons)
+- Version 75: Setup flow (mock): scan the box, systems found, features the boat qualifies for, name the boat (UNVERIFIED, no box or discovery yet)
