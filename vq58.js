@@ -124,7 +124,6 @@ SC.ctl = () => {
   const al = alerts();
   return topHd('Control', me()) + `<div class="body gl">
  <div class="lock">${chip('warn', 'Simulator, dry run')}${V.guest ? chip('', 'Guest mode') : ''}<span>No command reaches the boat</span></div>
- ${locCard(1)}
  ${card('Cameras', link('View cameras', 'Cockpit, bow, engine room, swim platform', 'cams'))}
  ${card('Start a mode', `<div class="s" style="padding-bottom:4px">Outing spins up the Seakeeper and brings AC, lights and audio on. Back home shuts the boat down safely.</div>${modeBtns()}${link('Edit modes', 'Steps and checks', 'modes')}`, modeChip())}
  ${tiles()}
@@ -132,6 +131,7 @@ SC.ctl = () => {
  ${card('', acRow('salon') + acRow('master') + acRow('guest') + row('Exterior lights', 'Courtesy and deck', sw(V.light.courtesy, 'light.set', 'courtesy', 'Exterior lights')) + row('Underwater lights', '', sw(V.light.uw, 'light.set', 'uw', 'Underwater lights')) + lightsLink() + link('All controls', 'AC, audio, circuits', 'ctls'))}
  ${card('', row('Seakeeper 9', SKL[V.sk.st], V.sk.st == 'off' || V.sk.st == 'spindown' ? `<button class="btn sm" ${at('cmd', 'sk.spin')}>Spin up</button>` : `<button class="btn sm" ${at('cmd', 'sk.stop')}>Stop</button>`) + link('Engines and tanks', 'Monitoring only', 'engs'))}
  <div class="grp">Alerts</div>
+ ${locCard(1)}
  ${card('', al.length ? al.map(a => row(a, '', chip('err', 'Active'))).join('') : row('No active alerts.', ''))}
  ${V.guest ? `<button class="btn" ${at('sheet', 'vqguest')}>Owner PIN</button>` : `<div class="grp">Simulator</div>
  ${card('', [['eng.port.on', 'Port engine running'], ['eng.stbd.on', 'Starboard engine running'], ['gen.co', 'CO alarm'], ['gen.fault', 'Generator fault'], ['shore.on', 'Shore power connected'], ['highWater', 'High water alarm']].map(([p, l]) => row(l, '', tg(p.split('.').reduce((a, k) => a[k], V), 'vqsim', p, l))).join('') + row('Guest mode', 'AC, lights, audio and cameras only', `<button class="btn sm" ${at('sheet', 'vqguest')}>Start</button>`) + link('Command log', V.log.length + ' entries', 'clog'))}
