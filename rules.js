@@ -26,6 +26,8 @@ const VQ = (() => {
     highWater: 0,
     al: { long: 1, cyc: 1, cam: 1, person: 1 },
     modes: { ready: { sk: 1, ac: 1, light: 1, audio: 1, heater: 1, gen: 0 }, done: { light: 1, ac: 1, audio: 1, sk: 1, heater: 1, ice: 1 } },
+    mode: '', // last mode run: '' | ready | done
+    pos: { lat: 25.7707, lon: -80.14, moved: '2026-11-22T21:40:00Z' }, // UNVERIFIED simulator fix at the home slip, no tracker fitted yet. Stored as decimal degrees, shown as degrees and decimal minutes.
     log: [],
   });
 
@@ -43,6 +45,7 @@ const VQ = (() => {
   ];
 
   const no = why => ({ ok: false, why });
+  const ddm = (v, pos, neg) => { const a = Math.abs(v), d = Math.floor(a); return `${d}°${((a - d) * 60).toFixed(3)}'${v < 0 ? neg : pos}`; };
   const clamp = (v, a, b) => Math.max(a, Math.min(b, +v));
 
   function check(s, c) {
@@ -105,7 +108,7 @@ const VQ = (() => {
       case 'bilge.run': s.bilge[c.id].run = 1; break;
       case 'alert.set': s.al[c.id] = v; break;
       case 'mode.set': s.modes[c.id][c.k] = v; break;
-      case 'mode.ready': case 'mode.done': break; // steps run one by one in run()
+      case 'mode.ready': case 'mode.done': s.mode = c.t.slice(5); break; // steps run one by one in run()
       default: throw new Error('Unknown command ' + c.t);
     }
   }
@@ -122,6 +125,6 @@ const VQ = (() => {
     return r;
   }
 
-  return { fresh, check, plan, run, genChecks, doneChecks, GUEST_OK, PROTECTED };
+  return { fresh, check, plan, run, genChecks, doneChecks, ddm, GUEST_OK, PROTECTED };
 })();
 if (typeof module !== 'undefined') module.exports = VQ;
