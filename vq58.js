@@ -87,8 +87,8 @@ const modeChip = () => V.mode ? chip('ok', MODE[V.mode] + ' active') : chip('', 
 const modeBtns = () => `<div class="vq2">${Object.keys(MODE).map(m => `<button class="btn${V.mode == m ? ' pri' : ''}" aria-pressed="${V.mode == m}" ${at('cmd', 'mode.' + m)}>${MODE[m]}${V.mode == m ? ' · On' : ''}</button>`).join('')}</div>`;
 // shortcut: simulator fix, UNVERIFIED, no tracker aboard yet. The live fix and last moved time come from the tracker over the VPN, never from the public site.
 // The map is an OpenStreetMap embed. The artifact viewer blocks embeds, so there it is the Map link only.
-const locCard = () => { const { lat, lon, moved } = V.pos, d = .004, when = new Date(moved).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
-  return card('Location', (/github\.io$|^localhost$|^$/.test(location.hostname) ? `<iframe title="Map with the boat position" loading="lazy" style="width:100%;height:240px;border:0;border-radius:12px;display:block" src="https://www.openstreetmap.org/export/embed.html?bbox=${lon - d},${lat - d},${lon + d},${lat + d}&layer=mapnik&marker=${lat},${lon}"></iframe>` : '')
+const locCard = map => { const { lat, lon, moved } = V.pos, d = .004, when = new Date(moved).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+  return card('Location', (map && /github\.io$|^localhost$|^$/.test(location.hostname) ? `<iframe title="Map with the boat position" style="width:100%;height:240px;border:0;border-radius:12px;display:block" src="https://www.openstreetmap.org/export/embed.html?bbox=${lon - d},${lat - d},${lon + d},${lat + d}&layer=mapnik&marker=${lat},${lon}"></iframe>` : '')
     + row(VQ.ddm(lat, 'N', 'S') + ' ' + VQ.ddm(lon, 'E', 'W'), 'At the home slip', `<a class="btn sm" target="_blank" rel="noopener" href="https://maps.apple.com/?ll=${lat},${lon}&q=PEGASU5">Map</a>`)
     + row('Last moved', 'Simulator position, no tracker yet', `<span class="t">${when}</span>`)); };
 // Mode run: one row per kind of step, shown in order. [title, what, ok, why]
@@ -115,7 +115,7 @@ SC.ctl = () => {
   const al = alerts();
   return topHd('Control', me()) + `<div class="body gl">
  <div class="lock">${chip('warn', 'Simulator, dry run')}${V.guest ? chip('', 'Guest mode') : ''}<span>No command reaches the boat</span></div>
- ${locCard()}
+ ${locCard(1)}
  ${card('Cameras', link('View cameras', 'Cockpit, bow, engine room, swim platform', 'cams'))}
  ${card('Start a mode', `<div class="s" style="padding-bottom:4px">Outing spins up the Seakeeper and brings AC, lights and audio on. Back home shuts the boat down safely.</div>${modeBtns()}${link('Edit modes', 'Steps and checks', 'modes')}`, modeChip())}
  ${tiles()}
