@@ -104,3 +104,4 @@ Contacts, service history, invoices, documents, warranty dates, slip electric (s
 - Version 69: map tiles for the home slip ship with the app so the map also draws in the claude.ai viewer; Apple Maps link removed
 - Version 70: Location card heading reads PEGASU5 location (boat name from the record)
 - Version 71: Control screen, Location card moved to the end of Quick controls
+- Version 72: Location card removed from Control, it lives on the boat Overview only
