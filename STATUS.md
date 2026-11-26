@@ -92,3 +92,4 @@ Contacts, service history, invoices, documents, warranty dates, slip electric (s
 - Version 57: app fills the whole window on every device (no mockup frame, no Phone/Desktop switch); home screen app tags added so Add to Home Screen opens with no browser bars.
 - Version 58: status pills are plain colored labels (no fill, capsule or dot); desktop Controls card matches the height of Systems check plus Start a mode.
 - Version 59: AC zones are now three, with the owner's names: Lounge, Primary Cabin, Guest Cabin (fourth zone removed).
+- Version 60: AC zones read Lounge, Primary Bedroom, Guest Bedroom; card is Bedroom AC; modes say AC, all zones.
