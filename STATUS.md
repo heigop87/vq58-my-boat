@@ -103,3 +103,4 @@ Contacts, service history, invoices, documents, warranty dates, slip electric (s
 - Version 68: black and white map drawn in the app from OpenStreetMap tiles (no token), on Overview and Control; no Apple Maps link on the hosted site
 - Version 69: map tiles for the home slip ship with the app so the map also draws in the claude.ai viewer; Apple Maps link removed
 - Version 70: Location card heading reads PEGASU5 location (boat name from the record)
+- Version 71: Control screen, Location card moved to the end of Quick controls
