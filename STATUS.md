@@ -98,3 +98,4 @@ Contacts, service history, invoices, documents, warranty dates, slip electric (s
 - Version 63: Systems list and detail panel now start and end at the same height (search moved above both). System pages get a Control card where a command exists: Generator start and stop with its checks, Seakeeper spin up and stop. Engines show Monitoring only.
 - Version 64: active mode shown on the mode buttons and Home; Location card (simulator position, last moved, map on the hosted site); Cameras gets its own card and sidebar entry.
 - Version 65: map only on Control (Overview keeps coordinates and Map link), map loads at once.
+- Version 66: black and white map on Control (grayscale filter on the map embed; Mapbox Light swaps in when a token is set), hosted site only
