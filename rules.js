@@ -18,7 +18,7 @@ const VQ = (() => {
     sk: { st: 'off', pw: 0 }, // off | spinup | ready (locked) | spindown
     eng: { port: { on: 0, h: 12, cool: 82, oil: 0 }, stbd: { on: 0, h: 12, cool: 83, oil: 0 } },
     tanks: { fuel: 72, water: 58, hold: 15 },
-    ac: { salon: { on: 1, set: 72, now: 76 }, master: { on: 0, set: 70, now: 77 }, vip: { on: 0, set: 72, now: 77 }, guest: { on: 0, set: 72, now: 78 } },
+    ac: { salon: { on: 1, set: 72, now: 76 }, master: { on: 0, set: 70, now: 77 }, guest: { on: 0, set: 72, now: 78 } },
     light: { salon: 0, cockpit: 0, courtesy: 1, uw: 0, anchor: 0, master: 0, bath: 0, lounge: 0, galley: 0, fwd: 0 },
     cir: { heater: 1, ice: 0, fridge: 1, outlets: 0 },
     audio: { cockpit: 0, salon: 0 },
