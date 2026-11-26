@@ -14,7 +14,9 @@ I.ctl = '<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/
 SIDE[0][1].splice(1, 0, ['ctl', 'Control']); SIDEK.push('ctl');
 
 document.head.insertAdjacentHTML('beforeend', `<style>
-.vqt{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:none}
+.vqt{display:grid;grid-template-columns:1fr;gap:12px;flex:none}
+/* batteries, shore power and generator all open Power, so they are one card */
+.vqt .card.vqp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 12px}.vqp>span{display:block;min-width:0}.vqp>.vqo{display:flex;grid-column:1/-1}.vqt .vqp b{font-size:22px}.vqd .vqp{grid-column:span 3}
 .vqt .card{display:flex;flex-direction:column;justify-content:flex-start;padding:14px 18px;text-align:left;font:inherit;color:inherit;cursor:pointer}
 .vqg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;cursor:pointer}.vqg .s{display:flex;justify-content:space-between;align-items:center}.vqg .s b{color:var(--ink);font-weight:600}
 .vqo{display:flex;align-items:center;gap:6px;margin-top:6px;color:var(--or)}.vqo::before{content:"";flex:none;width:6px;height:6px;border-radius:3px;background:currentColor}.vqt b{display:block;font:400 28px/1.1 var(--fig);margin:4px 0}
@@ -67,10 +69,12 @@ const outage = (sh, now) => { if (!sh.on) sh.out = { at: now }; else if (sh.out)
 { const t = { on: 0 }; outage(t, 0); t.on = 1; outage(t, 3e5); console.assert(t.out.min == 5, 'outage'); }
 const outTxt = () => { const o = V.shore.out; if (!o) return ''; const d = new Date(o.at).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }); return o.min ? `Last outage ${d}, ${o.min} min` : `Out since ${d}`; };
 const tiles = () => { const b = V.batt; return `<div class="vqt">
-  <button class="card" ${at('go', 'pwr')}><span class="s">Batteries</span><b>${b.soc}%</b><span class="s">${V.pw.chg ? `Charging +${b.a} A` : 'Not charging'}</span></button>
-  <button class="card" ${at('go', 'pwr')}><span class="s">Shore power</span><b>${V.shore.on ? 'On' : 'Off'}</b><span class="s">Limit ${V.shore.limit} A</span>${outTxt() && `<span class="s vqo">${outTxt()}</span>`}</button>
+  <button class="card vqp" ${at('go', 'pwr')}>
+   <span><span class="s">Batteries</span><b>${b.soc}%</b><span class="s">${V.pw.chg ? `Charging +${b.a} A` : 'Not charging'}</span></span>
+   <span><span class="s">Shore power</span><b>${V.shore.on ? 'On' : 'Off'}</b><span class="s">Limit ${V.shore.limit} A</span></span>
+   <span><span class="s">Generator</span><b>${V.gen.on ? 'Running' : 'Off'}</b><span class="s">${VQ.genChecks(V).every(c => c[1]) ? 'Ready' : 'Start blocked'}</span></span>
+   ${outTxt() && `<span class="s vqo">${outTxt()}</span>`}</button>
   <button class="card" ${at('go', 'bilge')}><span class="s">Bilges</span><b>${V.highWater ? 'High water' : 'All dry'}</b><span class="s">${cycles()} ${cycles() == 1 ? 'cycle' : 'cycles'} today</span></button>
-  <button class="card" ${at('go', 'pwr')}><span class="s">Generator</span><b>${V.gen.on ? 'Running' : 'Off'}</b><span class="s">${VQ.genChecks(V).every(c => c[1]) ? 'Ready' : 'Start blocked'}</span></button>
  </div>`; };
 const sysChecks = () => [['Batteries above 50%', V.batt.soc >= 50], ['Bilges dry', !V.highWater], ['Generator ready to start', VQ.genChecks(V).every(c => c[1])], ...VQ.doneChecks(V), ['No active alerts', !alerts().length]];
 SH.vqchecks = () => ['Systems check', checks(sysChecks()) + btns()];
@@ -174,7 +178,7 @@ const fuelCard = () => {
 };
 // UNVERIFIED: standard NMEA 2000 engine fields with simulator idle values. What this boat sends depends on a Volvo EVC gateway. Read only (Rule 1).
 SC.engs = () => nav('Engines', chip('', 'Monitoring only')) + `<div class="body">
- <div style="position:sticky;top:-16px;z-index:5;margin:-16px -16px -8px;padding:12px 16px 8px;background:rgba(239,242,246,.7);backdrop-filter:blur(18px) saturate(1.8);-webkit-backdrop-filter:blur(18px) saturate(1.8)">${seg('engTab', [['port', 'Port'], ['stbd', 'Starboard']])}</div>
+ <div style="position:sticky;top:-16px;z-index:10;margin:-16px -16px -8px;padding:12px 16px 8px;background:rgba(239,242,246,.7);backdrop-filter:blur(18px) saturate(1.8);-webkit-backdrop-filter:blur(18px) saturate(1.8)">${seg('engTab', [['port', 'Port'], ['stbd', 'Starboard']])}</div>
  ${card('Tanks', [['fuel', 421, 'Fuel'], ['water', 105, 'Fresh water'], ['hold', 19, 'Black water']].map(([k, cap, n]) => `<div class="row">${svg(TANK_IC[k], 22)}<div class="grow"><div class="t" style="display:flex;justify-content:space-between;gap:8px"><span>${n} · ${V.tanks[k]}%</span><span class="s">${Math.round(cap * V.tanks[k] / 100)} of ${cap} gal</span></div><div class="meter"><i style="display:block;height:100%;width:${V.tanks[k]}%;background:var(--ink)"></i></div></div></div>`).join(''))}
  ${[['port', 'Port'], ['stbd', 'Starboard']].filter(e => e[0] == S.engTab).map(([k, n]) => { const e = V.eng[k]; return card(n + ' · Volvo Penta D13-IPS 1350', [['Hours', e.h + ' h'], ['RPM', e.on ? 600 : 0], ['Engine load', (e.on ? 12 : 0) + '%'], ['Boost', (e.on ? 2 : 0) + ' psi'], ['Coolant', e.cool + '°F'], ['Oil pressure', (e.on ? 58 : e.oil) + ' psi'], ['Oil temperature', (e.on ? 185 : 80) + '°F'], ['Fuel rate', (e.on ? 1.6 : 0) + ' gal/h'], ['Voltage', V.batt.v + ' V'], ['Gear', 'Neutral'], ['Drive oil', (e.on ? 140 : 80) + '°F'], ['Trip fuel', '0 gal'], ['Warnings', 'None']].map(([k, v]) => `<div class="kv"><span>${k}</span><b>${v}</b></div>`).join(''), chip(e.on ? 'ok' : '', e.on ? 'Running' : 'Off')); }).join('')}
  ${fuelCard()}

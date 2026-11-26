@@ -45,7 +45,7 @@ h1,h2{font-family:var(--disp);font-weight:400}
 .card>.ch{display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:48px;padding-top:6px}
 .card>.ch h2{font:400 13px/1.2 var(--disp);text-transform:uppercase;letter-spacing:.01em;color:var(--ink);padding:0;margin:0}
 .ch{display:flex;justify-content:space-between;align-items:center}
-.ch a,.status a{font:500 14px var(--ui);color:var(--l2);text-decoration:none;padding:8px 0}
+.ch a,.status a{font:500 14px var(--ui);color:var(--l2);text-decoration:none;padding:8px 0 8px 14px}
 .row{display:flex;align-items:center;gap:14px;min-height:48px;padding:12px 0;position:relative}
 .row+.row::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--sep)}
 .row.acts{padding-top:0;min-height:0;padding-bottom:16px}
@@ -121,9 +121,10 @@ select.inp{appearance:none;-webkit-appearance:none;background:#fff url("data:ima
 /* second boat photo fits the first boat's 21:9 frame, uncropped, so both cards are the same height */
 .boats>.hero+.hero .bst img.b{aspect-ratio:21/9;object-fit:contain}
 /* glass header: one frosted layer behind avatar, title and sub line, fading out at the bottom; the list scrolls under it. Phone layout only */
-body:not(.desk) .scr:has(>.lt+.sub+.body,>.lt+.body.gl){position:relative}body:not(.desk) .scr:has(>.lt+.sub+.body,>.lt+.body.gl)::before{content:"";position:absolute;inset:0 0 auto;height:138px;z-index:8;pointer-events:none;background:rgba(239,242,246,.6);backdrop-filter:blur(18px) saturate(1.8);-webkit-backdrop-filter:blur(18px) saturate(1.8);-webkit-mask-image:linear-gradient(#000 80%,transparent);mask-image:linear-gradient(#000 80%,transparent)}body:not(.desk) .scr:has(>.lt+.sub+.body,>.lt+.body.gl)>:is(.hd,.lt,.sub){position:relative;z-index:9;background:none}body:not(.desk) .lt+.sub+.body{margin-top:-122px;padding-top:138px}
-/* same glass on a header with no sub line (Control) */
-body:not(.desk) .scr:has(>.lt+.body.gl)::before{height:110px}body:not(.desk) .lt+.body.gl{margin-top:-94px;padding-top:110px}
+body:not(.desk) .scr:has(>:where(.lt+.sub+.body,.lt+.body,.hd+.body)){position:relative}body:not(.desk) .scr:has(>:where(.lt+.sub+.body,.lt+.body,.hd+.body))::before{content:"";position:absolute;inset:0 0 auto;height:138px;z-index:8;pointer-events:none;background:rgba(239,242,246,.6);backdrop-filter:blur(18px) saturate(1.8);-webkit-backdrop-filter:blur(18px) saturate(1.8);-webkit-mask-image:linear-gradient(#000 80%,transparent);mask-image:linear-gradient(#000 80%,transparent)}body:not(.desk) .scr:has(>:where(.lt+.sub+.body,.lt+.body,.hd+.body))>:is(.hd,.lt,.sub){position:relative;z-index:9;background:none}body:not(.desk) .lt+.sub+.body{margin-top:-122px;padding-top:138px}
+/* same glass on every other page: big title with no sub line, and back-arrow pages */
+body:not(.desk) .scr:has(>.lt+.body)::before{height:110px;transition:height .35s cubic-bezier(.2,.8,.2,1)}body:not(.desk) .lt+.body{margin-top:-94px;padding-top:110px}body:not(.desk) .scr.col:has(>.lt+.body)::before{height:98px}
+body:not(.desk) .scr:has(>.hd+.body)::before{height:72px}body:not(.desk) .hd+.body{margin-top:-56px;padding-top:72px}
 .hmeta{padding:14px 18px 18px;display:flex;flex-direction:column;gap:14px}
 .eng{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .eng .s{margin-bottom:6px;font:500 11px/16px var(--lab);letter-spacing:.08em;text-transform:uppercase}
@@ -229,6 +230,9 @@ input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
 @media (max-width:899px){.mode{display:none}}@media (min-width:900px){body:not(.desk) .ph{height:min(844px,calc(100dvh - 140px))}}
 .desk .stage{padding:16px;gap:10px}
 .desk .ph{width:min(1400px,100%);height:calc(100dvh - 76px);min-height:640px;border-radius:14px;display:grid;grid-template-columns:236px minmax(0,1fr);grid-template-rows:60px minmax(0,1fr);box-shadow:0 0 0 1px rgba(27,30,39,.1),0 30px 60px -24px rgba(5,7,30,.3);font-size:15px;line-height:21px}
+/* touch tablets (iPad mini landscape): the app fills the screen, no mockup frame or Phone/Desktop switch */
+.touch .mode,.touch .cap{display:none}.touch.desk .stage{padding:0}.touch.desk .ph{width:100vw;height:100dvh;min-height:0;border-radius:0;box-shadow:none}
+.touch .dside a{height:40px}.dside>*{flex-shrink:0}
 .desk .tabbar{display:none}
 .dside{grid-column:1;grid-row:1/3;border-right:1px solid var(--sep);background:#f7f8fa;padding:14px 12px;display:flex;flex-direction:column;gap:1px;overflow:auto}
 .dbrand{font:400 14px/1 var(--disp);text-transform:uppercase;letter-spacing:.02em;padding:9px 10px 18px}
@@ -340,7 +344,7 @@ body:not(.desk) .scr:has(>.sub.hs)::before{transition:height .35s cubic-bezier(.
 /* PEGASU5 transom lettering, Proposal 2. shortcut: Michroma is the closest free match, swap for the builder's font file when the owner has its name */
 .lt.pg{font-family:Michroma,var(--disp);font-size:27px;letter-spacing:.03em;-webkit-text-stroke:1.5px currentColor}
 body:not(.desk) .scr.col:has(>.sub.hs)::before{height:124px}
-.scr:has(>.sub.hs)>.lt{transform-origin:0 50%;transition:transform .25s ease}.scr.col:has(>.sub.hs)>.lt{transform:translateX(5px) scale(.75)}
+.scr.nt>*,.scr.nt::before{transition:none!important}.scr>.lt{transform-origin:0 50%;transition:transform .25s ease}body:not(.desk) .scr.col>.lt{transform:translateX(5px) scale(.75)}
 .scr.col>.sub.hs>:not(.gt){opacity:0}.scr.col>.sub.hs .gt{transform:translateY(-33px) scale(.85)}
 @keyframes kywave{0%,100%{transform:none}35%{transform:perspective(80px) rotateY(-14deg) skewY(-2deg)}70%{transform:perspective(80px) rotateY(5deg) skewY(1deg)}}
 .scr.col .gt svg{animation:kywave .9s ease-in-out 1}
@@ -1116,7 +1120,7 @@ function render(){
  if(aid){const e=document.getElementById(aid);if(e){e.focus({preventScroll:true});try{if(sel!=null)e.setSelectionRange(sel,sel)}catch(_){}}}
  if(S.sheet&&sk!=lastSh){const f=app.querySelector('.sh input:not([type=date]),.sh textarea');if(f&&matchMedia('(hover:hover)').matches)f.focus()}
  const bx=app.querySelector('.boats');if(bx){bx.scrollLeft=bx.children[S.bi].offsetLeft-bx.offsetLeft;let t;bx.onscroll=()=>{clearTimeout(t);t=setTimeout(()=>{const i=Math.round(bx.scrollLeft/bx.clientWidth);if(i!=S.bi){S.bi=i;render()}},120)}}
- if(!D&&nb&&app.querySelector('.sub.hs')){const sc=nb.parentNode;const f=()=>sc.classList.toggle('col',nb.scrollTop>(sc.classList.contains('col')?4:20));f();nb.onscroll=f}
+ if(!D&&nb&&app.querySelector('.scr>.lt')){const sc=nb.parentNode;const f=()=>sc.classList.toggle('col',nb.scrollTop>(sc.classList.contains('col')?4:20));sc.classList.add('nt');f();sc.offsetWidth;sc.classList.remove('nt');nb.onscroll=f}
  S.anim=0;lastKey=key;lastSh=sk;lastTab=S.tab;lastLen=S.st[S.tab].length;
 }
 
@@ -1165,7 +1169,8 @@ app.addEventListener('keydown',e=>{
 app.addEventListener('input',e=>{const el=e.target;if(el.dataset.place!=null){el.dataset.addr='';document.getElementById('paddr').textContent='';document.getElementById('places').innerHTML=placeHits(el.value).map(([n,a],i)=>`<button type="button" role="option" data-pi="${MARINAS.findIndex(m=>m[0]==n)}"><b>${esc(n)}</b><span>${esc(a)}</span></button>`).join('')}if(el.dataset.money!=null){const fromEnd=el.value.length-el.selectionStart;el.value=commas(el.value);const p=Math.max(0,el.value.length-fromEnd);el.setSelectionRange(p,p)}if(!el.dataset.in)return;setP(el.dataset.in,el.value);if(el.id=='draft')el.nextElementSibling.disabled=!el.value.trim();if(el.dataset.rr)render()});
 /* phone or desktop layout; the choice is remembered in this browser only */
 const modeBar=document.querySelector('.mode');
-function setMode(d){d=d&&innerWidth>=900;document.body.classList.toggle('desk',d);modeBar.querySelectorAll('button').forEach(b=>{const on=(b.dataset.m=='1')==d;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)})}
+const TOUCH=matchMedia('(pointer:coarse)').matches;document.body.classList.toggle('touch',TOUCH);
+function setMode(d){d=(d||TOUCH)&&innerWidth>=900;document.body.classList.toggle('desk',d);modeBar.querySelectorAll('button').forEach(b=>{const on=(b.dataset.m=='1')==d;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)})}
 let wantDesk=innerWidth>=1100;try{const v=localStorage.getItem('mb-desk');if(v!=null)wantDesk=v=='1'}catch(_){}
 modeBar.onclick=e=>{const b=e.target.closest('button');if(!b)return;wantDesk=b.dataset.m=='1';try{localStorage.setItem('mb-desk',wantDesk?'1':'0')}catch(_){}setMode(wantDesk);render()};
 addEventListener('resize',()=>{const d=isD();setMode(wantDesk);if(d!=isD())render()});
