@@ -100,6 +100,21 @@ const locCard = map => { const { lat, lon, moved } = V.pos, d = .004, when = new
   return card(S.name + ' location', (map ? (MAPBOX && host ? `<img alt="Map with the boat position" style="width:100%;height:240px;object-fit:cover;border-radius:12px;display:block" src="https://api.mapbox.com/styles/v1/mapbox/light-v11/static/pin-s+111111(${lon},${lat})/${lon},${lat},15/1040x240@2x?access_token=${MAPBOX}">` : mapTiles(lat, lon)) : '')
     + row(VQ.ddm(lat, 'N', 'S') + ' ' + VQ.ddm(lon, 'E', 'W'), 'At the home slip', map ? '' : `<button class="btn sm" ${at('go', 'ctl')}>Map</button>`)
     + row('Last moved', 'Simulator position, no tracker yet', `<span class="t">${when}</span>`)); };
+// Trips: what a Garmin chartplotter keeps as tracks and hands over as GPX (trk > trkseg > trkpt lat, lon, time; depth and water temperature as Garmin extensions).
+// UNVERIFIED mock tracks around Miami, drawn by hand. No GPX from the boat has been read yet; real tracks stay off the public site.
+const OUT = [[25.7707, -80.14], [25.7672, -80.1405], [25.765, -80.137], [25.7628, -80.13], [25.76, -80.12], [25.757, -80.105]], BACK = t => t.concat(t.slice(0, -1).reverse());
+const LOGS = [
+  ['South Beach run', 'Nov 22', 12, 21, BACK(OUT.concat([[25.775, -80.112], [25.79, -80.113], [25.782, -80.102], [25.762, -80.1]]))],
+  ['Cape Florida and Stiltsville', 'Nov 14', 19, 34, BACK(OUT.concat([[25.735, -80.115], [25.7, -80.128], [25.67, -80.14], [25.659, -80.152], [25.656, -80.166], [25.652, -80.174], [25.668, -80.17], [25.6765, -80.165]]))],
+  ['Haulover sandbar', 'Nov 8', 22, 36, BACK(OUT.concat([[25.77, -80.108], [25.82, -80.105], [25.87, -80.105], [25.896, -80.11], [25.8995, -80.119], [25.901, -80.125], [25.904, -80.129]]))],
+]; // [name, date, average knots, max knots, track]
+// shortcut: 16 bundled zoom 11 tiles cover Miami only and there is no panning, swap for a real map library when real tracks arrive.
+const tripMap = pts => { const P = pts.map(([la, lo]) => { const [x, y] = VQ.tile(la, lo, 11); return [(x - 566) * 256, (y - 870) * 256]; }), mid = k => (Math.min(...P.map(p => p[k])) + Math.max(...P.map(p => p[k]))) / 2, d = P.map(p => p.map(n => n.toFixed(1)).join()).join(' '); let h = '';
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) h += `<img alt="" width="256" height="256" style="position:absolute;left:${c * 256}px;top:${r * 256}px;max-width:none" src="tiles/11_${566 + c}_${870 + r}.png" onerror="this.onerror=null;this.src='https://tile.openstreetmap.org/11/${566 + c}/${870 + r}.png'">`;
+  return `<div role="img" aria-label="Map with the trip track" style="position:relative;height:320px;overflow:hidden;border-radius:12px;background:#f2f2f2"><div style="position:absolute;left:50%;top:50%;width:1024px;height:1024px;transform:translate(${-mid(0)}px,${-mid(1)}px)"><div style="filter:grayscale(1) contrast(1.1)">${h}</div><svg width="1024" height="1024" style="position:absolute;left:0;top:0" fill="none" stroke-linejoin="round" stroke-linecap="round"><polyline points="${d}" stroke="#fff" stroke-width="6"/><polyline points="${d}" stroke="#111" stroke-width="2.5"/><circle cx="${P[0][0]}" cy="${P[0][1]}" r="5" fill="#111" stroke="#fff" stroke-width="2.5"/></svg></div><span style="position:absolute;right:6px;bottom:4px;font-size:10px;color:#555">© OpenStreetMap</span></div>`; };
+A.vqtrip = i => { S.trip = +i; };
+const tripCard = () => card('Trips', tripMap(LOGS[S.trip || 0][4]) + LOGS.map(([n, when, kn, max, pts], i) => { const d = VQ.nm(pts), m = Math.round(d / kn * 60);
+  return row(n, `${when} · ${d.toFixed(1)} nm · ${m >= 60 ? Math.floor(m / 60) + ' h ' : ''}${m % 60} min · ${kn} kn average, ${max} kn max`, i == (S.trip || 0) ? chip('', 'On map') : '', at('vqtrip', i) + ' style="cursor:pointer"'); }).join(''), chip('warn', 'Mock data'));
 // Mode run: one row per kind of step, shown in order. [title, what, ok, why]
 const STEP = { 'sk.spin': 'Seakeeper spins up, stays locked', 'sk.stop': 'Seakeeper spins down, stays powered', 'ac.set': 'Air conditioning', 'light.set': 'Lights', 'audio.set': 'Audio', 'cir.set': 'Circuits', 'gen.start': 'Generator starts' };
 const CIRN = { heater: 'Water heater', ice: 'Ice maker', outlets: 'Outlets' };
@@ -118,6 +133,7 @@ SC.vqhome = () => `${V.guest ? `<div class="lock">${chip('', 'Guest mode')}</div
   return `<section class="card" ${tap('sheet', 'vqchecks')} style="cursor:pointer"><div class="ch" style="padding-top:0;min-height:56px"><h2>Systems check</h2><span style="display:flex;align-items:center;gap:8px">${chip(bad.length ? 'err' : 'ok', bad.length ? bad.length + ' to check' : 'All ' + c.length + ' pass')}<span class="chev"></span></span></div>${checks(bad)}</section>`; })(sysChecks())}
  ${card('Cameras', link('View cameras', 'Cockpit, bow, engine room, swim platform', 'cams'))}
  ${locCard(1)}
+ ${tripCard()}
  ${card('Start a mode', `<div class="s" style="padding-bottom:4px">Outing spins up the Seakeeper and brings AC, lights and audio on. Back home shuts the boat down safely.</div>${modeBtns()}${link('Edit modes', 'Steps and checks', 'modes')}`, modeChip())}`;
 
 SC.ctl = () => {
