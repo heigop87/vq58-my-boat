@@ -339,7 +339,7 @@ input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
 .engtap:active{opacity:.6}
 
 /* Home header: on scroll the make line fades, George Town moves up beside the boat name, flag waves. Transforms only, no layout shift. */
-.sub.hs>*{transition:opacity .25s,transform .35s cubic-bezier(.2,.8,.2,1)}.sub.hs .gt{transform-origin:right center}
+.sub.hs>*{transition:opacity .25s,transform .35s cubic-bezier(.2,.8,.2,1)}.sub.hs .gt{transform-origin:right center;transform:translateY(-33px)}
 body:not(.desk) .scr:has(>.sub.hs)::before{transition:height .35s cubic-bezier(.2,.8,.2,1)}
 /* PEGASU5 transom lettering, Proposal 2. shortcut: Michroma is the closest free match, swap for the builder's font file when the owner has its name */
 .lt.pg{font-family:Michroma,var(--disp);font-size:27px;letter-spacing:.03em;-webkit-text-stroke:1.5px currentColor}
