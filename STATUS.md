@@ -47,7 +47,7 @@ Contacts, service history, invoices, documents, warranty dates, slip electric (s
 ## Added 26 Nov 2026
 - Lights: floorplan card with one light per room on a Gemini render of the owner's below-deck sketch (`deck.jpg`). Ids and spots are UNVERIFIED placeholders until the builder's EmpirBus light list arrives.
 - Boat profile, Build specs: hull color Azzurro Met, code 592, PPG waterborne (from the Ferrari label photo), matte black roof, Veuve Clicquot pin stripe. Open: paint maker used on the hull itself, roof and stripe codes.
-- Systems (records only, no write commands): Maxwell windlass, Kraken bow winch (owner wrote "Karken": confirm spelling), Side-Power bow thruster, Garmin GPSMAP 9219 x 2 at the helm. Models open for windlass, winch and thruster.
+- Systems (records only, no write commands): Maxwell windlass, Harken CLR 12000 bow winch (part CLR12000EA, from the owner's link, Version 51), Side-Power bow thruster, Garmin GPSMAP 9219 x 2 at the helm. Models open for windlass, winch and thruster.
 - Invoices: `INV` list in `index.html`, screen `invs` (category filter) and `invoice:<id>` (breakdown per system with icons, then the original file). Uploaded photos show as is; uploaded PDFs are drawn with pdf.js 3.11.174 from cdnjs, first 5 pages. The 6 listed invoices are demo data and do not add up to the Spend totals. Uploads live in memory only until there is a backend.
 
 ## Added 26 Nov 2026, round 2 (Version 39)
@@ -55,10 +55,10 @@ Contacts, service history, invoices, documents, warranty dates, slip electric (s
 - Invoices are plain records. Approval, dispute and "Ask about $220" are removed (service centers do not submit through the app).
 - Lights: two groups. Interior (below deck plus salon), Exterior (cockpit, courtesy, underwater, anchor light).
 - Share: "Transfer to buyer" is last under Selling. Captain tab has an "Engines and generator" switch; off refuses generator commands in `rules.js` (`by.gen === false`), tested. Family, Service, Crew stay locked. Engines stay monitoring only (rule 1).
-- Photos: windlass `p-maxwell.jpg` (Maxwell RC10 product photo), thruster `p-thruster.jpg` (Side-Power SE170), Starlink `p-starlink.jpg` (owner's photo, full frame), hull uses `boat.jpg`.
+- Photos: windlass `p-maxwell.jpg` (Maxwell RC10 product photo), thruster `p-thruster.jpg` (Side-Power SE170), Starlink `p-starlink.jpg` (owner's photo, full frame), hull uses `vq58.png` (Version 51).
 - Manuals in `MAN`: Maxwell RC8, RC10, VW10 manual (P103153 Rev 11), Side-Power SE170 installation guide (doc 6367 Rev 17), Starlink Flat High Performance setup guide. All from the makers' own sites.
 - UNVERIFIED: windlass and thruster model on this hull. RC10 and SE170 files are stand-ins; Maxwell rates the RC10 for about 30 to 48 ft, so this boat may carry an RC12.
-- Missing: bow winch photo and manual (no "Kraken" winch found; could be Harken, whose flush mooring winches exist in 12 and 24 V: owner to confirm). Safety gear photo. Hull and safety gear have no single maker manual.
+- Bow winch: `p-harken.jpg` and `harken-clr-mooring-winch-manual.pdf` from harken.com (Version 51). Missing: safety gear photo. Hull and safety gear have no single maker manual.
 
 ## Added 26 Nov 2026, round 3 (Version 40)
 - Invoices list has an Add button (same flow as the Add tab).
@@ -81,3 +81,6 @@ Contacts, service history, invoices, documents, warranty dates, slip electric (s
 - Version 48: screens under 900 px wide (phones, tablets, phone landscape) open full screen with no mockup frame. Desktop Overview now has the VQ58 blocks: tank levels in the hero, Batteries, Shore power, Bilges, Generator tiles, Controls, Systems check, Start a mode. Not checked: real devices, desktop Control (content stays 900 px wide).
 - Version 49: the Cayman flag and "George Town" in the Home header (phone and desktop) open Documents filtered to Registration. The two documents listed (USCG documentation, Florida registration) are still base demo data: no Cayman certificate of registry is on file yet.
 - Version 50: the flag now opens Documents filtered to "Registration, Insurance" (search takes comma separated terms). Demo USCG and Florida entries replaced by two Cayman placeholders with no file: Certificate of British Registry, Transcript of Register. UNVERIFIED until the owner uploads the real papers.
+- Version 51: bow winch is the Harken 12000 CLR aluminum electric mooring winch (CLR12000EA) with Harken's product image and CLR mooring winch manual. Open: Harken rates the CLR 12000 for 250 to 300 ft yachts with a 400 V motor, so confirm the exact CLR size with the builder. The full 16 MB Harken manual is not included (over the 15 MB file limit).
+- Version 51: Documents. The original file name in a document sheet opens the file (Fit and Zoom). Select mode on the list (phone and desktop) picks several documents; Share on a sheet or on the selection uses the system share sheet with the stored files, and copies the document names where sharing is blocked (the artifact frame). Demo documents have no stored file until one is uploaded with Replace. Real share links need the backend.
+- Version 51: Hull and bottom shows the VQ58 image, not the base demo boat.

@@ -405,16 +405,16 @@ const SYS={
  gen:{n:'Generator',ty:'Generator',m:'Mase',model:'Mase generator',img:'p-gen.jpg',hk:'gen',by:'hm',g:'main',war:'Till Sep 2027',plate:'SGM32K4X1',sched:'Mase schedule',hist:2410},
  sk:{n:'Stabilizer',ty:'Stabilizer',m:'Seakeeper 9',model:'Seakeeper 9',img:'p-seakeeper.jpg',hk:'sk',by:'hm',g:'main',war:'',plate:'',sched:'Seakeeper schedule',hist:450},
  wl:{n:'Windlass',img:'p-maxwell.jpg',ty:'Windlass',m:'Maxwell',model:'Maxwell windlass',by:'',g:'main',war:'',plate:''},
- bw:{n:'Bow winch',ty:'Winch',m:'Kraken, electric, flush mount',model:'Kraken electric high and low flush mount winch',by:'',g:'main',war:'',plate:''},
+ bw:{n:'Bow winch',img:'p-harken.jpg',ty:'Winch',m:'Harken CLR 12000, electric, flush mount',model:'Harken 12000 CLR aluminum electric mooring winch, part CLR12000EA',by:'',g:'main',war:'',plate:''},
  bt:{n:'Bow thruster',img:'p-thruster.jpg',ty:'Thruster',m:'Side-Power',model:'Side-Power bow thruster',by:'',g:'main',war:'',plate:''},
- hull:{n:'Hull and bottom',img:'boat.jpg',ic:'roller',m:'Vanquish aluminum hull',by:'sy',g:'other',war:'Till Jun 1, 2029',plate:'',sched:'Owner set'},
+ hull:{n:'Hull and bottom',img:'vq58.png',ic:'roller',m:'Vanquish aluminum hull',by:'sy',g:'other',war:'Till Jun 1, 2029',plate:'',sched:'Owner set'},
  safe:{n:'Safety gear',ic:'ext',m:'Extinguishers, flares, life jackets',by:'',g:'other',war:'',plate:'',sched:'Owner set'},
  sl:{n:'Starlink',img:'p-starlink.jpg',ic:'dish',ty:'Satellite internet',m:'Starlink Flat High Performance',model:'Starlink Flat High Performance',by:'',g:'other',war:'',plate:'',dish:[{n:'Mast, port',sn:'KIT304125678'},{n:'Mast, starboard',sn:'KIT304125679'}]},
  elec:{n:'Electronics',ty:'Chartplotter',m:'Garmin GPSMAP 9219, 2 at the helm',model:'Garmin GPSMAP 9219',img:'p-garmin.jpg',by:'be',g:'other',war:'',plate:'',unit:[{n:'Helm, port',sn:''},{n:'Helm, starboard',sn:''}]}};
 // past jobs per system: [date, work, amount], all by the system's servicer; totals match SYS.hist
 // Provider manuals, keyed by maker (first word of the system make). Every boat with that maker gets the manual.
 // shortcut: Maxwell and Side-Power files are for the RC10 and SE170, models on this hull are UNVERIFIED, swap when the builder list arrives
-const MAN={Seakeeper:["Seakeeper Owner's Guide",'seakeeper-owners-guide.pdf'],Maxwell:['Maxwell RC8, RC10 manual','maxwell-rc8-rc10-manual.pdf'],'Side-Power':['Side-Power SE170 guide','sidepower-se170-guide.pdf'],Starlink:['Starlink setup guide','starlink-flat-hp-guide.pdf']},man=s=>MAN[(s.m||'').split(' ')[0]];
+const MAN={Seakeeper:["Seakeeper Owner's Guide",'seakeeper-owners-guide.pdf'],Maxwell:['Maxwell RC8, RC10 manual','maxwell-rc8-rc10-manual.pdf'],'Side-Power':['Side-Power SE170 guide','sidepower-se170-guide.pdf'],Starlink:['Starlink setup guide','starlink-flat-hp-guide.pdf'],Harken:['Harken CLR mooring winch manual','harken-clr-mooring-winch-manual.pdf']},man=s=>MAN[(s.m||'').split(' ')[0]];
 const JOBS={port:[['Oct 12, 2026','Oil and filter',640],['Apr 3, 2026','Impeller and belts',520],['Nov 2, 2025','Annual service',280]],
  stbd:[['Oct 12, 2026','Oil and filter',640],['Apr 3, 2026','Impeller and belts',520],['Nov 2, 2025','Annual service',280]],
  gen:[['Oct 12, 2026','Impeller and oil',610],['Jun 8, 2026','Valve adjustment',980],['Feb 20, 2026','Annual service',820]],
@@ -455,7 +455,7 @@ const S={tab:'home',st:{home:['home'],boat:['boat'],add:['add'],share:['share'],
  invSaved:false,capGen:true,
  spend:{sys:{Engines:3880,'Hull and bottom':2010,Generator:1410,Electrical:690,'Safety gear':430},ven:{'Harbor Marine Service':4600,'Sunset Yard':2010,'Bay Wrench Mobile':690,'Miami Beach Marina':690,'West Marine':430},mon:[220,110,1650,550,330,280,660,170,1320,2750,380]},
  invCat:'All',origZ:1,spendSeg:'sys',monSel:9,svcSeg:'status',nE:2,spec:'dim',al:{svc:1,war:1,px:0},val:189000,conSeg:'sys',q:'',
- docs:[{n:'Certificate of British Registry, Cayman Islands',k:'Registration',d:'No file yet'},{n:'Haul out contract',k:'Contract',d:'Added Oct 2, 2026'},{n:'Insurance policy 2026',k:'Insurance',orig:'Policy 2026, signed.pdf',d:'Added May 1, 2026'},{n:'Transcript of Register, Cayman Islands',k:'Registration',d:'No file yet'},{n:'Survey, Mar 2024',k:'Survey',d:'Added Mar 20, 2024'},{n:'Owner manual, VQ58',k:'Manual',d:'Added Jun 1, 2024'},{n:'Mase generator manual',k:'Manual',d:'Added Jun 1, 2024'},{n:"Seakeeper Owner's Guide",k:'Manual',d:'From Seakeeper',f:MAN.Seakeeper[1]},...['Maxwell','Side-Power','Starlink'].map(k=>({n:MAN[k][0],k:'Manual',d:'From '+k,f:MAN[k][1]})),{n:'Invoice 4471, Harbor Marine',k:'Invoice',d:'Added Oct 12, 2026'},{n:'Bill of sale',k:'Ownership',d:'Added Jun 1, 2024'}],
+ docs:[{n:'Certificate of British Registry, Cayman Islands',k:'Registration',d:'No file yet'},{n:'Haul out contract',k:'Contract',d:'Added Oct 2, 2026'},{n:'Insurance policy 2026',k:'Insurance',orig:'Policy 2026, signed.pdf',d:'Added May 1, 2026'},{n:'Transcript of Register, Cayman Islands',k:'Registration',d:'No file yet'},{n:'Survey, Mar 2024',k:'Survey',d:'Added Mar 20, 2024'},{n:'Owner manual, VQ58',k:'Manual',d:'Added Jun 1, 2024'},{n:'Mase generator manual',k:'Manual',d:'Added Jun 1, 2024'},{n:"Seakeeper Owner's Guide",k:'Manual',d:'From Seakeeper',f:MAN.Seakeeper[1]},...['Maxwell','Harken','Side-Power','Starlink'].map(k=>({n:MAN[k][0],k:'Manual',d:'From '+k,f:MAN[k][1]})),{n:'Invoice 4471, Harbor Marine',k:'Invoice',d:'Added Oct 12, 2026'},{n:'Bill of sale',k:'Ownership',d:'Added Jun 1, 2024'}],
  docCount:47,mb:184,
  recall:true,victron:false,claims:[{n:'Generator start relay',d:'Approved Jul 8',st:'Approved',c:'ok',by:'hm',what:'Generator would not crank. Start relay replaced under warranty.'},{n:'Chartplotter screen',d:'Closed Mar 2',st:'Closed',c:'',by:'be',what:'Dead pixels along the top edge. Screen replaced.'}],
  boatWar:{n:'Vanquish aluminum hull',d:'Structural · to Jun 1, 2029 · Vanquish dealer'},
@@ -623,13 +623,13 @@ invoice(id){
 },
 docs(){
  const q=S.q.trim().toLowerCase(),hit=S.docs.filter(d=>qhit(d,q));
- const drow=(d)=>{const i=S.docs.indexOf(d);return `<div class="row" ${tap('sheet','doc',i)}>${svg(I.doc)}<div class="grow"><div class="t">${esc(d.n)}</div><div class="s">${esc(d.k)} · ${esc(d.d)}</div></div><span class="chev">›</span></div>`};
+ const drow=(d)=>{const i=S.docs.indexOf(d);return `<div class="row" ${dtap(i)}>${svg(I.doc)}<div class="grow"><div class="t">${esc(d.n)}</div><div class="s">${esc(d.k)} · ${esc(d.d)}</div></div>${S.sel?dmark(i):'<span class="chev">›</span>'}</div>`};
  const body=q?`<section class="card">${hit.length?hit.map(drow).join(''):`<div class="row"><span class="s">Nothing matches "${esc(S.q)}" in the documents you can see here.</span></div>`}</section>`
- :`<section class="card"><div class="ch"><h2>Expiring</h2></div>${S.docs.filter(d=>d.exp).sort((a,b)=>daysTo(a.exp)-daysTo(b.exp)).map(d=>{const i=S.docs.indexOf(d),n=daysTo(d.exp);return `<div class="row" ${tap('sheet','doc',i)}><div class="grow"><div class="t">${esc(d.n)}</div><div class="s">${n<0?'Expired '+esc(d.exp):'Expires '+esc(d.exp)+' · '+n+' days left'}</div>${n<0?'':`<div class="s">${renewBy(d)}</div>`}</div>${expChip(d.exp)}</div>`}).join('')}</section>
+ :`<section class="card"><div class="ch"><h2>Expiring</h2></div>${S.docs.filter(d=>d.exp).sort((a,b)=>daysTo(a.exp)-daysTo(b.exp)).map(d=>{const i=S.docs.indexOf(d),n=daysTo(d.exp);return `<div class="row" ${dtap(i)}><div class="grow"><div class="t">${esc(d.n)}</div><div class="s">${n<0?'Expired '+esc(d.exp):'Expires '+esc(d.exp)+' · '+n+' days left'}</div>${n<0?'':`<div class="s">${renewBy(d)}</div>`}</div>${expChip(d.exp)}${S.sel?dmark(i):''}</div>`}).join('')}</section>
  <section class="card"><div class="row" ${tap('sheet','expired')}><div class="grow t">Expired, kept</div><span class="s">6</span><span class="chev">›</span></div></section>
  <div class="grp">Recent</div><section class="card">${S.docs.filter(d=>!d.exp).map(drow).join('')}</section>
  <section class="card"><div class="row"><div class="grow"><div class="t">Storage</div><div class="s">${S.mb} MB of 1 GB · ${S.docCount} documents</div><div class="meter"><i style="width:${Math.round(S.mb/10.24)}%;background:var(--l1)"></i></div></div></div></section>`;
- return nav('Documents',`<button class="btn sm" ${at('file','doc')}>Upload</button>`)+`<div class="body"><input class="inp" id="q" type="search" data-in="q" data-rr="1" placeholder="Search ${S.docCount} documents" value="${esc(S.q)}" aria-label="Search documents">${body}</div>`;
+ return nav('Documents',dbar())+`<div class="body"><input class="inp" id="q" type="search" data-in="q" data-rr="1" placeholder="Search ${S.docCount} documents" value="${esc(S.q)}" aria-label="Search documents">${body}</div>`;
 },
 war(){
  const b=S.boatWar;
@@ -869,7 +869,8 @@ trconfirm:()=>['Send transfer',`<div class="note" style="text-align:center">${es
 preview:()=>['What the buyer sees',`<section class="card">${TRK.map(([k,l])=>`<div class="row"><span class="grow t">${l}</span>${S.tr.on[k]?chip('ok','Shown'):chip('','Hidden')}</div>`).join('')}</section>${btns()}`],
 doctype:i=>{const h=S.sheet,t=h.t,custom=[...new Set(S.docs.map(d=>d.k))].filter(k=>k!='Other'&&!DTYPES.includes(k));return['What is this document?',`${fld0('dn','Document name',h.dn,'text','data-in="sheet.dn" autocomplete="off"')}<div><span class="lbl">Type</span><div style="display:flex;flex-wrap:wrap;gap:8px">${[...DTYPES,...custom,'Other'].map(k=>`<button class="btn sm${t==k?' pri':''}" aria-pressed="${t==k}" ${at('set','sheet.t',k)}>${esc(k)}</button>`).join('')}</div></div>${t=='Other'?fld0('dl','Name the type',h.lab,'text','data-in="sheet.lab" placeholder="For example, Crew contract" autocomplete="off"'):''}${err()}${btns(`<button class="btn pri" ${at('docType',i)}>Save</button>`)}`]},
 docdate:i=>[S.docs[i].n,`${fld('dd','Expiry date','','date')}${err()}${btns(`<button class="btn pri" ${at('docDate',i)}>Save</button>`)}`],
-doc:i=>{const d=S.docs[i];return[d.n,`<section class="card"><div class="row"><span class="grow t">Type</span><span class="s">${esc(d.k)}</span>${can(1)?`<button class="btn sm" ${at('docTypeOpen',i)}>Change</button>`:''}</div><div class="row"><span class="grow t">Added</span><span class="s">${esc(d.d.replace('Added ',''))}</span></div><div class="row"><span class="grow t">Expires</span>${d.exp?`<span class="s">${esc(d.exp)}</span>`:''}${can(2)?`<button class="btn sm" ${at('sheet','docdate',i)}>${d.exp?'Change':'Add expiry date'}</button>`:d.exp?'':'<span class="s">No date</span>'}</div>${d.f?`<div class="row"><span class="grow t">File</span><a class="btn sm" href="${d.f}" target="_blank" rel="noopener">Open</a></div>`:''}<div class="row"><span class="grow t">Original</span>${d.orig?`<span class="s">${esc(d.orig)}</span>`:''}${can(2)?`<button class="btn sm" ${at('file','orig',i)}>${d.orig?'Replace':'Upload original'}</button>`:d.orig?'':'<span class="s">None yet</span>'}</div></section>${S.sheet.confirm?`<div class="sbtns"><button class="btn dk" ${at('docDel',i)}>Yes, delete</button><button class="btn" ${at('close')}>Keep</button></div>`:`<div class="sbtns"><button class="btn red" ${at('set','sheet.confirm',1)}>Delete</button><button class="btn" ${at('close')}>Close</button></div>`}`]},
+doc:i=>{const d=S.docs[i];return[d.n,`<section class="card"><div class="row"><span class="grow t">Type</span><span class="s">${esc(d.k)}</span>${can(1)?`<button class="btn sm" ${at('docTypeOpen',i)}>Change</button>`:''}</div><div class="row"><span class="grow t">Added</span><span class="s">${esc(d.d.replace('Added ',''))}</span></div><div class="row"><span class="grow t">Expires</span>${d.exp?`<span class="s">${esc(d.exp)}</span>`:''}${can(2)?`<button class="btn sm" ${at('sheet','docdate',i)}>${d.exp?'Change':'Add expiry date'}</button>`:d.exp?'':'<span class="s">No date</span>'}</div>${d.f?`<div class="row"><span class="grow t">File</span><a class="btn sm" href="${d.f}" target="_blank" rel="noopener">Open</a></div>`:''}<div class="row"><span class="grow t">Original</span>${d.orig?`<span class="s" ${tap('docOpen',i)} aria-label="Open ${esc(d.orig)}" style="text-decoration:underline;cursor:pointer">${esc(d.orig)}</span>`:''}${can(2)?`<button class="btn sm" ${at('file','orig',i)}>${d.orig?'Replace':'Upload original'}</button>`:d.orig?'':'<span class="s">None yet</span>'}</div></section>${S.sheet.confirm?`<div class="sbtns"><button class="btn dk" ${at('docDel',i)}>Yes, delete</button><button class="btn" ${at('close')}>Keep</button></div>`:`<div class="sbtns"><button class="btn red" ${at('set','sheet.confirm',1)}>Delete</button><button class="btn" ${at('docShare',i)}>Share</button><button class="btn" ${at('close')}>Close</button></div>`}`]},
+dorig:i=>{const d=S.docs[i];if(d.url&&!d.pages)pdfPages(d);return[d.orig,`${seg('origZ',[[1,'Fit'],[2,'Zoom']])}<div style="overflow:auto;max-height:62vh;border-radius:8px"><div style="width:${S.origZ*100}%;display:flex;flex-direction:column;gap:8px">${origIn({l:[],...d,f:d.orig})}</div></div>${btns(`<button class="btn" ${at('docShare',i)}>Share</button>`)}`]},
 expired:()=>['Expired, kept',`<section class="card">${['Insurance policy 2025','Insurance policy 2024','Florida registration 2025','Florida registration 2024','Haul out contract 2025','Slip lease 2024'].map(n=>`<div class="row"><span class="grow t">${n}</span><span class="s">Kept</span></div>`).join('')}</section><div class="note">Expired documents stay in the record. A buyer sees the history.</div>${btns()}`],
 pfield:k=>{const L={vendor:'Vendor',date:'Date',work:'Work',hours:'Engine hours',total:'Total'};return[L[k],`${k=='total'?mfld('pf',L[k],S.parsed[k]):fld('pf',L[k],S.parsed[k],k=='hours'?'number':'text',k=='hours'?'inputmode="decimal"':'')}${err()}${btns(`<button class="btn pri" ${at('pfSave',k)}>Save</button>`)}`]},
 form:()=>{const p=S.parsed;return['Service form',`${fld('f-vendor','Vendor',p.vendor)}${fld('f-date','Date',p.date)}${fld('f-work','Work',p.work)}${fld('f-hours','Engine hours',p.hours,'number','inputmode="numeric"')}${mfld('f-total','Total',p.total)}${err()}${btns(`<button class="btn pri" ${at('formSave')}>Save</button>`)}`]},
@@ -887,7 +888,7 @@ let toastT;
 function toast(m){S.toast=m;clearTimeout(toastT);toastT=setTimeout(()=>{S.toast='';render()},2400)}
 function copy(t){(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{toast('Copied');render()},()=>{toast('Copy is blocked here. Select the text instead.');render()})}
 const A={
-go(v){S.st[S.tab].push(v);S.anim=1;S.sheet=null},
+go(v){S.st[S.tab].push(v);S.anim=1;S.sheet=null;S.sel=null},
 reg(){S.q='Registration, Insurance';A.go('docs')},
 back(){if(S.st[S.tab].length>1){S.st[S.tab].pop();S.anim=1}},
 tab(v){if(S.tab==v)S.st[v]=[S.st[v][0]];S.tab=v;S.sheet=null;S.anim=1},
@@ -897,6 +898,13 @@ set(p,x){setP(p,isNaN(x)||x===''?x:+x)},
 tog(p){setP(p,getP(p)?0:1)},
 toast(v){toast(v)},
 copy(v){copy(v);return false},
+docSelOn(){S.sel=S.sel?null:[]},
+docOpen(i){const d=S.docs[i];if(d.img||d.url)S.sheet={k:'dorig',v:i,err:''};else toast('No file is stored for '+d.orig+'. Tap Replace to add it.')},
+docSel(i){i=+i;S.sel=S.sel.includes(i)?S.sel.filter(x=>x!=i):[...S.sel,i]},
+// shortcut: system share sheet with the stored files, or copies the list where sharing is blocked (as in this preview); real links need the backend.
+docShare(v){const L=String(v).split(',').filter(Boolean).map(i=>S.docs[i]),t=docTxt(L);if(!L.length)return toast('Pick at least one document');S.sel=null;
+ const files=L.filter(d=>d.img||d.url).map(d=>{const[h,b]=(d.img||d.url).split(',');return new File([Uint8Array.from(atob(b),c=>c.charCodeAt(0))],d.orig,{type:h.slice(5).split(';')[0]})});
+ if(navigator.share)navigator.share({title:S.name+' documents',text:t,...(files.length&&navigator.canShare&&navigator.canShare({files})?{files}:{})}).catch(e=>{if(e.name!='AbortError')copy(t)});else copy(t)},
 shareContact(k){const c=C[k],t=[c.n,c.p,c.e].filter(Boolean).join('\n');if(navigator.share){navigator.share({title:c.n,text:t}).catch(()=>{});return false}copy(t);return false},
 importContact(){const f=(id,v)=>{const e=document.getElementById(id);if(e&&v)e.value=v};if(!(navigator.contacts&&navigator.contacts.select)){fail('Import is not available in this browser. Type the details below.');setTimeout(()=>{const e=document.getElementById('cn');if(e)e.focus()});return}
  navigator.contacts.select(['name','tel','email']).then(([c])=>{if(!c)return;f('cn',(c.name||[])[0]);f('cp',(c.tel||[])[0]);f('ce',(c.email||[])[0])}).catch(()=>{});return false},
@@ -997,11 +1005,11 @@ function readInvoice(from){S.parsed={from,vendor:'Harbor Marine Service',date:'O
 fi.onchange=()=>{const f=fi.files[0];fi.value='';if(!f)return;const r=new FileReader();
  r.onload=()=>{const u=r.result,img=f.type.startsWith('image/');
   switch(S.fileFor){
-  case 'orig':S.docs[S.fileX].orig=f.name;S.mb+=Math.max(1,Math.round(f.size/1048576));toast('Original added to '+S.docs[S.fileX].n);break;
+  case 'orig':Object.assign(S.docs[S.fileX],{orig:f.name,img:img?u:'',url:img?'':u,pages:0,busy:0});S.mb+=Math.max(1,Math.round(f.size/1048576));toast('Original added to '+S.docs[S.fileX].n);break;
   case 'hero':S.hero=u;toast('Photo added');break;
   case 'sysph':(S.sp[S.fileX]=S.sp[S.fileX]||[]).unshift({u,d:'Nov 25, 2026',n:''});S.sheet={k:'sphoto',v:S.fileX+'|0',err:''};toast('Photo added');break;
   case 'photo':S.photos.push(u);if(S.hero=='boat.jpg')S.hero=u;toast('Photo added');break;
-  case 'doc':S.docs.unshift({n:f.name.replace(/\.[^.]+$/,''),k:'Other',d:'Added Nov 24, 2026'});S.docCount++;S.mb+=Math.max(1,Math.round(f.size/1048576));S.sheet={k:'doctype',v:0,err:'',t:'',dn:S.docs[0].n,lab:''};break;
+  case 'doc':S.docs.unshift({n:f.name.replace(/\.[^.]+$/,''),k:'Other',d:'Added Nov 24, 2026',orig:f.name,img:img?u:'',url:img?'':u});S.docCount++;S.mb+=Math.max(1,Math.round(f.size/1048576));S.sheet={k:'doctype',v:0,err:'',t:'',dn:S.docs[0].n,lab:''};break;
   case 'plate':Object.assign(SYS[S.fileX],{nd:0,img:img?u:'',m:'Garmin chartplotter',model:'Garmin chartplotter',plate:'E70659-0412'});toast('Plate read. Demo values.');break;
   case 'scan':S.ab.img=img?u:'';S.ab.step=2;S.anim=1;break;
   case 'add':S.chat.push({u:1,att:{name:f.name,img:img?u:'',url:u}});readInvoice(img?'photo':'PDF');S.chat.splice(-2,1,{w:1,t:'Here is what I read. Check it, then save. Demo: the values come from a sample invoice.'});break;}
@@ -1010,6 +1018,11 @@ fi.onchange=()=>{const f=fi.files[0];fi.value='';if(!f)return;const r=new FileRe
 
 const qhit=(d,q)=>!q||q.split(',').some(t=>(t=t.trim())&&(d.n+' '+d.k).toLowerCase().includes(t));
 console.assert(qhit({n:'A',k:'Insurance'},'registration, insurance')&&!qhit({n:'A',k:'Survey'},'registration, insurance')&&qhit({n:'A',k:'x'},''));
+const docTxt=L=>L.map(d=>d.n+(d.orig?' ('+d.orig+')':'')).join('\n');
+console.assert(docTxt([{n:'A',orig:'a.pdf'},{n:'B'}])=='A (a.pdf)\nB');
+const dtap=i=>S.sel?tap('docSel',i)+` aria-pressed="${S.sel.includes(i)}"`:tap('sheet','doc',i);
+const dmark=i=>{const on=S.sel.includes(i);return `<span aria-hidden="true" style="flex:none;width:24px;height:24px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;border:1.5px solid ${on?'var(--ink)':'var(--l3)'};background:${on?'var(--ink)':'none'}">${on?svg(I.check,14,2.4):''}</span>`};
+const dbar=()=>`<span style="display:flex;gap:8px;flex:none">${S.sel?`<button class="btn sm" ${at('docSelOn')}>Cancel</button><button class="btn sm pri" ${at('docShare',S.sel.join(','))}>Share ${S.sel.length}</button>`:`<button class="btn sm" ${at('docSelOn')}>Select</button><button class="btn sm pri" ${at('file','doc')}>Upload</button>`}</span>`;
 const keyDocs=()=>{const sub={Insurance:'J. Ruiz · renews May 1'};return S.docs.map((d,i)=>({d,i})).filter(({d})=>d.k=='Insurance'||d.k=='Registration').map(({d,i})=>`<div class="row"><div class="grow" ${tap('sheet','doc',i)}><div class="t">${esc(d.n)}</div><div class="s">${esc(sub[d.k]||(d.exp?'Expires '+d.exp:d.k))}</div></div>${d.orig?`<button class="btn sm" ${at('sheet','doc',i)}>View original</button>`:can(2)?`<button class="btn sm" ${at('file','orig',i)}>Upload original</button>`:'<span class="s">No original yet</span>'}</div>`).join('')};
 /* ---------- desktop: sidebar, top bar, and table views for the busiest screens ---------- */
 const isD=()=>document.body.classList.contains('desk');
@@ -1075,8 +1088,8 @@ service(){
 },
 docs(){
  const q=S.q.trim().toLowerCase(),L=S.docs.map((d,i)=>({d,i})).filter(({d})=>qhit(d,q));
- const rows=L.map(({d,i})=>`<tr ${tap('sheet','doc',i)}><td><div class="cell">${svg(I.doc)}<span class="t">${esc(d.n)}</span></div></td><td>${esc(d.k)}</td><td class="s">${esc(d.d.replace('Added ',''))}</td><td>${d.exp?`<span class="s">${esc(d.exp)}</span> ${expChip(d.exp)}`:''}</td></tr>`).join('');
- return `<div class="hd"><h1>Documents</h1><button class="btn sm pri" ${at('file','doc')}>Upload</button></div><div class="body dk">
+ const rows=L.map(({d,i})=>`<tr ${dtap(i)}><td><div class="cell">${S.sel?dmark(i):svg(I.doc)}<span class="t">${esc(d.n)}</span></div></td><td>${esc(d.k)}</td><td class="s">${esc(d.d.replace('Added ',''))}</td><td>${d.exp?`<span class="s">${esc(d.exp)}</span> ${expChip(d.exp)}`:''}</td></tr>`).join('');
+ return `<div class="hd"><h1>Documents</h1>${dbar()}</div><div class="body dk">
  <div class="tools"><input class="inp" id="q" type="search" data-in="q" data-rr="1" placeholder="Search ${S.docCount} documents" value="${esc(S.q)}" aria-label="Search documents" autocomplete="off"><button class="btn sm" ${at('sheet','expired')}>Expired, kept: 6</button><span class="s" style="margin-left:auto">${S.mb} MB of 1 GB · ${S.docCount} documents</span></div>
  <section class="pnl tb">${L.length?tbl(['Name','Type','Added','Expires'],rows):`<p class="s" style="padding:14px">Nothing matches "${esc(S.q)}" in the documents you can see here.</p>`}</section></div>`;
 }};
