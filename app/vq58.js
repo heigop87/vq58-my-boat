@@ -59,7 +59,7 @@ const card = (h, body, r = '') => `<section class="card">${h ? `<div class="ch">
 const checks = l => l.map(([n, ok]) => row(n, '', chip(ok ? 'ok' : 'err', ok ? 'Pass' : 'Fail'))).join('');
 const step = (val, t, id, d, unit) => `<div class="vqstep"><button class="btn sm" ${at('cmd', t, id + '|' + (val - d))} aria-label="Lower">−</button><b>${val}${unit}</b><button class="btn sm" ${at('cmd', t, id + '|' + (val + d))} aria-label="Raise">+</button></div>`;
 const SKL = { off: 'Off', spinup: 'Spinning up, locked', ready: 'At speed, locked. Engage at the helm', spindown: 'Spinning down, stays powered' };
-const NAMES = { ac: { salon: 'Salon', master: 'Master cabin', vip: 'VIP cabin', guest: 'Guest cabin' }, light: { salon: 'Salon', cockpit: 'Cockpit', courtesy: 'Courtesy and deck', uw: 'Underwater', anchor: 'Anchor light', master: 'Master cabin', bath: 'Bathroom', lounge: 'Lounge', galley: 'Main galley', fwd: 'Forward cabin' }, bilge: { fwd: 'Forward', mid: 'Mid', er: 'Engine room', aft: 'Aft' }, audio: { cockpit: 'Cockpit', salon: 'Salon' } };
+const NAMES = { ac: { salon: 'Lounge', master: 'Primary Cabin', guest: 'Guest Cabin' }, light: { salon: 'Salon', cockpit: 'Cockpit', courtesy: 'Courtesy and deck', uw: 'Underwater', anchor: 'Anchor light', master: 'Master cabin', bath: 'Bathroom', lounge: 'Lounge', galley: 'Main galley', fwd: 'Forward cabin' }, bilge: { fwd: 'Forward', mid: 'Mid', er: 'Engine room', aft: 'Aft' }, audio: { cockpit: 'Cockpit', salon: 'Salon' } };
 const cycles = () => Object.values(V.bilge).reduce((a, b) => a + b.cy, 0);
 const alerts = () => [V.gen.co && 'CO alarm', V.gen.fault && 'Generator fault', V.gen.exhHot && 'Generator exhaust hot', V.highWater && 'High water'].filter(Boolean);
 const acRow = z => row(NAMES.ac[z] + ' AC', `${V.ac[z].on ? '' : 'Off · '}Now ${V.ac[z].now}°F`, step(V.ac[z].set, 'ac.temp', z, 1, '°')); // on and off lives on the AC screen
@@ -128,7 +128,7 @@ SC.pwr = () => {
 
 SC.ctls = () => nav('Controls') + `<div class="body">
  ${card(NAMES.ac.salon + ' AC', row('Set point', `Now ${V.ac.salon.now}°F`, step(V.ac.salon.set, 'ac.temp', 'salon', 1, '°')), sw(V.ac.salon.on, 'ac.set', 'salon', NAMES.ac.salon + ' AC'))}
- ${card('Cabin AC', ['master', 'vip', 'guest'].map(acRow).join(''))}
+ ${card('Cabin AC', ['master', 'guest'].map(acRow).join(''))}
  ${card('', lightsLink())}
  ${card('Audio', Object.keys(V.audio).map(z => row(NAMES.audio[z], 'Last source', sw(V.audio[z], 'audio.set', z, NAMES.audio[z] + ' audio'))).join(''))}
  ${card('Circuits', row('Water heater', '', sw(V.cir.heater, 'cir.set', 'heater', 'Water heater')) + row('Ice maker', 'Cockpit', sw(V.cir.ice, 'cir.set', 'ice', 'Ice maker')) + row('Refrigeration', 'Always on', svg(I.lock, 16)) + row('Cockpit outlets', '', sw(V.cir.outlets, 'cir.set', 'outlets', 'Cockpit outlets')))}
