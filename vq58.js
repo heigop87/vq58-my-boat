@@ -125,25 +125,30 @@ SH.vqrun = m => { const h = S.sheet, rows = runRows(h.steps), el = Date.now() - 
   const li = (i, html) => `<div class="vqrun${el > 600 ? ' d' : ''}" style="animation-delay:${i * 450 - el}ms">${html}</div>`;
   return [m == 'ready' ? 'Outing' : 'Back home', rows.map(([t, w, ok, why], i) => li(i, row(t, ok ? w.join(', ') : why, chip(ok ? 'ok' : 'err', ok ? 'Done' : 'Skipped')))).join('') + li(rows.length, `<div class="note">${n} of ${h.steps.length} steps, dry run. Nothing was sent to the boat.</div>`) + btns()]; };
 SH.vqmodes = () => ['Get ready', `<div class="note">Outing preps the boat. Back home shuts it down. Both are dry run.</div><div style="padding:8px 0">${modeChip()}</div>${modeBtns()}${btns()}`]; // Home quick action
-// Setup flow: pairing the onboard box, then showing which features this boat qualifies for.
-// UNVERIFIED mock: no box, no discovery and no camera scan exist yet. FOUND is this boat's known equipment, not a scan result.
-const FOUND = { eng: ['Engines', '2 Volvo, monitoring only'], tank: ['Tanks', 'Fuel, water, black water'], gps: ['Position and depth', 'Garmin GPSMAP 9219'], pwr: ['Batteries and shore power', 'Victron Cerbo GX'], gen: ['Generator', 'Mase'], sk: ['Stabilizer', 'Seakeeper'], ac: ['Air conditioning', 'Dometic, 3 zones'], audio: ['Audio', 'Fusion, 2 zones'] };
-const LACK = { sw: 'the digital switching profile from the yard', cam: 'cameras on the boat network' };
-const FEATS = [['Location and trip logs', ['gps']], ['Fuel burned per trip', ['gps', 'eng']], ['Engine and tank monitoring', ['eng', 'tank']], ['Power and shore control', ['pwr']], ['Generator remote start', ['gen']], ['Seakeeper spin up', ['sk']], ['Climate', ['ac']], ['Audio', ['audio']], ['Lights and circuits', ['sw']], ['One tap modes', ['sk', 'ac', 'sw']], ['Cameras', ['cam']]];
-// A feature qualifies when every system it needs was found. Returns the names of what is missing.
-const missing = (found, needs) => needs.filter(k => !found[k]).map(k => LACK[k] || k);
-console.assert(missing({ a: 1 }, ['a']).length == 0 && missing({ a: 1 }, ['a', 'sw'])[0] == LACK.sw, 'missing');
-A.vqsetup = n => { const h = { k: 'vqsetup', v: +n, err: '' };
+// Setup flow: join the boat WiFi, connect each device one at a time, then show which features this boat qualifies for.
+// UNVERIFIED mock: nothing is discovered or connected. DEVS is this boat's known equipment; which devices answer over WiFi is not tested aboard.
+const DEVS = [['Garmin GPSMAP 9219', 'Position, depth, engines and tanks', ['gps', 'eng', 'tank']], ['Victron Cerbo GX', 'Batteries and shore power', ['pwr']], ['Mase generator', 'Generator', ['gen']], ['Seakeeper', 'Stabilizer', ['sk']], ['Dometic AC', 'Air conditioning, 3 zones', ['ac']], ['Fusion audio', 'Audio, 2 zones', ['audio']]];
+const LACK = { gps: 'the Garmin', eng: 'the Garmin', tank: 'the Garmin', pwr: 'the Victron Cerbo GX', gen: 'the generator', sk: 'the Seakeeper', ac: 'the Dometic AC', audio: 'the Fusion audio', sw: 'the digital switching profile from the yard', cam: 'cameras on the boat network' };
+const FEATS = [['Location and trip logs', ['gps'], 'Connected'], ['Fuel burned per trip', ['gps', 'eng'], 'Connected'], ['Engine and tank monitoring', ['eng', 'tank'], 'Connected'], ['Batteries and shore power', ['pwr'], 'Connected'], ['Generator remote start', ['gen'], 'Connected Control'], ['Seakeeper spin up', ['sk'], 'Connected Control'], ['Climate', ['ac'], 'Connected Control'], ['Audio', ['audio'], 'Connected Control'], ['Lights and circuits', ['sw'], 'Connected Control'], ['One tap modes', ['sk', 'ac', 'sw'], 'Connected Control'], ['Cameras', ['cam'], 'Connected']];
+// A feature qualifies when every system it needs is connected. Returns the names of what is missing, each once.
+const missing = (found, needs) => [...new Set(needs.filter(k => !found[k]).map(k => LACK[k] || k))];
+console.assert(missing({ a: 1 }, ['a']).length == 0 && missing({}, ['gps', 'eng', 'sw']).join() == [LACK.gps, LACK.sw].join(), 'missing');
+A.vqsetup = n => { const h = { ...S.sheet, k: 'vqsetup', v: +n, err: '' };
   if (+n == 4) { const v = val('sname'); if (!v) return fail('Add the boat name'); S.name = v; h.cap = val('scap'); }
   S.sheet = h; };
+A.vqdev = i => { const s = S.sheet, d = DEVS[i]; s.v = 1; s.on = { ...s.on, [i]: 1 };
+  s.log = [...(s.log || []), '> connect ' + d[0], 'found on boat WiFi', 'reads: ' + d[1].toLowerCase(), 'connected, read only']; };
 SH.vqsetup = n => { n = +n || 0; const st = `<div class="note">Step ${n + 1} of 5</div>`, next = (l, to) => btns(`<button class="btn pri" ${at('vqsetup', to)}>${l}</button>`);
-  const sys = Object.values(FOUND), q = FEATS.map(([f, needs]) => [f, missing(FOUND, needs)]), ok = q.filter(x => !x[1].length).length;
+  const on = S.sheet.on || {}, found = {}; DEVS.forEach((d, i) => on[i] && d[2].forEach(k => found[k] = 1));
+  const q = FEATS.map(([f, needs, plan]) => [f, missing(found, needs), plan]), ok = q.filter(x => !x[1].length).length;
   return ['Connect your boat', st + [
-    () => `<div class="s">Scan the QR code on the box aboard.</div><div style="margin:16px auto;width:160px;height:160px;border:2px dashed #999;border-radius:12px;display:grid;place-items:center;color:#555">QR code</div><div class="note">Simulator: no camera is used.</div>${next('Scan code', 1)}`,
-    () => `<div class="s">${sys.length} systems found on the boat network.</div>${sys.map(([t, d]) => row(t, d, chip('ok', 'Found'))).join('')}${next('Looks right', 2)}`,
-    () => `<div class="s">Your boat qualifies for ${ok} of ${q.length} features.</div>${q.map(([f, m]) => row(f, m.length ? 'Needs ' + m.join(' and ') : '', chip(m.length ? 'warn' : 'ok', m.length ? 'Not yet' : 'Ready'))).join('')}${next('Continue', 3)}`,
+    () => `<div class="s">Join the boat WiFi on this phone. No extra hardware is needed for setup.</div>${row('Boat WiFi', 'PEGASU5', chip('ok', 'Joined'))}<div class="note">Simulator: no network is used.</div>${next('Continue', 1)}`,
+    () => `<div class="s">Connect each device, one at a time.</div>${DEVS.map(([t, d], i) => row(t, d, on[i] ? chip('ok', 'Connected') : `<button class="btn" style="width:auto;margin:0;padding:6px 14px" ${at('vqdev', i)}>Connect</button>`)).join('')}
+     <pre class="mono" style="background:#f3f4f6;border-radius:10px;padding:10px 12px;font-size:12px;line-height:18px;white-space:pre-wrap;margin:10px 0">${(S.sheet.log || ['> waiting for the first device']).slice(-8).join('\n')}</pre>
+     <div class="note">Assistant: digital switching and cameras did not answer on this network. Lights and circuits need the switching profile from the yard.</div>${next('Continue', 2)}`,
+    () => `<div class="s">Your boat qualifies for ${ok} of ${q.length} features.</div>${q.map(([f, m, plan]) => row(f, plan + (m.length ? ' · Needs ' + m.join(' and ') : ''), chip(m.length ? 'warn' : 'ok', m.length ? 'Not yet' : 'Ready'))).join('')}${next('Continue', 3)}`,
     () => `${fld('sname', 'Boat name', S.name)}${fld('scap', 'Captain email, optional', '', 'email')}<div class="note">Guests are added later in guest mode.</div>${err()}${next('Finish', 4)}`,
-    () => `${row(esc(S.name) + ' is connected', ok + ' features ready', chip('ok', 'Live'))}${S.sheet.cap ? row('Captain', esc(S.sheet.cap), chip('warn', 'Invite not sent')) : ''}<div class="note">Simulator: nothing was paired and no invite was sent.</div>${btns()}`,
+    () => `${row(esc(S.name) + ' is connected', ok + ' features ready', chip('ok', 'Live'))}${S.sheet.cap ? row('Captain', esc(S.sheet.cap), chip('warn', 'Invite not sent')) : ''}<div class="note">Simulator: nothing was connected and no invite was sent.</div>${btns()}`,
   ][n]()]; };
 // Home screen block for the VQ58: system controls, systems check, then the two modes.
 SC.vqhome = () => `${V.guest ? `<div class="lock">${chip('', 'Guest mode')}</div>` : ''}
@@ -154,7 +159,7 @@ SC.vqhome = () => `${V.guest ? `<div class="lock">${chip('', 'Guest mode')}</div
  ${card('Cameras', link('View cameras', 'Cockpit, bow, engine room, swim platform', 'cams'))}
  ${locCard(1)}
  ${tripCard()}
- ${card('Setup', row('Connect your boat', 'Scan the box, see which features your boat qualifies for', '<span class="chev"></span>', tap('sheet', 'vqsetup') + ' style="cursor:pointer"'), chip('warn', 'Mock'))}
+ ${card('Setup', row('Connect your boat', 'Connect each device, see which features your boat qualifies for', '<span class="chev"></span>', tap('sheet', 'vqsetup') + ' style="cursor:pointer"'), chip('warn', 'Mock'))}
  ${card('Start a mode', `<div class="s" style="padding-bottom:4px">Outing spins up the Seakeeper and brings AC, lights and audio on. Back home shuts the boat down safely.</div>${modeBtns()}${link('Edit modes', 'Steps and checks', 'modes')}`, modeChip())}`;
 
 SC.ctl = () => {
