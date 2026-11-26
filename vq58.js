@@ -59,7 +59,7 @@ const card = (h, body, r = '') => `<section class="card">${h ? `<div class="ch">
 const checks = l => l.map(([n, ok]) => row(n, '', chip(ok ? 'ok' : 'err', ok ? 'Pass' : 'Fail'))).join('');
 const step = (val, t, id, d, unit) => `<div class="vqstep"><button class="btn sm" ${at('cmd', t, id + '|' + (val - d))} aria-label="Lower">−</button><b>${val}${unit}</b><button class="btn sm" ${at('cmd', t, id + '|' + (val + d))} aria-label="Raise">+</button></div>`;
 const SKL = { off: 'Off', spinup: 'Spinning up, locked', ready: 'At speed, locked. Engage at the helm', spindown: 'Spinning down, stays powered' };
-const NAMES = { ac: { salon: 'Lounge', master: 'Primary Cabin', guest: 'Guest Cabin' }, light: { salon: 'Salon', cockpit: 'Cockpit', courtesy: 'Courtesy and deck', uw: 'Underwater', anchor: 'Anchor light', master: 'Master cabin', bath: 'Bathroom', lounge: 'Lounge', galley: 'Main galley', fwd: 'Forward cabin' }, bilge: { fwd: 'Forward', mid: 'Mid', er: 'Engine room', aft: 'Aft' }, audio: { cockpit: 'Cockpit', salon: 'Salon' } };
+const NAMES = { ac: { salon: 'Lounge', master: 'Primary Bedroom', guest: 'Guest Bedroom' }, light: { salon: 'Salon', cockpit: 'Cockpit', courtesy: 'Courtesy and deck', uw: 'Underwater', anchor: 'Anchor light', master: 'Master cabin', bath: 'Bathroom', lounge: 'Lounge', galley: 'Main galley', fwd: 'Forward cabin' }, bilge: { fwd: 'Forward', mid: 'Mid', er: 'Engine room', aft: 'Aft' }, audio: { cockpit: 'Cockpit', salon: 'Salon' } };
 const cycles = () => Object.values(V.bilge).reduce((a, b) => a + b.cy, 0);
 const alerts = () => [V.gen.co && 'CO alarm', V.gen.fault && 'Generator fault', V.gen.exhHot && 'Generator exhaust hot', V.highWater && 'High water'].filter(Boolean);
 const acRow = z => row(NAMES.ac[z] + ' AC', `${V.ac[z].on ? '' : 'Off · '}Now ${V.ac[z].now}°F`, step(V.ac[z].set, 'ac.temp', z, 1, '°')); // on and off lives on the AC screen
@@ -128,7 +128,7 @@ SC.pwr = () => {
 
 SC.ctls = () => nav('Controls') + `<div class="body">
  ${card(NAMES.ac.salon + ' AC', row('Set point', `Now ${V.ac.salon.now}°F`, step(V.ac.salon.set, 'ac.temp', 'salon', 1, '°')), sw(V.ac.salon.on, 'ac.set', 'salon', NAMES.ac.salon + ' AC'))}
- ${card('Cabin AC', ['master', 'guest'].map(acRow).join(''))}
+ ${card('Bedroom AC', ['master', 'guest'].map(acRow).join(''))}
  ${card('', lightsLink())}
  ${card('Audio', Object.keys(V.audio).map(z => row(NAMES.audio[z], 'Last source', sw(V.audio[z], 'audio.set', z, NAMES.audio[z] + ' audio'))).join(''))}
  ${card('Circuits', row('Water heater', '', sw(V.cir.heater, 'cir.set', 'heater', 'Water heater')) + row('Ice maker', 'Cockpit', sw(V.cir.ice, 'cir.set', 'ice', 'Ice maker')) + row('Refrigeration', 'Always on', svg(I.lock, 16)) + row('Cockpit outlets', '', sw(V.cir.outlets, 'cir.set', 'outlets', 'Cockpit outlets')))}
@@ -194,8 +194,8 @@ SC.bilge = () => nav('Bilges') + `<div class="body">
  <div class="note">Float switches always stay in charge. The app can add a manual run but can never turn automatic pumping off.</div></div>`;
 
 const STEPS = {
-  ready: [['sk', 'Seakeeper 9', 'Spins up first, stays locked until you engage'], ['ac', 'AC, all cabins', 'On at each set point'], ['light', 'Lights', 'Salon, cockpit and courtesy'], ['audio', 'Audio', 'Salon and cockpit zones, last source'], ['heater', 'Water heater', 'On'], ['gen', 'Generator', 'Only if shore power is off']],
-  done: [['light', 'All lights', 'Off, anchor light left alone'], ['ac', 'AC, all cabins', 'Off'], ['audio', 'Audio', 'All zones off'], ['sk', 'Seakeeper 9', 'Stops, stays powered until spun down'], ['heater', 'Water heater', 'Off'], ['ice', 'Ice maker and outlets', 'Off']],
+  ready: [['sk', 'Seakeeper 9', 'Spins up first, stays locked until you engage'], ['ac', 'AC, all zones', 'On at each set point'], ['light', 'Lights', 'Salon, cockpit and courtesy'], ['audio', 'Audio', 'Salon and cockpit zones, last source'], ['heater', 'Water heater', 'On'], ['gen', 'Generator', 'Only if shore power is off']],
+  done: [['light', 'All lights', 'Off, anchor light left alone'], ['ac', 'AC, all zones', 'Off'], ['audio', 'Audio', 'All zones off'], ['sk', 'Seakeeper 9', 'Stops, stays powered until spun down'], ['heater', 'Water heater', 'Off'], ['ice', 'Ice maker and outlets', 'Off']],
 };
 const modeCard = (m, h) => card(h, STEPS[m].map(([k, t, s], i) => row(`${i + 1}. ${t}`, s, sw(V.modes[m][k], 'mode.set', m, 'Include ' + t, k))).join('') + `<div class="vq2">${S.md?.[m] ? `<button class="btn pri" ${at('vqmsave', m)}>Save new settings</button>` : `<button class="btn pri" ${at('cmd', 'mode.' + m)}>Run, dry run</button>`}</div>`);
 A.vqmsave = m => { delete S.md[m]; toast('Settings saved'); }; // switches already apply and are logged as they are flipped
