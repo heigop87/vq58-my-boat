@@ -95,3 +95,4 @@ Contacts, service history, invoices, documents, warranty dates, slip electric (s
 - Version 60: AC zones read Lounge, Primary Bedroom, Guest Bedroom; card is Bedroom AC; modes say AC, all zones.
 - Version 61: toolbar search and buttons share one height (40 px); Systems list and detail panel are the same height, each scrolls inside.
 - Version 62: Guest Bedroom AC added to the Control page card, next to Lounge and Primary Bedroom.
+- Version 63: Systems list and detail panel now start and end at the same height (search moved above both). System pages get a Control card where a command exists: Generator start and stop with its checks, Seakeeper spin up and stop. Engines show Monitoring only.
