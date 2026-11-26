@@ -19,6 +19,7 @@ document.head.insertAdjacentHTML('beforeend', `<style>
 .vqt .card.vqp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 12px}.vqp>span{display:block;min-width:0}.vqp>.vqo{display:flex;grid-column:1/-1}.vqt .vqp b{font-size:22px}.vqd .vqp{grid-column:span 3}
 .vqt .card{display:flex;flex-direction:column;justify-content:flex-start;padding:14px 18px;text-align:left;font:inherit;color:inherit;cursor:pointer}
 .vqg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;cursor:pointer}.vqg .s{display:flex;justify-content:space-between;align-items:center}.vqg .s b{color:var(--ink);font-weight:600}
+body:not(.desk) .vqt .card.vqb{flex-direction:row;align-items:baseline;gap:10px;padding:11px 18px}body:not(.desk) .vqt .vqb b{font-size:17px;margin:0 auto 0 0}
 .vqo{display:flex;align-items:center;gap:6px;margin-top:6px;color:var(--or)}.vqo::before{content:"";flex:none;width:6px;height:6px;border-radius:3px;background:currentColor}.vqt b{display:block;font:400 28px/1.1 var(--fig);margin:4px 0}
 .vqcam{aspect-ratio:16/9;border-radius:16px;background:var(--fill2);display:flex;align-items:center;justify-content:center;color:var(--l2);font-size:13px;flex:none}
 .vqstep{display:flex;align-items:center;gap:10px}.vqstep b{font:400 22px var(--fig);min-width:52px;text-align:center}
@@ -74,7 +75,7 @@ const tiles = () => { const b = V.batt; return `<div class="vqt">
    <span><span class="s">Shore power</span><b>${V.shore.on ? 'On' : 'Off'}</b><span class="s">Limit ${V.shore.limit} A</span></span>
    <span><span class="s">Generator</span><b>${V.gen.on ? 'Running' : 'Off'}</b><span class="s">${VQ.genChecks(V).every(c => c[1]) ? 'Ready' : 'Start blocked'}</span></span>
    ${outTxt() && `<span class="s vqo">${outTxt()}</span>`}</button>
-  <button class="card" ${at('go', 'bilge')}><span class="s">Bilges</span><b>${V.highWater ? 'High water' : 'All dry'}</b><span class="s">${cycles()} ${cycles() == 1 ? 'cycle' : 'cycles'} today</span></button>
+  <button class="card vqb" ${at('go', 'bilge')}><span class="s">Bilges</span><b>${V.highWater ? 'High water' : 'All dry'}</b><span class="s">${cycles()} ${cycles() == 1 ? 'cycle' : 'cycles'} today</span></button>
  </div>`; };
 const sysChecks = () => [['Batteries above 50%', V.batt.soc >= 50], ['Bilges dry', !V.highWater], ['Generator ready to start', VQ.genChecks(V).every(c => c[1])], ...VQ.doneChecks(V), ['No active alerts', !alerts().length]];
 SH.vqchecks = () => ['Systems check', checks(sysChecks()) + btns()];
