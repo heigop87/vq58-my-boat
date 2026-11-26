@@ -1,0 +1,1162 @@
+<title>VQ58 My Boat</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Gothic:wght@400..700&family=Special+Gothic+Expanded+One&family=Special+Gothic+Condensed+One&family=Michroma&family=Zalando+Sans:wght@400..700&display=swap">
+<style>
+/* Template A language: cool paper, white cards on a soft shadow, pill controls, one dark gradient call to action, glass sheets, no dividers. */
+:root{--paper:#eff2f6;--ink:#1b1e27;--l1:#1b1e27;--l2:#6a6e7a;--l3:#9a9ea8;--sep:rgba(27,30,39,.07);--fill:rgba(39,44,57,.06);--fill2:rgba(39,44,57,.1);--grp:#fff;--tint:#01030d;
+--red:#b42318;--redF:#fdf0ef;--or:#a15c07;--orF:#fdf5e8;--gr:#16794c;--grF:#ecf7f1;--eye:#6a6e7a;
+--btn:linear-gradient(180deg,#3b3e48 0%,#01030d 90%);--btn-sh:0 10px 18px -10px rgba(1,3,13,.7),0 3px 6px -3px rgba(1,3,13,.45);
+--elev1:0 1px 2px rgba(27,30,39,.05),0 3px 8px rgba(27,30,39,.05);--elev2:0 2px 4px rgba(27,30,39,.05),0 10px 24px rgba(27,30,39,.08);
+--pop:0 2px 6px rgba(5,7,30,.08),0 24px 48px -12px rgba(5,7,30,.32),0 72px 140px -24px rgba(5,7,30,.5);
+--focus:#3b3e48;--sel-bg:#f4f5f7;--sel-ring:inset 0 0 0 1.5px rgba(1,3,13,.48);
+--ui:"Special Gothic",system-ui,sans-serif;--disp:"Special Gothic Expanded One","Special Gothic",sans-serif;--fig:"Special Gothic Condensed One","Special Gothic",sans-serif;--lab:"Zalando Sans","Special Gothic",sans-serif;
+--e-out:cubic-bezier(.23,1,.32,1);--e-ios:cubic-bezier(.32,.72,0,1);--e-rev:cubic-bezier(.16,1,.3,1);color-scheme:light}
+*{box-sizing:border-box;margin:0}
+html,body{background:#e4e8ee;min-height:100%}
+body{font-family:var(--ui);-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
+.stage{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px 16px}
+.cap{font:500 12px var(--lab);letter-spacing:.08em;text-transform:uppercase;color:#8a8e98}
+.ph{position:relative;width:390px;max-width:100%;height:min(844px,calc(100dvh - 72px));min-height:560px;border-radius:48px;box-shadow:0 0 0 10px #fff,0 0 0 11px rgba(27,30,39,.08),0 40px 80px -20px rgba(5,7,30,.35);background:var(--paper);font:400 16px/22px var(--ui);color:var(--l1);overflow:hidden;display:flex;flex-direction:column;font-variant-numeric:lining-nums tabular-nums}
+@media (max-width:899px){html,body{background:var(--paper)}.stage{padding:0}.ph{width:100vw;height:100dvh;min-height:0;border-radius:0;box-shadow:none}.cap{display:none}}
+.ph.t-sand,.ph.t-sky,.ph.t-mint,.ph.t-peach{--bg:var(--paper)}
+button{font-family:inherit;cursor:pointer;color:inherit}
+[role=button]{cursor:pointer}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.scr{flex:1;display:flex;flex-direction:column;min-height:0}
+.scr.in{animation:in .42s var(--e-rev)}
+@keyframes in{from{transform:translateY(14px);opacity:0}}
+@keyframes up{from{transform:translateY(100%)}}
+@keyframes fade{from{opacity:0}}
+h1,h2{font-family:var(--disp);font-weight:400}
+.hd{flex:none;height:56px;padding:0 10px;display:flex;align-items:center;gap:4px;background:linear-gradient(var(--paper) 40%,rgba(239,242,246,0))}
+.hd h1{font:400 13px/1 var(--disp);text-transform:uppercase;letter-spacing:.02em;flex:1;text-align:center;margin-right:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hd .s{padding:0 8px;white-space:nowrap}
+.ib{width:44px;height:44px;border:1px solid #fff;background:rgba(255,255,255,.62);box-shadow:var(--elev1);display:flex;align-items:center;justify-content:center;color:var(--ink);border-radius:99px;flex:none;transition:transform .14s var(--e-out),background-color .2s}
+.ib:active{transform:scale(.94);background:#fff}
+.ib.bk,.ib.bk:active{border:0;background:none;box-shadow:none;justify-content:flex-start}
+.lt{font:400 30px/1.05 var(--disp);text-transform:uppercase;letter-spacing:-.01em;padding:6px 20px 0;flex:none}
+.sub{font:500 12px/16px var(--lab);letter-spacing:.06em;text-transform:uppercase;color:var(--l2);padding:8px 20px 4px;flex:none}
+.body{flex:1;overflow-y:auto;padding:16px 16px 28px;display:flex;flex-direction:column;gap:16px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.body::-webkit-scrollbar{display:none}
+.grp,.ch h2{font:500 11px/16px var(--lab);letter-spacing:.1em;text-transform:uppercase;color:var(--eye);padding:0 8px;margin-bottom:-8px}
+.card{background:var(--grp);border:1px solid #fff;border-radius:24px;padding:4px 18px;box-shadow:var(--elev1);flex:none}
+.card>.ch{display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:48px;padding-top:6px}
+.card>.ch h2{font:400 13px/1.2 var(--disp);text-transform:uppercase;letter-spacing:.01em;color:var(--ink);padding:0;margin:0}
+.ch{display:flex;justify-content:space-between;align-items:center}
+.ch a,.status a{font:500 14px var(--ui);color:var(--l2);text-decoration:none;padding:8px 0}
+.row{display:flex;align-items:center;gap:14px;min-height:48px;padding:12px 0;position:relative}
+.row+.row::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--sep)}
+.row.acts{padding-top:0;min-height:0;padding-bottom:16px}
+.row.acts::before{display:none}
+.row[role=button]{transition:transform .14s var(--e-out)}
+.row[role=button]:active{transform:scale(.985)}
+.grow{flex:1;min-width:0}
+.t{font-size:16px;font-weight:500;line-height:21px}
+.s{font-size:13px;line-height:18px;color:var(--l2)}
+.chip{font:500 12px/1 var(--ui);white-space:nowrap;display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:99px;background:var(--fill);color:var(--l2)}
+.chip::before{content:"";width:6px;height:6px;border-radius:3px;background:currentColor}
+.chip.warn{background:var(--orF)}.chip.err{background:var(--redF)}.chip.ok{background:var(--grF)}
+.warn{color:var(--or)}.err{color:var(--red)}.ok{color:var(--gr)}
+.meter{height:4px;background:var(--fill2);border-radius:2px;margin-top:8px;overflow:hidden}
+.meter i{display:block;height:100%;border-radius:2px}
+.btn{height:48px;border-radius:12px;border:1px solid #fff;background:rgba(255,255,255,.62);box-shadow:var(--elev1);font:500 15px var(--ui);color:var(--ink);display:flex;align-items:center;justify-content:center;gap:8px;padding:0 20px;text-decoration:none;flex:none;transition:transform .14s var(--e-out),background-color .2s,box-shadow .22s}
+.card .btn,.sh .btn{background:var(--fill);border-color:transparent;box-shadow:none}
+.btn:active{transform:scale(.97)}
+.btn.pri,.card .btn.pri,.sh .btn.pri{background:var(--btn);border:0;color:#fff;box-shadow:var(--btn-sh)}
+.btn.dk,.card .btn.dk{background:var(--btn);border:0;color:#fff;box-shadow:var(--btn-sh)}
+.btn.red{color:var(--red)}
+.btn.sm{height:34px;border-radius:9px;font-size:13px;padding:0 14px}
+.btn.sm,.ph-add,.ch a,.status a{position:relative}.btn.sm::after,.ph-add::after,.ch a::after,.status a::after{content:"";position:absolute;inset:-5px -4px}.ch a::after,.status a::after{inset:-5px -10px}
+.btn:disabled{opacity:.42;box-shadow:none;transform:none}
+.lbl{font:500 11px/16px var(--lab);letter-spacing:.1em;text-transform:uppercase;color:var(--l2);margin:0 8px 8px;display:block}
+.place{position:relative}.paddr{font:400 13px/18px var(--ui);color:var(--l2);margin:6px 8px 0}.paddr:empty{display:none}.places{position:absolute;left:0;right:0;top:86px;z-index:5;background:#fff;border-radius:16px;box-shadow:0 8px 28px rgba(20,23,28,.14);overflow:hidden}.places:empty{display:none}.places button{display:grid;gap:2px;width:100%;text-align:left;border:0;background:none;padding:12px 18px;cursor:pointer;font:400 15px var(--ui);color:var(--l1)}.places button+button{border-top:1px solid rgba(39,44,57,.08)}.places button span{font-size:13px;color:var(--l2)}.places button:hover{background:#f4f5f7}
+.money{position:relative}.money>span{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--l2);font:400 16px var(--ui);pointer-events:none}.money>.inp{padding-left:34px}
+.inp{height:52px;border:0;border-radius:16px;padding:0 18px;font:400 16px var(--ui);width:100%;background:#fff;color:var(--l1);outline:none;box-shadow:inset 0 0 0 1px rgba(39,44,57,.1);transition:box-shadow .18s}
+.inp:focus{box-shadow:inset 0 0 0 1.5px var(--focus)}
+.inp[aria-invalid=true]{box-shadow:inset 0 0 0 1.5px var(--red)}
+.inp::placeholder{color:var(--l3)}
+textarea.inp{height:120px;padding:14px 18px;line-height:22px;resize:none}
+select.inp{appearance:none;-webkit-appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%236a6e7a' stroke-width='1.6'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 18px center}
+.src{font:500 10px/14px var(--lab);letter-spacing:.08em;text-transform:uppercase;color:var(--l3);white-space:nowrap}
+.seg{display:flex;background:var(--fill2);border-radius:99px;padding:3px;gap:2px;flex:none}
+.seg a{flex:1;display:grid;place-items:center;border-radius:99px;font:500 13px var(--ui);color:var(--l2);text-decoration:none}
+.seg button{flex:1;height:34px;border:0;border-radius:99px;background:none;font:500 13px var(--ui);color:var(--l2);transition:color .2s,background-color .2s}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(27,30,39,.06),0 2px 8px rgba(27,30,39,.06)}
+.note{font-size:13px;line-height:19px;color:var(--l2);padding:0 8px}
+.asbar{display:flex;align-items:center;gap:8px;padding:10px 14px;border:0;border-radius:14px;background:rgba(255,255,255,.7);font:500 13px var(--body,inherit);color:var(--l2);text-align:left;width:100%}.asbar b{color:var(--ink);font-weight:600}.asbar span{margin-left:auto;color:var(--ink);font-weight:600}
+.lock{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--l2);padding:0 8px}
+.foot{flex:none;padding:12px 16px calc(16px + env(safe-area-inset-bottom));background:linear-gradient(rgba(239,242,246,0),var(--paper) 30%);display:flex;gap:8px}
+.foot .btn{flex:1;padding:0 12px}
+.av{width:44px;height:44px;border-radius:22px;background:linear-gradient(180deg,#fff,#eceef2);box-shadow:inset 0 0 0 1px rgba(39,44,57,.08);display:flex;align-items:center;justify-content:center;font:500 12px var(--lab);letter-spacing:.04em;color:var(--ink);flex:none;border:0}
+.tg{width:48px;height:28px;border-radius:14px;background:var(--fill2);position:relative;flex:none;border:0;padding:0;display:inline-block;transition:background .2s}
+.tg.on{background:var(--ink)}
+.tg::after{content:"";position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:12px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.12),0 2px 6px rgba(0,0,0,.1);transition:left .32s var(--e-ios)}
+.tg.on::after{left:22px}
+.tg.off{opacity:.45}
+.chev{flex:none;width:30px;height:30px;border-radius:15px;background:var(--fill) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='%2314171c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 2.5 8 6l-3.5 3.5'/%3E%3C/svg%3E") center/12px no-repeat;font-size:0;color:transparent}
+.ph:has(.tabbar):not(:has(.foot,.compose)) .body{padding-bottom:104px}
+/* screens with their own action bar hide the tab bar, like iOS pushed screens; Add is a tab, so it keeps it */
+.ph:has(.foot) .tabbar{display:none}
+.ph:has(.compose) .compose{padding-bottom:92px}
+.tabbar{position:absolute;left:14px;right:14px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:10;height:64px;padding:0 6px;border:1px solid rgba(255,255,255,.7);border-radius:32px;background:rgba(255,255,255,.42);backdrop-filter:blur(18px) saturate(1.8);-webkit-backdrop-filter:blur(18px) saturate(1.8);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 2px 6px rgba(5,7,30,.06),0 18px 36px -12px rgba(5,7,30,.28);display:flex;justify-content:space-around;align-items:center}
+.tabbar button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;height:52px;flex:1;border:0;border-radius:26px;background:none;padding:0;font:500 10px var(--lab);letter-spacing:.06em;text-transform:uppercase;color:var(--l3);transition:color .2s,background-color .2s}
+.tabbar svg{width:22px;height:22px}
+.tabbar .on{color:var(--ink);background:rgba(255,255,255,.7);box-shadow:0 1px 2px rgba(27,30,39,.06)}
+.mono{font-family:var(--fig);letter-spacing:.02em}
+.hm{display:inline-flex;gap:2px;padding:4px;border-radius:10px;background:#15171f;box-shadow:inset 0 1px 2px rgba(0,0,0,.5)}
+.hm i{font:400 22px/30px var(--fig);font-style:normal;width:18px;text-align:center;border-radius:5px;color:#f4f5f7;background:linear-gradient(#2a2d36,#1d1f27 50%,#2a2d36)}
+.hm.sm i{font-size:16px;line-height:22px;width:14px}
+.metal{position:relative;border-radius:10px;background:linear-gradient(#f1f2f5,#dcdfe5);box-shadow:inset 0 0 0 1px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.06);color:#3e414b;font-family:var(--fig);text-shadow:0 1px 0 rgba(255,255,255,.7)}
+.metal .rv{position:absolute;width:8px;height:8px;border-radius:4px;background:radial-gradient(circle at 35% 35%,#fafafa,#a9acb4)}
+/* screen parts */
+.hero{background:#fff;border:1px solid #fff;border-radius:28px;overflow:hidden;flex:none;box-shadow:var(--elev2)}
+.gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.gal button{position:relative;padding:0;border:2px solid transparent;border-radius:10px;background:#f6f7f9;overflow:hidden}.gal button[aria-pressed=true]{border-color:var(--ink)}.gal img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain}.gal span{position:absolute;left:6px;bottom:6px;font:600 11px var(--ui);background:#fff;border-radius:99px;padding:2px 8px}
+.ph-wrap{position:relative;background:#f6f7f9}
+.ph-add{position:absolute;right:12px;bottom:12px;display:flex;align-items:center;gap:6px;height:34px;padding:0 14px;border:1px solid #fff;border-radius:99px;background:rgba(255,255,255,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:var(--elev1);font:500 13px var(--ui);color:var(--ink)}
+.hero img{display:block;width:100%;height:auto}
+.boats{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:28px;scrollbar-width:none;padding:4px 16px 28px;margin:0 -16px -20px;flex:none}.boats::-webkit-scrollbar{display:none}.boats>.hero{flex:0 0 100%;scroll-snap-align:center;display:flex;flex-direction:column}.boats>.hero .hmeta{flex:1}.boats>.hero .status{margin-top:auto}.dots{display:flex;justify-content:center;gap:2px;margin-top:-4px}.dots button{border:0;background:none;padding:10px 6px;cursor:pointer}.dots i{display:block;width:7px;height:7px;border-radius:9px;background:#c9cdd3}.dots button[aria-current=true] i{background:#14171c}
+.boats>.hero{background:none;border:0;box-shadow:none;border-radius:0;overflow:visible}/* page color as the photo's own backdrop: its multiply blend must not depend on ancestors, which drop out while a screen animates in */.boats .bst{background:var(--hb,var(--paper));isolation:isolate}.boats .bst::after{display:none}.boats .hmeta{background:#fff;border-radius:28px;box-shadow:var(--elev2)}
+/* second boat photo fits the first boat's 21:9 frame, uncropped, so both cards are the same height */
+.boats>.hero+.hero .bst img.b{aspect-ratio:21/9;object-fit:contain}
+/* glass header: one frosted layer behind avatar, title and sub line, fading out at the bottom; the list scrolls under it. Phone layout only */
+body:not(.desk) .scr:has(>.lt+.sub+.body,>.lt+.body.gl){position:relative}body:not(.desk) .scr:has(>.lt+.sub+.body,>.lt+.body.gl)::before{content:"";position:absolute;inset:0 0 auto;height:138px;z-index:8;pointer-events:none;background:rgba(239,242,246,.6);backdrop-filter:blur(18px) saturate(1.8);-webkit-backdrop-filter:blur(18px) saturate(1.8);-webkit-mask-image:linear-gradient(#000 80%,transparent);mask-image:linear-gradient(#000 80%,transparent)}body:not(.desk) .scr:has(>.lt+.sub+.body,>.lt+.body.gl)>:is(.hd,.lt,.sub){position:relative;z-index:9;background:none}body:not(.desk) .lt+.sub+.body{margin-top:-122px;padding-top:138px}
+/* same glass on a header with no sub line (Control) */
+body:not(.desk) .scr:has(>.lt+.body.gl)::before{height:110px}body:not(.desk) .lt+.body.gl{margin-top:-94px;padding-top:110px}
+.hmeta{padding:14px 18px 18px;display:flex;flex-direction:column;gap:14px}
+.eng{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.eng .s{margin-bottom:6px;font:500 11px/16px var(--lab);letter-spacing:.08em;text-transform:uppercase}
+.status{display:flex;gap:8px;align-items:center}
+.status a{margin-left:auto}
+.th{width:56px;height:56px;border-radius:16px;background:#f6f7f9;flex:none;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.th img{max-width:48px;max-height:48px;width:auto;height:auto;mix-blend-mode:multiply}
+.th.g{background:var(--fill);color:var(--l2)}
+.bst{position:relative;overflow:hidden;padding-top:44px;background:radial-gradient(130% 80% at 50% 100%,#fff 0,#f4f6f9 50%,#e4e8ee 100%)}
+.bst .bg{position:absolute;inset:16px 0 auto;text-align:center;font-family:var(--disp);line-height:.86;letter-spacing:-.01em;text-transform:uppercase;color:transparent;background:linear-gradient(#bfc6d1,#e9ecf1 95%);-webkit-background-clip:text;background-clip:text;pointer-events:none;white-space:nowrap}
+.bst img.b{position:relative;display:block;width:100%;height:auto;mix-blend-mode:multiply}
+.bst::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.85));pointer-events:none}
+.bst .ph-add{z-index:2}
+.bst .tag{position:absolute;left:16px;bottom:14px;z-index:2;font:500 11px/1 var(--lab);letter-spacing:.08em;text-transform:uppercase;color:var(--l2)}
+.big{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}
+.big>*{padding:2px 14px;border-left:1px solid var(--sep);min-width:0}.big>*:first-child{border:0;padding-left:0}
+.big b{display:block;font:400 44px/1 var(--fig);letter-spacing:-.01em;color:var(--ink);white-space:nowrap}
+.big b small{font-size:15px;color:var(--l3);margin-left:3px;letter-spacing:.02em}
+.big span{display:block;margin-top:6px;font:500 10px/14px var(--lab);letter-spacing:.08em;text-transform:uppercase;color:var(--l2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.big b.x{color:var(--red)}
+.boats .big b{font-size:30px}.boats .big b small{font-size:12px}.boats .hmeta{padding:12px 18px 14px;gap:12px}
+.bare{flex:none}.bare .bst{background:var(--hb,var(--paper));isolation:isolate;margin:0 -16px}.bare .bst::after{display:none}.bare .dim{margin:4px 2px 0}.bare .dim .v{background:var(--paper)}.bare .mrow{padding:0}.bare .mrow>div{background:#fff;box-shadow:var(--elev1,0 1px 2px rgba(0,0,0,.04))}
+.spx{cursor:pointer}.spx .chev{transition:transform .2s}.spx[aria-expanded=true] .chev{transform:rotate(90deg)}
+.kcard{padding:18px}
+.dim{position:relative;margin:0 18px;height:44px}
+.dim .l{position:absolute;left:4%;right:6%;top:14px;border-top:1px solid var(--ink)}
+.dim .l::before,.dim .l::after{content:"";position:absolute;top:-7px;height:13px;border-left:1px solid var(--ink)}.dim .l::before{left:0}.dim .l::after{right:0}
+.dim .v{position:absolute;left:50%;top:4px;transform:translateX(-50%);background:#fff;padding:0 10px;font:400 20px/20px var(--fig);letter-spacing:.02em}
+.dim .v i{font:500 10px var(--lab);font-style:normal;letter-spacing:.08em;color:var(--l2);margin-right:6px}
+.mrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 18px 18px}
+.mrow>div{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:var(--paper)}
+.mrow svg{flex:none;color:var(--ink)}
+.mrow b{display:block;font:400 24px/1 var(--fig);letter-spacing:.02em}
+.mrow span{font:500 10px/14px var(--lab);letter-spacing:.08em;text-transform:uppercase;color:var(--l2)}
+.ptabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 0 10px}.ptabs::-webkit-scrollbar{display:none}
+.ptabs button{flex:none;height:34px;padding:0 14px;border-radius:99px;border:1px solid var(--sep);background:#fff;font:500 13px var(--ui);color:var(--l2)}
+.ptabs button[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--sep)}.kv:first-child{border:0}
+.kv span{color:var(--l2);font:400 15px var(--ui)}.kv b{font:400 18px var(--fig);letter-spacing:.02em;text-align:right}
+.lead{display:flex;gap:14px;align-items:center;padding:8px 0 14px}
+.lead .th{width:96px;height:96px;border-radius:20px}.lead .th img{max-width:84px;max-height:84px}
+.lead .t{font:400 20px/1.15 var(--disp);text-transform:uppercase;letter-spacing:.01em}
+.lead .amt{font-size:28px;margin-top:6px}
+.rnd{flex:none;width:36px;height:36px;border-radius:18px;border:0;background:var(--btn);color:#fff;display:inline-flex;align-items:center;justify-content:center;font:400 18px/1 var(--ui);padding:0}
+.rnd.lt{background:var(--fill);color:var(--ink)}
+.achips{display:flex;flex-wrap:wrap;gap:8px;padding:6px 0 16px}
+.achips button{height:38px;padding:0 16px;border-radius:99px;border:1px solid var(--sep);background:#fff;font:500 14px var(--ui);color:var(--l2);display:inline-flex;align-items:center;gap:8px}
+.achips button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.achips button::before{content:"";width:8px;height:8px;border-radius:4px;border:1.5px solid currentColor}
+.achips button[aria-pressed=true]::before{background:#fff;border-color:#fff}
+.th.lg{width:88px;height:88px}.th.lg img{max-width:80px;max-height:80px}
+.amt{font:400 18px var(--fig);letter-spacing:.01em;white-space:nowrap}
+.amt.x{color:var(--red)}
+.tot .t{font-weight:600}
+.role{font:500 11px var(--lab);letter-spacing:.08em;text-transform:uppercase;color:var(--l2)}
+.y{color:var(--gr);font-weight:600;width:32px;flex:none}
+.n{color:var(--l2);font-weight:600;width:32px;flex:none}
+.mask{font:600 15px var(--ui);letter-spacing:2px;color:#3e414b}
+.mask.open{letter-spacing:.02em;font-family:var(--fig);font-weight:400;font-size:17px}
+.sel{user-select:all;-webkit-user-select:all}
+.big{font:400 40px/1 var(--fig);letter-spacing:-.005em}
+.bars{display:flex;align-items:flex-end;gap:6px;height:110px}
+.bars button{flex:1;border:0;border-radius:6px 6px 2px 2px;padding:0;min-height:3px;transition:opacity .2s}
+.blbl{display:flex;gap:6px;margin-top:8px}
+.blbl span{flex:1;text-align:center;font:500 10px var(--lab);letter-spacing:.06em;text-transform:uppercase;color:var(--l2)}
+.pad{padding:18px;display:flex;flex-direction:column;gap:8px}
+.ov{position:absolute;inset:0;background:rgba(5,7,30,.22);display:flex;align-items:flex-end;z-index:20;animation:fade .24s}
+.sh{background:rgba(255,255,255,.92);backdrop-filter:blur(32px) saturate(1.3);-webkit-backdrop-filter:blur(32px) saturate(1.3);box-shadow:var(--pop);width:calc(100% - 16px);margin:0 8px 8px;max-height:90%;overflow-y:auto;border:1px solid #fff;border-radius:32px;padding:10px 18px 20px;display:flex;flex-direction:column;gap:16px;animation:up .5s var(--e-ios)}
+.sh .grab{width:36px;height:4px;border-radius:2px;background:rgba(27,30,39,.16);margin:0 auto}
+.sh h3{font:400 15px/1.2 var(--disp);text-transform:uppercase;letter-spacing:.01em;text-align:center}
+.sh .card{background:#fff;box-shadow:inset 0 0 0 1px rgba(39,44,57,.06)}
+.sbtns{display:flex;flex-direction:column;gap:8px}
+.errt{color:var(--red);font-size:13px;line-height:18px;padding:0 8px}
+.toast{position:absolute;left:50%;bottom:100px;transform:translateX(-50%);background:rgba(13,15,22,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#fff;padding:12px 18px;border-radius:99px;font:500 14px/19px var(--ui);z-index:30;width:max-content;max-width:330px;text-align:center;box-shadow:0 18px 40px -12px rgba(5,7,30,.5);animation:tin .42s var(--e-rev)}
+@keyframes tin{from{opacity:0;transform:translate(-50%,10px) scale(.96)}}
+.msg{max-width:84%;padding:11px 15px;border-radius:20px;font-size:15px;line-height:21px;flex:none}
+.msg.w{background:#fff;align-self:flex-start;border-bottom-left-radius:6px;box-shadow:var(--elev1)}
+.msg.u{background:var(--ink);color:#fff;align-self:flex-end;border-bottom-right-radius:6px}
+.who{font:500 10px var(--lab);letter-spacing:.1em;text-transform:uppercase;color:var(--eye);margin:0 6px -8px;align-self:flex-start}
+.att{align-self:flex-end;width:240px;background:#fff;border:1px solid #fff;border-radius:20px;padding:12px;display:flex;flex-direction:column;gap:6px;flex:none;box-shadow:var(--elev1)}
+.att img{width:100%;border-radius:12px;display:block}
+.att .ln{display:flex;justify-content:space-between;font-size:13px;color:var(--l2)}
+.att .ln b{font-weight:600;color:var(--l1)}
+.sugs{display:flex;gap:8px;flex-wrap:wrap;flex:none}
+.compose{flex:none;padding:8px 12px 14px;background:linear-gradient(rgba(239,242,246,0),var(--paper) 24%);display:flex;flex-direction:column;gap:8px}
+.compose .tools{display:flex;gap:8px}
+.compose .tools .btn{gap:6px;padding:0 12px}
+.cin{display:flex;gap:6px;align-items:center}
+.cin .inp{background:#fff;border-radius:26px}
+input[type=search].inp{-webkit-appearance:none;appearance:none;flex:none;height:52px;min-height:52px;padding-left:48px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236a6e7a' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-4-4'/%3E%3C/svg%3E") no-repeat 18px center}
+input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
+.hin{display:flex;gap:4px;justify-content:center}
+.hin button{width:26px;height:40px;border-radius:8px;border:0;background:var(--fill2);font:400 20px var(--fig);padding:0}
+.hin button.bad{box-shadow:inset 0 0 0 1.5px var(--or);background:var(--orF);color:var(--or)}
+.plate{padding:20px 24px;text-align:center}
+.plate .v{font-size:26px;letter-spacing:3px;margin-top:4px}
+.opts{display:flex;gap:8px;justify-content:center}
+.opts .btn{width:64px;font-family:var(--fig);font-size:24px}
+@media (prefers-reduced-motion:reduce){.scr.in,.sh,.ov,.toast{animation:none}.tg,.tg::after{transition:none}}
+[hidden]{display:none!important}
+/* desktop: a real app window. Sidebar, top bar with search, dashboard Home, tables with a detail panel, sheets open as a right drawer */
+.mode{width:220px}.mode button{font-size:13px}
+@media (max-width:899px){.mode{display:none}}@media (min-width:900px){body:not(.desk) .ph{height:min(844px,calc(100dvh - 140px))}}
+.desk .stage{padding:16px;gap:10px}
+.desk .ph{width:min(1400px,100%);height:calc(100dvh - 76px);min-height:640px;border-radius:14px;display:grid;grid-template-columns:236px minmax(0,1fr);grid-template-rows:60px minmax(0,1fr);box-shadow:0 0 0 1px rgba(27,30,39,.1),0 30px 60px -24px rgba(5,7,30,.3);font-size:15px;line-height:21px}
+.desk .tabbar{display:none}
+.dside{grid-column:1;grid-row:1/3;border-right:1px solid var(--sep);background:#f7f8fa;padding:14px 12px;display:flex;flex-direction:column;gap:1px;overflow:auto}
+.dbrand{font:400 14px/1 var(--disp);text-transform:uppercase;letter-spacing:.02em;padding:9px 10px 18px}
+.dside .btn{height:38px;margin:0 0 10px;font-size:14px}
+.dside h6{font:500 11px/16px var(--lab);letter-spacing:.1em;text-transform:uppercase;color:var(--l3);padding:16px 10px 6px}
+.dside a{display:flex;justify-content:space-between;align-items:center;height:34px;padding:0 10px;border-radius:8px;font:500 14px var(--ui);color:var(--l2);text-decoration:none;cursor:pointer}
+.dside a:hover{background:rgba(255,255,255,.8);color:var(--ink)}
+.dside a[aria-current=page]{background:#fff;color:var(--ink);box-shadow:var(--elev1)}
+.dside a small{font:500 12px var(--ui);color:var(--l3)}.dside a small.err{color:var(--red)}
+.dtop{grid-column:2;grid-row:1;display:flex;align-items:center;gap:14px;padding:0 24px;border-bottom:1px solid var(--sep);background:#fff;position:relative;z-index:15}
+.dtop .seg button{padding:0 14px;height:30px;white-space:nowrap}
+.dsearch{flex:1;max-width:460px;margin-right:auto;position:relative}
+.dsearch .inp{height:38px;min-height:38px;border-radius:10px;padding-left:40px;background-position:12px center;background-color:var(--paper);font-size:14px;box-shadow:none}
+.dres{position:absolute;top:44px;left:0;right:0;background:#fff;border-radius:12px;box-shadow:var(--pop);padding:6px;max-height:380px;overflow:auto}
+.dres h6{font:500 11px/16px var(--lab);letter-spacing:.1em;text-transform:uppercase;color:var(--l3);padding:8px 10px 4px}
+.dres a{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:14px}
+.dres a:hover,.dres a:focus-visible{background:var(--paper)}.dres p{padding:10px;font-size:14px;color:var(--l2)}
+.drole{display:flex;align-items:center;gap:8px;height:34px;padding:0 6px 0 12px;border:0;border-radius:99px;background:var(--paper);font:500 13px var(--ui);color:var(--l2)}
+.drole b{color:var(--ink);font-weight:600}.drole span{background:#fff;border-radius:99px;padding:4px 10px;color:var(--ink);box-shadow:var(--elev1)}
+.dtop .av{width:36px;height:36px}
+.desk .scr{grid-column:2;grid-row:2;overflow-y:auto;min-height:0;scrollbar-width:thin}
+.desk .hd{height:auto;min-height:0;padding:24px 32px 0;background:none;gap:12px;justify-content:flex-start!important}
+.desk .hd h1{flex:1;text-align:left;font:400 22px/1.15 var(--disp);text-transform:uppercase;letter-spacing:-.005em;margin:0}
+.desk .hd .s{padding:4px 0 0;white-space:normal}
+.desk .hd .ib{width:36px;height:36px}
+.desk .body{flex:none;overflow:visible;padding:20px 32px 40px;width:100%;max-width:900px;gap:24px}
+.desk .body.dk{max-width:none}
+.desk .foot{position:sticky;bottom:0;max-width:900px;padding:12px 32px 20px;justify-content:flex-end}
+.desk .foot .btn{flex:none;padding:0 22px}
+.dg{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px;align-items:start}
+.c3{grid-column:span 3}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
+@media (max-width:1180px){.c4,.c5,.c6,.c7,.c8{grid-column:span 12}}
+.pnl{background:#fff;border-radius:14px;box-shadow:var(--elev1);padding:18px 20px}
+.pnl>.ch{margin-bottom:10px}
+.vqd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}.vqd>.vqt,.vqd>.lock{grid-column:1/-1}.vqd>.vqt{grid-template-columns:repeat(4,minmax(0,1fr))}.vqd>section:first-of-type{grid-row:span 2}.pnl>.ch h2{font:400 13px/1.2 var(--disp);text-transform:uppercase;letter-spacing:.01em;color:var(--ink);margin:0;padding:0}
+.pnl .row{min-height:44px;padding:9px 0}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kpi{background:#fff;border:0;border-radius:14px;box-shadow:var(--elev1);padding:14px 16px;text-align:left;display:flex;flex-direction:column;gap:2px}
+.kpi:hover{box-shadow:var(--elev2)}
+.kpi b{font:400 30px/1.1 var(--fig);color:var(--ink)}.kpi b.err{color:var(--red)}.kpi b.warn{color:var(--or)}
+.kpi span{font:500 11px/16px var(--lab);letter-spacing:.08em;text-transform:uppercase;color:var(--l2)}
+.bhero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,4fr);background:#fff;border-radius:14px;box-shadow:var(--elev1);overflow:hidden;align-items:center}
+.bhero .pic{background:#fff;display:flex;align-items:center;justify-content:center;position:relative;align-self:stretch}
+.bhero .pic img{display:block;width:100%;height:auto}
+.bhero .meta{padding:20px 24px;display:flex;flex-direction:column;gap:14px}
+.bhero .eng{display:flex;gap:24px;flex-wrap:wrap}
+.dt{width:100%;border-collapse:separate;border-spacing:0;font-size:14px}
+.dt th{text-align:left;font:500 11px/16px var(--lab);letter-spacing:.08em;text-transform:uppercase;color:var(--l2);padding:10px 12px;border-bottom:1px solid var(--sep);white-space:nowrap}
+.dt td{padding:10px 12px;border-bottom:1px solid var(--sep);vertical-align:middle}
+.dt tr:last-child td{border-bottom:0}
+.dt tbody tr[role=button]{cursor:pointer}.dt tbody tr[role=button]:hover td{background:#f7f8fa}
+.dt tr[aria-selected=true] td{background:var(--sel-bg)}.dt tr[aria-selected=true] td:first-child{box-shadow:inset 3px 0 0 var(--ink)}
+.dt .r{text-align:right;white-space:nowrap}.dt .acts{display:flex;gap:6px;justify-content:flex-end}
+.dt .cell{display:flex;align-items:center;gap:12px}.dt .th{width:40px;height:40px;border-radius:10px}.dt .th img{max-width:34px;max-height:34px}
+.pnl.tb{padding:6px 8px}
+.tools{display:flex;gap:10px;align-items:center}.tools>*{white-space:nowrap}.seg button{white-space:nowrap}.tools .seg button{padding:0 14px}.tools .inp{height:40px;min-height:40px;border-radius:10px;padding-left:40px;background-position:12px center;max-width:360px;font-size:14px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:20px;align-items:start}
+@media (max-width:1180px){.split{grid-template-columns:minmax(0,1fr) 360px}}
+.dpanel{background:#fff;border-radius:14px;box-shadow:var(--elev1);position:sticky;top:0;max-height:calc(100dvh - 220px);overflow:auto}
+.dpanel .dph{display:flex;align-items:center;gap:14px;padding:18px 20px 4px}
+.dpanel .dph h2{font:400 15px/1.2 var(--disp);text-transform:uppercase;margin:0}
+.dpanel .body{padding:12px 16px 16px;gap:16px;max-width:none}
+.dpanel .card{box-shadow:none;border:0;background:var(--paper);border-radius:12px;padding:2px 14px}
+.dpanel .card>.ch h2{font-size:12px}
+.dpanel .foot{position:static;padding:0 16px 16px;background:none;justify-content:stretch}.dpanel .foot .btn{flex:1;height:40px}
+.desk .ov{justify-content:flex-end;align-items:stretch;background:rgba(5,7,30,.14)}
+.desk .sh{width:440px;max-width:100%;height:100%;max-height:none;margin:0;border-radius:0;border:0;border-left:1px solid var(--sep);background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:-24px 0 48px -24px rgba(5,7,30,.3);padding:22px 24px;animation:slide .26s var(--e-out)}
+@keyframes slide{from{transform:translateX(32px);opacity:0}}
+.desk .sh .grab{display:none}.desk .sh h3{text-align:left;padding-right:70px}
+.sh .x{display:none}.desk .sh .x{display:flex;position:absolute;top:16px;right:18px;height:32px;font-size:13px;padding:0 12px}
+.desk .sh{position:relative}
+.desk .toast{bottom:32px;left:calc(50% + 118px)}
+.desk .row[role=button]:hover,.desk .btn:hover{filter:brightness(.98)}
+
+/* EasySign calendar dialog, ported from proto/calendar-dialog.tsx with the My Boat ink tint instead of purple */
+.calbtn{text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between}
+.calbtn.cph{color:var(--l3)}
+.cal-bd{position:fixed;inset:0;z-index:700;display:flex;align-items:center;justify-content:center;background:rgba(28,22,48,.28);padding:16px}
+.cal{width:100%;max-width:384px;box-sizing:border-box;border:1px solid #dcdcde;border-radius:20px;background:#fff;padding:20px;box-shadow:0 20px 48px rgba(16,24,40,.24);font-family:var(--ui);color:var(--l1)}
+.cal-h{display:flex;align-items:center;gap:12px}
+.cal-h .mid{flex:1;display:flex;justify-content:center;gap:8px}
+.cal button,.cal select{font:600 15px var(--ui);color:#3c3c46;border:0;background:#fff;border-radius:12px;box-shadow:0 0 0 1px #dcdcde;cursor:pointer}
+.cal .ib{width:36px;height:36px;flex:none;font-size:18px}
+.cal .ib:disabled{opacity:.35;cursor:not-allowed}
+.cal .mm,.cal select{padding:7px 10px;font-size:16px;color:var(--l1)}
+.cal select{appearance:none;-webkit-appearance:none;padding-right:26px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none' stroke='%236a6e7a' stroke-width='1.6'%3E%3Cpath d='M1 1l4 4 4-4'/%3E%3C/svg%3E") no-repeat right 10px center}
+.cal-months{margin-top:12px;border:1px solid #f1f1f2;border-radius:16px;background:#f9fafb;padding:10px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.cal-months button{padding:7px 0;box-shadow:inset 0 0 0 1px #dcdcde}
+.cal-months button.on{background:var(--tint);color:#fff;box-shadow:none}
+.cal-months button:disabled{background:#f6f6f7;color:#c1c1c4;cursor:not-allowed}
+.cal-hint{margin:8px 0 0;text-align:center;font-size:15px;color:#575760}
+.cal-grid{margin-top:16px;display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal-grid .wd{padding:4px 0;font-size:15px;font-weight:700;color:#575760}
+.cal-grid button{aspect-ratio:1;box-shadow:none;background:transparent}
+.cal-grid button.td{background:#f1f1f2;box-shadow:inset 0 0 0 1px #dcdcde}
+.cal-grid button.on{background:var(--tint);color:#fff;box-shadow:none}
+.cal-grid button:disabled{color:#c1c1c4;cursor:not-allowed}
+.cal-f{margin-top:18px;display:flex;justify-content:space-between;gap:12px;border-top:1px solid #f1f1f2;padding-top:14px}
+.cal-f button{padding:8px 16px;box-shadow:none}
+.cal-f .clr{background:none;color:#575760}
+.cal-f .use{background:var(--tint);color:#fff}
+.cal-f .use:disabled{background:#f1f1f2;color:#575760;cursor:not-allowed}
+.engtap{cursor:pointer;border-radius:10px}
+.engtap:active{opacity:.6}
+
+/* Home header: on scroll the make line fades, George Town moves up beside the boat name, flag waves. Transforms only, no layout shift. */
+.sub.hs>*{transition:opacity .25s,transform .35s cubic-bezier(.2,.8,.2,1)}.sub.hs .gt{transform-origin:right center}
+body:not(.desk) .scr:has(>.sub.hs)::before{transition:height .35s cubic-bezier(.2,.8,.2,1)}
+/* PEGASU5 transom lettering, Proposal 2. shortcut: Michroma is the closest free match, swap for the builder's font file when the owner has its name */
+.lt.pg{font-family:Michroma,var(--disp);font-size:27px;letter-spacing:.03em;-webkit-text-stroke:1.5px currentColor}
+body:not(.desk) .scr.col:has(>.sub.hs)::before{height:124px}
+.scr:has(>.sub.hs)>.lt{transform-origin:0 50%;transition:transform .25s ease}.scr.col:has(>.sub.hs)>.lt{transform:translateX(5px) scale(.75)}
+.scr.col>.sub.hs>:not(.gt){opacity:0}.scr.col>.sub.hs .gt{transform:translateY(-33px) scale(.85)}
+@keyframes kywave{0%,100%{transform:none}35%{transform:perspective(80px) rotateY(-14deg) skewY(-2deg)}70%{transform:perspective(80px) rotateY(5deg) skewY(1deg)}}
+.scr.col .gt svg{animation:kywave .9s ease-in-out 1}
+@media(prefers-reduced-motion:reduce){.sub.hs>*,.scr:has(>.sub.hs)::before{transition:none!important}.scr.col .gt svg{animation:none}}
+
+</style>
+
+<div class="stage"><div class="seg mode" role="group" aria-label="Layout"><button data-m="0">Phone</button><button data-m="1">Desktop</button></div><div id="app" class="ph"></div><p class="cap">VQ58 · Simulator, dry run · Reload to start over</p></div>
+<input type="file" id="fi" hidden>
+
+<script src="cat.js"></script>
+<script>
+const $=s=>document.querySelector(s), app=$('#app'), fi=$('#fi');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>'$'+Math.round(n).toLocaleString('en-US');
+const sum=o=>Object.values(o).reduce((a,b)=>a+b,0);
+const svg=(p,s=22,w=1.8)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+const I={cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',back:'<path d="M15 18l-6-6 6-6"/>',cam:'<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',
+contact:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.5 16.5c.6-1.7 1.9-2.5 3.5-2.5s2.9.8 3.5 2.5M15 10h3M15 13.5h3"/>',phone:'<path d="M5 4h4l2 5-3 2a11 11 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+pen:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',ext:'<rect x="8" y="9" width="8" height="12" rx="2"/><path d="M12 9V5M9 5h6M15 5c3 0 4 2 4 5"/>',dish:'<path d="M4 6.5l14-3 2 9-14 3z"/><path d="M11 8l5-1M12 14v7M8.5 21h7"/>',roller:'<rect x="3" y="4" width="14" height="5" rx="1.5"/><path d="M17 6.5h3v5h-8v3"/><rect x="10.5" y="14.5" width="3" height="6" rx="1"/>',screen:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M9 21h6M12 17v4"/>',plate:'<rect x="4" y="6" width="16" height="12" rx="2"/><path d="M8 10h8M8 14h5"/>',send:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+scan:'<path d="M4 8V5h3M17 5h3v3M20 16v3h-3M7 19H4v-3M4 12h16"/>',fwd:'<path d="M14 5l6 6-6 6"/><path d="M20 11H9a5 5 0 00-5 5v3"/>',
+lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',check:'<path d="M5 12l5 5L20 7"/>',doc:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/>',
+home:'<path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/>',boat:'<path d="M12 3c3 3 5 6.5 5 11v7H7v-7c0-4.5 2-8 5-11z"/><path d="M7 15h10"/>',
+add:'<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>',share:'<path d="M12 4v11M8 8l4-4 4 4"/><path d="M6 12v7h12v-7"/>'};
+// Controls a role may not use render hidden. Index into PERM.
+const DTYPES=['Registration','Insurance','Contract','Survey','Invoice','Manual','Tax'];
+const NEED={rmSysPh:1,cover:1,rmPhoto:1,markdone:2,done:2,neng:1,creds:3,credadd:1,ivedit:1,hours:2,addcontact:1,pickpro:1,addwar:1,claimNew:1,docdate:1,doctype:1,trial:5,addsys:1,mm:1,plate:1,slip:1,dish:1};
+const at=(a,v='',x)=>{const n=NEED[a=='sheet'||a=='go'?v:a];return n!=null&&!can(n)?'hidden':at0(a,v,x)};
+const at0=(a,v='',x)=>`data-a="${a}" data-v="${esc(v)}"${x!==undefined?` data-x="${esc(x)}"`:''}`;
+const tap=(a,v,x)=>at(a,v,x)+' role="button" tabindex="0"';
+const WORD={err:'Overdue',warn:'Due soon',ok:'OK'}, COL={err:'var(--red)',warn:'var(--or)',ok:'var(--gr)'}, RANK={err:0,warn:1,ok:2};
+const chip=(c,w)=>`<span class="chip ${c}">${esc(w)}</span>`;
+const hm=(n,sm=1)=>n==null?'<span class="s">Not logged</span>':`<span class="hm${sm?' sm':''}" role="img" aria-label="${n} hours">${String(n).split('').map(d=>`<i>${d}</i>`).join('')}</span>`;
+const HN={port:'Port engine',stbd:'Starboard engine',gen:'Generator',sk:'Stabilizer'};
+// shortcut: engines beyond port and starboard have hours only, no SYS entry or service items; add those when the real data model lands
+const ENG={1:[['port','Engine']],2:[['port','Port engine'],['stbd','Starboard engine']],3:[['port','Port engine'],['ctr','Center engine'],['stbd','Starboard engine']],4:[['port','Port outer'],['pin','Port inner'],['sin','Starboard inner'],['stbd','Starboard outer']],5:[['port','Port outer'],['pin','Port inner'],['ctr','Center'],['sin','Starboard inner'],['stbd','Starboard outer']],6:[['port','Port outer'],['pc','Port center'],['pin','Port inner'],['sin','Starboard inner'],['sc','Starboard center'],['stbd','Starboard outer']]};
+const EN=()=>ENG[S.nE].map(([k,n])=>(HN[k]=n,S.H[k]??=null,k));
+// hero meters: with gen or stabilizer aboard, engines collapse to the highest reading; engines only shows each
+const HM=()=>{const e=EN(),x=['gen','sk'].filter(k=>SYS[k]&&S.H[k]!=null);if(!x.length)return e.map(k=>[k,HN[k],k]);const top=e.reduce((a,k)=>S.H[k]>S.H[a]?k:a);return[[top,e.length>1?'Engines':'Engine',''],...x.map(k=>[k,HN[k],k])]};
+const MON=['January','February','March','April','May','June','July','August','September','October','November'];
+const fmtDate=v=>{const d=new Date(v+'T12:00:00');return isNaN(d)?v:d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})};
+const okEmail=e=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+const initials=n=>n.split(/\s+/).filter(Boolean).slice(0,2).map(w=>w[0].toUpperCase()).join('')||'?';
+
+// fictional contacts: 555-01xx numbers and .example mail domains
+const C={
+ hm:{n:'Harbor Marine Service',sh:'Harbor Marine',i:'HM',tr:'Mechanic',d:'Mercury and Mase certified',p:'(954) 555-0142',e:'service@harbormarine.example',sys:['Engines','Generator','Stabilizer']},
+ bw:{n:'Bay Wrench Mobile',sh:'Bay Wrench',i:'BW',tr:'Mechanic',d:'Mobile mechanic',p:'(954) 555-0117',e:'jobs@baywrench.example',sys:['Engines']},
+ sy:{n:'Sunset Yard',i:'SY',tr:'Yard',d:'Haul out, paint',p:'(954) 555-0163',e:'office@sunsetyard.example',sys:['Hull and bottom']},
+ be:{n:'Bluewater Electronics',sh:'Bluewater',i:'BE',tr:'Electronics',d:'Garmin dealer',p:'(954) 555-0188',e:'help@bluewater.example',sys:['Electronics']},
+ jr:{n:'J. Ruiz',i:'JR',tr:'Insurance',d:'Agent · Policy renews May 1',p:'(954) 555-0125',e:'jruiz@insure.example',sys:['Insurance']},
+ cl:{n:'Captain Lee',i:'CL',tr:'Captain',d:'Deliveries and sea trials',p:'(954) 555-0109',e:'captlee@mail.example',sys:['Captain']},
+ sr:{n:'Vanquish dealer',i:'SR',tr:'Dealer',d:'Hull warranty and recalls',p:'(954) 555-0171',e:'service@searaydealer.example',sys:['Hull warranty']},
+ dm:{n:'Miami Beach Marina dockmaster',i:'DM',tr:'Marina',d:'Slip C27',p:'(305) 555-0150',e:'dock@marina.example',sys:['Marina']}};
+const MC=()=>Object.keys(C).filter(k=>C[k].sys.includes('Marina'));
+const credRow=(c,i)=>{const o=S.shown[i];return `<div class="row"><div class="grow"><div class="t">${esc(c.t)}</div><div class="mask${o?' open sel':''}">${o?esc(c.v):'•'.repeat(Math.min(10,Math.max(4,c.v.length)))}</div></div>${o?`<button class="btn sm" ${at('copy',c.v)}>Copy</button><button class="btn sm" ${at('hide',i)}>Hide</button>`:`<button class="btn sm" ${at('show',i)}>Show</button>`}</div>`};
+const mcRows=()=>MC().map(k=>`<div class="row" ${tap('sheet','call',k)}><div class="av">${C[k].i}</div><div class="grow"><div class="t">${esc(C[k].n)}</div><div class="s">${esc(C[k].p)} · ${esc(C[k].e)}</div></div>${callBtn(k)}</div>`).join('')+(can(1)?`<div class="ch"><a ${tap('sheet','addcontact','marina')}>+ Add a marina contact</a></div>`:'');
+const cn=k=>C[k]?(C[k].sh||C[k].n):'';
+const SYS={
+ port:{n:'Port engine',ty:'Engine',m:'Volvo Penta D13-IPS 1350',model:'Volvo Penta D13-IPS 1350',img:'p-engine.jpg',hk:'port',by:'hm',g:'main',war:'Ended Jun 1, 2024',plate:'1A234567',sched:'Volvo Penta schedule',hist:1440},
+ stbd:{n:'Starboard engine',ty:'Engine',m:'Volvo Penta D13-IPS 1350',model:'Volvo Penta D13-IPS 1350',img:'p-engine.jpg',hk:'stbd',by:'hm',g:'main',war:'Ended Jun 1, 2024',plate:'1A234568',sched:'Volvo Penta schedule',hist:1440},
+ gen:{n:'Generator',ty:'Generator',m:'Mase',model:'Mase generator',img:'p-gen.jpg',hk:'gen',by:'hm',g:'main',war:'Till Sep 2027',plate:'SGM32K4X1',sched:'Mase schedule',hist:2410},
+ sk:{n:'Stabilizer',ty:'Stabilizer',m:'Seakeeper 9',model:'Seakeeper 9',img:'p-seakeeper.jpg',hk:'sk',by:'hm',g:'main',war:'',plate:'',sched:'Seakeeper schedule',hist:450},
+ wl:{n:'Windlass',img:'p-maxwell.jpg',ty:'Windlass',m:'Maxwell',model:'Maxwell windlass',by:'',g:'main',war:'',plate:''},
+ bw:{n:'Bow winch',ty:'Winch',m:'Kraken, electric, flush mount',model:'Kraken electric high and low flush mount winch',by:'',g:'main',war:'',plate:''},
+ bt:{n:'Bow thruster',img:'p-thruster.jpg',ty:'Thruster',m:'Side-Power',model:'Side-Power bow thruster',by:'',g:'main',war:'',plate:''},
+ hull:{n:'Hull and bottom',img:'boat.jpg',ic:'roller',m:'Vanquish aluminum hull',by:'sy',g:'other',war:'Till Jun 1, 2029',plate:'',sched:'Owner set'},
+ safe:{n:'Safety gear',ic:'ext',m:'Extinguishers, flares, life jackets',by:'',g:'other',war:'',plate:'',sched:'Owner set'},
+ sl:{n:'Starlink',img:'p-starlink.jpg',ic:'dish',ty:'Satellite internet',m:'Starlink Flat High Performance',model:'Starlink Flat High Performance',by:'',g:'other',war:'',plate:'',dish:[{n:'Mast, port',sn:'KIT304125678'},{n:'Mast, starboard',sn:'KIT304125679'}]},
+ elec:{n:'Electronics',ty:'Chartplotter',m:'Garmin GPSMAP 9219, 2 at the helm',model:'Garmin GPSMAP 9219',img:'p-garmin.jpg',by:'be',g:'other',war:'',plate:'',unit:[{n:'Helm, port',sn:''},{n:'Helm, starboard',sn:''}]}};
+// past jobs per system: [date, work, amount], all by the system's servicer; totals match SYS.hist
+// Provider manuals, keyed by maker (first word of the system make). Every boat with that maker gets the manual.
+// shortcut: Maxwell and Side-Power files are for the RC10 and SE170, models on this hull are UNVERIFIED, swap when the builder list arrives
+const MAN={Seakeeper:["Seakeeper Owner's Guide",'seakeeper-owners-guide.pdf'],Maxwell:['Maxwell RC8, RC10 manual','maxwell-rc8-rc10-manual.pdf'],'Side-Power':['Side-Power SE170 guide','sidepower-se170-guide.pdf'],Starlink:['Starlink setup guide','starlink-flat-hp-guide.pdf']},man=s=>MAN[(s.m||'').split(' ')[0]];
+const JOBS={port:[['Oct 12, 2026','Oil and filter',640],['Apr 3, 2026','Impeller and belts',520],['Nov 2, 2025','Annual service',280]],
+ stbd:[['Oct 12, 2026','Oil and filter',640],['Apr 3, 2026','Impeller and belts',520],['Nov 2, 2025','Annual service',280]],
+ gen:[['Oct 12, 2026','Impeller and oil',610],['Jun 8, 2026','Valve adjustment',980],['Feb 20, 2026','Annual service',820]],
+ sk:[['Mar 14, 2026','Annual service',450]]};
+// Demo invoices. l = [system id or icon name, work, amount]. url = the uploaded original (data URL), none on demo rows.
+const INV=[
+ {id:'5750-11',v:'Miami Beach Marina',d:'Nov 1, 2026',c:'Dockage',f:'slip-c27-november.pdf',l:[['home','Slip C27, November',5750]]},
+ {id:'4471',v:'Harbor Marine Service',d:'Oct 12, 2026',c:'Service',f:'invoice-4471.pdf',l:[['port','Port engine service',720],['stbd','Starboard engine service',720],['gen','Generator oil and filter',180],['sk','Seakeeper annual service',450],['port','Exhaust elbow gasket',220]]},
+ {id:'208',v:'Clear Wake Detailing',d:'Oct 3, 2026',c:'Cleaning',f:'detailing-208.jpg',l:[['roller','Wash and chamois',260],['roller','Interior clean',180]]},
+ {id:'1193',v:'West Marine',d:'Sep 18, 2026',c:'Parts',f:'receipt-1193.jpg',l:[['plate','Flares and first aid kit',430]]},
+ {id:'117',v:'Clear Wake Detailing',d:'Sep 5, 2026',c:'Cleaning',f:'detailing-117.jpg',l:[['roller','Bottom cleaning, diver',150]]},
+ {id:'4302',v:'Harbor Marine Service',d:'Jun 8, 2026',c:'Service',f:'invoice-4302.pdf',l:[['gen','Valve adjustment',980]]}];
+const units=id=>SYS[id].dish||SYS[id].unit; // one serial per unit: Starlink dishes, helm displays
+const invTot=v=>v.l.reduce((a,x)=>a+x[2],0);
+// the original: the uploaded photo, the PDF pages, or a demo copy drawn from the lines
+const origIn=v=>{const tot=invTot(v);return `${v.img?`<img src="${v.img}" alt="${esc(v.f)}" style="width:100%;border-radius:8px">`:v.url?(v.pages?(v.pages.length?v.pages.map((p,i)=>`<img src="${p}" alt="${esc(v.f)}, page ${i+1}" style="width:100%;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.1)">`).join(''):'<div class="s">This PDF could not be drawn here. The file is saved.</div>'):'<div class="s">Opening the PDF</div>'):`<div style="background:#fff;border-radius:8px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.1);font-size:13px;line-height:18px;display:flex;flex-direction:column;gap:8px"><div style="display:flex;justify-content:space-between"><b>${esc(v.v)}</b><span>Invoice ${esc(v.id)}</span></div><div class="s">${esc(v.d)} · VQ58</div>${v.l.map(([,t,a])=>`<div style="display:flex;justify-content:space-between;border-top:.5px solid var(--sep);padding-top:6px"><span>${esc(t)}</span><span>${money(a)}</span></div>`).join('')}<div style="display:flex;justify-content:space-between;border-top:1px solid var(--l1);padding-top:6px"><b>Total</b><b>${money(tot)}</b></div></div>`}`};
+const IT=[
+ {id:'pimp',pg:48,s:'port',n:'Impeller',t:'Impeller, port engine',ev:300,due:400,iv:'300 h or 1 yr',src:'OEM default'},
+ {id:'poil',pg:46,s:'port',n:'Oil and filter',t:'Oil and filter, port engine',ev:100,due:512,iv:'100 h or 1 yr',src:'OEM default'},
+ {id:'soil',pg:46,s:'stbd',n:'Oil and filter',t:'Oil and filter, starboard engine',ev:100,due:498,iv:'100 h or 1 yr',src:'OEM default'},
+ {id:'sraw',pg:52,s:'stbd',n:'Raw water strainer',t:'Raw water strainer',ev:50,due:430,iv:'Every 50 h',src:'OEM default'},
+ {id:'goil',s:'gen',n:'Oil and filter',t:'Generator oil',ev:100,due:194,iv:'100 h or 12 mo',src:'Owner set'},
+ {id:'gimp',pg:31,s:'gen',n:'Impeller',t:'Generator impeller',iv:'300 h or 12 mo',src:'OEM default',d:{t:'Mar 2027',p:62,st:'ok'}},
+ {id:'gzn',pg:33,s:'gen',n:'Zinc anodes',t:'Generator zinc anodes',ev:50,due:200,iv:'Every 50 h',src:'OEM default'},
+ {id:'skzn',s:'sk',n:'Zinc anode',t:'Seakeeper zinc anode',ev:200,due:400,iv:'Every 200 h or 3 months',src:"Seakeeper Owner's Guide"},
+ {id:'sksv',s:'sk',n:'Annual inspection',t:'Seakeeper annual inspection',iv:'Every 1,000 h or 1 yr',src:"Seakeeper Owner's Guide",d:{t:'Oct 2027',p:8,st:'ok'}},
+ {id:'sk2k',s:'sk',n:'Dealer service',t:'Seakeeper 2,000 hour service',ev:2000,due:2000,iv:'Every 2,000 h',src:"Seakeeper Owner's Guide"},
+ {id:'bpt',s:'hull',n:'Bottom paint',t:'Bottom paint',sh:'Paint',iv:'Every 1 yr',src:'OEM default',d:{t:'Dec 14',p:94,st:'warn',l:'20 days left'}},
+ {id:'ext',s:'safe',n:'Fire extinguishers',t:'Fire extinguishers',sh:'Extinguishers',iv:'Every 1 yr',src:'Owner set',d:{t:'Dec 21',p:40,st:'ok',l:'27 days left'}}];
+const PERM=['See profile, systems, documents','Edit systems and intervals','Add invoices and service','See credentials','See spend and totals','Manage access or start a transfer','Manage onboard systems'];
+const ENGEN='Engines and generator'; // Captain and Owner only, not a toggle. Enforced in rules.js check.
+const PAID=[['d60','60 days before','Plan haul outs and big jobs'],['d30','30 days before','Book the yard or vendor'],['d7','7 days before','Last call'],['wk','Weekly digest','Monday, everything due in 30 days'],['hrs','By engine hours','When an item reaches 90% of its hours']];
+const TRK=[['prof','Profile and systems'],['svc','Service history'],['inv','Invoices with prices'],['war','Warranties and manuals'],['sur','Survey'],['saf','Safety log'],['cred','Credentials'],['ins','Insurance policy'],['pc','Personal contacts'],['sp','Spend view']];
+const PRE=[['prof','Profile and systems'],['svc','Service history'],['inv','Invoices, prices hidden'],['war','Warranties'],['sur','Survey'],['sp','Spend']];
+
+const S={tab:'home',st:{home:['home'],boat:['boat'],add:['add'],share:['share'],ctl:['ctl']},anim:0,
+ H:{port:412,stbd:398,gen:186,sk:240},logged:'Nov 18, by you',hero:'boat.jpg',photos:['boat.jpg'],sp:{},bi:0,slip:'Pier 66 Marina, Slip B14',marina:'Pier 66 Marina',addr:'2301 SE 17th St, Fort Lauderdale, FL 33316',slipNo:'B14',slipRate:1450,elec:180,elecInc:false,name:'VQ58',
+ invSaved:false,capGen:true,
+ spend:{sys:{Engines:3880,'Hull and bottom':2010,Generator:1410,Electrical:690,'Safety gear':430},ven:{'Harbor Marine Service':4600,'Sunset Yard':2010,'Bay Wrench Mobile':690,'Miami Beach Marina':690,'West Marine':430},mon:[220,110,1650,550,330,280,660,170,1320,2750,380]},
+ invCat:'All',origZ:1,spendSeg:'sys',monSel:9,svcSeg:'status',nE:2,spec:'dim',al:{svc:1,war:1,px:0},val:189000,conSeg:'sys',q:'',
+ docs:[{n:'Certificate of British Registry, Cayman Islands',k:'Registration',d:'No file yet'},{n:'Haul out contract',k:'Contract',d:'Added Oct 2, 2026'},{n:'Insurance policy 2026',k:'Insurance',orig:'Policy 2026, signed.pdf',d:'Added May 1, 2026'},{n:'Transcript of Register, Cayman Islands',k:'Registration',d:'No file yet'},{n:'Survey, Mar 2024',k:'Survey',d:'Added Mar 20, 2024'},{n:'Owner manual, VQ58',k:'Manual',d:'Added Jun 1, 2024'},{n:'Mase generator manual',k:'Manual',d:'Added Jun 1, 2024'},{n:"Seakeeper Owner's Guide",k:'Manual',d:'From Seakeeper',f:MAN.Seakeeper[1]},...['Maxwell','Side-Power','Starlink'].map(k=>({n:MAN[k][0],k:'Manual',d:'From '+k,f:MAN[k][1]})),{n:'Invoice 4471, Harbor Marine',k:'Invoice',d:'Added Oct 12, 2026'},{n:'Bill of sale',k:'Ownership',d:'Added Jun 1, 2024'}],
+ docCount:47,mb:184,
+ recall:true,victron:false,claims:[{n:'Generator start relay',d:'Approved Jul 8',st:'Approved',c:'ok',by:'hm',what:'Generator would not crank. Start relay replaced under warranty.'},{n:'Chartplotter screen',d:'Closed Mar 2',st:'Closed',c:'',by:'be',what:'Dead pixels along the top edge. Screen replaced.'}],
+ boatWar:{n:'Vanquish aluminum hull',d:'Structural · to Jun 1, 2029 · Vanquish dealer'},
+ wars:[{n:'Mase generator',d:'Till Sep 30, 2027 · Harbor Marine',c:'ok',w:'Active',img:'p-gen.jpg',by:'hm'},{n:'Garmin chartplotter',d:'Till Jan 30, 2027 · Bluewater Electronics',c:'warn',w:'Expiring',img:'p-garmin.jpg',by:'be'},{id:'vic',n:'Victron charger',d:'Register by Jan 20 · Add service',c:'warn',w:'Not registered',img:'p-victron.jpg',by:'be'},{n:'Volvo Penta engines',d:'Ended Jun 1, 2024 · Harbor Marine',c:'',w:'Expired',img:'p-engine.jpg',by:'hm'}],
+ trial:false,rem:{reg:true,d60:false,d30:false,d7:false,wk:false,hrs:false},
+ authed:false,shown:{},creds:[{t:'Wi-Fi, onboard',v:'harbor-lights-42'},{t:'Gate code, marina',v:'4417'},{t:'Garmin account',v:'R4ym-Owner-19',sys:'elec'},{t:'Starlink network',v:'Sl-Mesh-8842',sys:'sl'},{t:'Alarm PIN',v:'7316'}],
+ log:[{w:'You showed Gate code',t:'Nov 20, 9:14 AM'},{w:'Captain Lee showed Wi-Fi',t:'Nov 2, 6:40 PM'}],
+ people:[{i:'HP',n:'You',m:'Owner',r:'Owner'},{i:'AL',n:'Alex Lee',m:'Joined Mar 2',r:'Captain'},{i:'MP',n:'Mia P.',m:'Joined Apr 9',r:'Family'},{i:'HM',n:'Harbor Marine',m:'Engines, generator · ends Dec 31',r:'Service'},{i:'JD',n:'jd@email.com',m:'Invite expires in 5 days',r:'Crew',inv:1}],
+ as:'Owner',perms:{Captain:[1,1,1,1,0,0,1],Family:[1,0,0,0,0,0,0],Service:[1,0,1,0,0,0,0],Crew:[1,0,0,1,0,0,0]},permRole:'Captain',
+ tr:{email:'',on:{prof:1,svc:1,inv:1,war:1,sur:1,saf:1,cred:0,ins:0,pc:0,sp:0},sent:null},
+ brk:{sent:'',err:'',on:{prof:1,svc:1,inv:1,war:1,sur:1,sp:0},buy:1},
+ pre:{link:'',on:{prof:1,svc:1,inv:1,war:1,sur:0,sp:0}},
+ chat:[{w:1,t:'What do you want to add? Send a photo or a PDF, forward an email, or tell me what was done.'}],parsed:null,draft:'',chatScroll:0,
+ ab:{step:1,hin:'SERV4417L819',bad:7,img:'',name:'VQ58',f:{make:'Vanquish',model:'VQ58',year:'2019',len:"56' 7\"",eng:'2 x Volvo Penta D13-IPS 1350',gen:'Mase'},set:{}},
+ sheet:null,toast:''};
+const ABF=[['make','Make'],['model','Model'],['year','Model year'],['len','Length'],['eng','Engines'],['gen','Generator']];
+const getP=p=>p.split('.').reduce((o,k)=>o[k],S);
+const setP=(p,v)=>{const k=p.split('.'),l=k.pop();k.reduce((o,k)=>o[k],S)[l]=v};
+
+function stat(it){
+ if(it.d)return{st:it.d.st,p:it.d.p,m:it.d.l||it.d.t};
+ const left=it.due-S.H[SYS[it.s].hk], st=left<0?'err':left<=it.ev*.1?'warn':'ok';
+ return{st,p:Math.max(0,Math.min(100,Math.round((it.ev-left)/it.ev*100))),m:left<0?`${-left} h over`:`${left} h left`};
+}
+function sysSt(id){
+ if(SYS[id].nd)return{c:'warn',w:'No data'};
+ const r=IT.filter(i=>i.s==id).map(i=>stat(i).st).sort((a,b)=>RANK[a]-RANK[b])[0]||'ok';
+ return{c:r,w:WORD[r]};
+}
+const it=id=>IT.find(i=>i.id==id);
+// self-checks for the due math
+console.assert(Object.keys(JOBS).every(k=>JOBS[k].reduce((a,j)=>a+j[2],0)==SYS[k].hist),'job totals match');
+console.assert(stat(it('pimp')).st=='err'&&stat(it('pimp')).m=='12 h over','impeller overdue');
+console.assert(stat(it('goil')).st=='warn'&&stat(it('goil')).p==92&&stat(it('goil')).m=='8 h left','gen oil due soon');
+console.assert(stat(it('gzn')).st=='ok'&&stat(it('gzn')).p==72,'zincs ok');
+console.assert(man(SYS.sk)[1]==S.docs.find(d=>d.f).f&&!man(SYS.gen)&&!man(SYS.hull)&&!man(SYS.bw)&&['wl','bt','sl'].every(k=>man(SYS[k])),'Seakeeper systems get the provider manual');
+console.assert(sum(S.spend.sys)==8420&&sum(S.spend.ven)==8420&&S.spend.mon.reduce((a,b)=>a+b)==8420,'spend totals agree');
+
+/* ---------- layout helpers ---------- */
+const YWL='<svg height="20" role="img" aria-label="YachtWay" style="color:var(--ink);width:auto" viewBox="0 19 608 110" fill="currentColor" xmlns="http://www.w3.org/2000/svg" > <path d="M24.6694 102.604V78.2525L0.915516 42.7926H8.60561L28.1726 72.4422L47.6542 42.7926H55.088L31.2487 78.5089V102.604H24.6694ZM50.0187 102.604L74.7979 42.7926H82.7443L107.353 102.604H100.175L92.656 83.8065H64.459L56.8543 102.604H50.0187ZM66.766 78.1671H90.3489L78.5575 48.8593L66.766 78.1671ZM144.569 103.544C140.24 103.544 136.195 102.775 132.436 101.237C128.676 99.6424 125.372 97.4493 122.524 94.6581C119.676 91.8099 117.454 88.5345 115.859 84.8318C114.321 81.0722 113.552 77.0278 113.552 72.6986C113.552 68.3693 114.321 64.3534 115.859 60.6507C117.454 56.8911 119.676 53.6157 122.524 50.8245C125.372 47.9763 128.676 45.7832 132.436 44.2452C136.195 42.6502 140.24 41.8527 144.569 41.8527C147.702 41.8527 150.692 42.2515 153.541 43.049C156.446 43.7895 159.123 44.9003 161.572 46.3813C164.079 47.8054 166.3 49.5713 168.237 51.679L163.879 56.293C161.544 53.6157 158.667 51.565 155.249 50.1409C151.832 48.6599 148.271 47.9194 144.569 47.9194C141.094 47.9194 137.876 48.546 134.913 49.7992C131.951 51.0524 129.359 52.8182 127.138 55.0968C124.973 57.3184 123.264 59.9387 122.011 62.9578C120.815 65.9199 120.217 69.1668 120.217 72.6986C120.217 76.1733 120.815 79.4203 122.011 82.4393C123.264 85.4584 125.002 88.1072 127.223 90.3858C129.445 92.6074 132.037 94.3448 134.999 95.598C138.018 96.8512 141.265 97.4778 144.74 97.4778C148.442 97.4778 151.974 96.7657 155.335 95.3416C158.696 93.8606 161.515 91.8384 163.794 89.275L168.066 93.7182C166.073 95.7688 163.823 97.5347 161.316 99.0158C158.867 100.497 156.218 101.636 153.37 102.434C150.522 103.174 147.588 103.544 144.569 103.544ZM183.163 102.604V42.7926H189.742V69.5371H224.518V42.7926H231.098V102.604H224.518V75.4328H189.742V102.604H183.163ZM265.861 102.604V48.6884H244.243V42.7926H294.058V48.6884H272.44V102.604H265.861Z" /> <path d="M330.935 102.604L315.042 42.7926H318.973L332.986 96.1106L348.708 42.7926H352.638L368.104 96.367L382.203 42.7926H385.962L369.984 102.604H366.224L350.588 48.5175L334.695 102.604H330.935ZM389.806 102.604L414.756 42.7926H419.626L444.491 102.604H440.219L431.931 82.3539H402.281L393.907 102.604H389.806ZM403.733 78.8506H430.478L417.148 46.4668L403.733 78.8506ZM464.403 102.604V77.6544L440.991 42.7926H445.691L466.454 74.0657L487.303 42.7926H491.831L468.334 77.8253V102.604H464.403Z" /> <path fill-rule="evenodd" clip-rule="evenodd" d="M307.564 124.364L512.05 124.364H604.376C607.746 124.364 607.746 124.354 607.746 121.102V26.5807C607.746 26.1671 607.751 25.8048 607.756 25.4875C607.772 24.3479 607.78 23.7897 607.505 23.5216C607.241 23.2643 606.717 23.2745 605.688 23.2946C605.359 23.301 604.979 23.3084 604.54 23.3084H462.855L307.564 23.3182V27.4032C366.909 27.471 443.447 27.4687 501.623 27.3963C504.255 27.3861 504.89 28.1099 504.89 30.6585C504.829 59.3758 504.829 88.0829 504.829 116.79V118.064C504.9 119.471 504.286 120.052 502.852 119.991C501.602 119.95 500.353 119.964 499.103 119.977C498.478 119.984 497.854 119.991 497.229 119.991C440.522 119.952 365.496 119.95 307.564 119.987V124.364ZM575.848 82.1859C578.532 78.2509 579.781 73.7757 579.781 67.0372C579.894 55.3342 568.269 43.6311 553.724 44.2224C538.135 44.8545 526.397 60.1969 530.628 75.1111C535.329 91.8094 553.694 98.8842 568.525 89.638C570.072 88.6797 570.881 89.0365 571.977 90.1477C573.754 91.9496 575.556 93.7276 577.359 95.5055L577.36 95.5069L577.362 95.509L577.363 95.5101C579.975 98.0861 582.586 100.662 585.118 103.309C586.716 104.96 587.699 104.267 588.764 103.054C588.957 102.834 589.172 102.629 589.383 102.427C590.339 101.514 591.206 100.686 589.461 99.0575C586.995 96.75 584.611 94.3585 582.227 91.9673L582.226 91.9667C580.292 90.0268 578.358 88.0871 576.381 86.1923C575.008 84.867 574.65 83.9496 575.848 82.1859ZM539.098 58.4255C537.012 61.5257 535.897 65.1715 535.893 68.9023C535.88 71.3859 536.361 73.8475 537.309 76.1448C538.258 78.442 539.654 80.5294 541.418 82.286C543.182 84.0427 545.279 85.4338 547.586 86.379C549.894 87.3241 552.367 87.8045 554.862 87.7923C558.611 87.7903 562.275 86.6824 565.391 84.6087C568.507 82.5349 570.935 79.5884 572.369 76.1414C573.803 72.6944 574.178 68.9018 573.447 65.2426C572.716 61.5835 570.912 58.2222 568.262 55.5834C565.612 52.9447 562.236 51.1469 558.56 50.4174C554.884 49.6878 551.073 50.0592 547.609 51.4845C544.145 52.9099 541.183 55.3253 539.098 58.4255Z" /> </svg>';
+// Cayman Islands red ensign, inline. shortcut: arms simplified for a 34px flag, use an official vector if shown larger.
+const KYF='<svg viewBox="0 0 60 30" width="34" height="17" role="img" aria-label="Cayman Islands flag" style="vertical-align:-4px;margin-right:8px;border-radius:2px;box-shadow:0 1px 1px rgba(0,0,0,.18),0 4px 8px -2px rgba(27,30,39,.35);transform:perspective(60px) rotateY(-10deg)"><defs><linearGradient id="kyw" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".22" stop-color="#000" stop-opacity=".16"/><stop offset=".48" stop-color="#fff" stop-opacity=".2"/><stop offset=".74" stop-color="#000" stop-opacity=".2"/><stop offset="1" stop-color="#fff" stop-opacity=".1"/></linearGradient><clipPath id="kyc"><rect width="30" height="15"/></clipPath></defs><rect width="60" height="30" fill="#CF142B"/><g clip-path="url(#kyc)"><rect width="30" height="15" fill="#00247D"/><path d="M0 0L30 15M30 0L0 15" stroke="#fff" stroke-width="3"/><path d="M0 0L30 15M30 0L0 15" stroke="#CF142B" stroke-width="1"/><path d="M15 0V15M0 7.5H30" stroke="#fff" stroke-width="5"/><path d="M15 0V15M0 7.5H30" stroke="#CF142B" stroke-width="3"/></g><ellipse cx="45" cy="7.2" rx="2.6" ry="1.5" fill="#2E7D32"/><path d="M40 9.5h10v6.5c0 3-2.4 4.8-5 5.8-2.6-1-5-2.8-5-5.8z" fill="#fff"/><path d="M40 14.6q1.25-1 2.5 0t2.5 0 2.5 0 2.5 0v1.4q-1.25 1-2.5 0t-2.5 0-2.5 0-2.5 0zM40.6 18.2q1.1-.9 2.2 0t2.2 0 2.2 0 2.2 0l-.9 1.5q-1 .6-1.7 0t-2 0-2 0-1.4-.2z" fill="#00247D"/><path d="M40 9.5h10v3.4H40z" fill="#CF142B"/><rect x="42.4" y="10.6" width="5.2" height="1.2" rx=".6" fill="#F7C600"/><circle cx="42.4" cy="17.3" r=".7" fill="#2E7D32"/><circle cx="47.6" cy="17.3" r=".7" fill="#2E7D32"/><circle cx="45" cy="20" r=".7" fill="#2E7D32"/><path d="M39.5 23.2q5.5 2 11 0v1.8q-5.5 2-11 0z" fill="#F7C600"/><rect width="60" height="30" fill="url(#kyw)"/></svg>';
+const topHd=(t,r='')=>isD()?`<div class="hd"><h1>${esc(t)}</h1>${r.replace(/<button class="av"[\s\S]*?<\/button>/,'')}</div>`:`<div class="hd" style="justify-content:space-between;padding:0 20px">${YWL}${r||'<span style="height:44px"></span>'}</div><h1 class="lt">${esc(t)}</h1>`;
+const nav=(t,r='')=>isD()?`<div class="hd">${SIDEK.includes(cur().split(':')[0])?'':`<button class="ib bk" ${at('back')} aria-label="Back">${svg(I.back,22,2)}</button>`}<h1>${esc(t)}</h1>${r}</div>`:`<div class="hd"><button class="ib bk" ${at('back')} aria-label="Back">${svg(I.back,22,2)}</button><h1>${esc(t)}</h1>${r||'<span style="width:44px"></span>'}</div>`;
+const seg=(path,opts)=>`<div class="seg" role="tablist">${opts.map(([k,l])=>`<button class="${getP(path)==k?'on':''}" ${at('set',path,k)} role="tab" aria-selected="${getP(path)==k}">${l}</button>`).join('')}</div>`;
+const thumb=(s,lg)=>s.img?`<div class="th${lg?' lg':''}"><img src="${s.img}" alt=""></div>`:`<div class="th g${lg?' lg':''}">${svg(I[s.ic]||I.plate,lg?28:22)}</div>`;
+const tg=(on,a,v,label,x)=>`<button class="tg ${on?'on':''}" ${at(a,v,x)} role="switch" aria-checked="${!!on}" aria-label="${esc(label)}"></button>`;
+const callBtn=k=>`<button class="ib" ${at('sheet','call',k)} aria-label="Contact ${esc(C[k].n)}">${svg(I.contact,22)}</button>`;
+function sub(id){const s=SYS[id];
+ if(s.g=='main')return s.m+(s.hk?` · ${S.H[s.hk]} h`:'');
+ if(s.nd)return 'Add a plate photo';
+ const i=IT.find(x=>x.s==id);return i?`${i.sh||i.n} ${i.d?i.d.t:stat(i).m}`:(s.m||'No service items');
+}
+function itemRow(i,title){const s=stat(i);
+ return `<div class="row" ${tap('sheet','item',i.id)}><div class="grow"><div class="t">${esc(title?i.t:i.n)}</div><div class="s">${esc(s.m)} · ${esc(i.iv)}</div><div class="meter"><i style="width:${s.p}%;background:${COL[s.st]}"></i></div></div>${chip(s.st,WORD[s.st])}</div>`;
+}
+
+/* ---------- screens ---------- */
+// big name behind the boat: one word per line, sized to the longest word
+const stage=(t,img,alt,x='',bg)=>{const w=String(t).toUpperCase().split(/\s+/).filter(Boolean),fs=Math.min(84,Math.floor(320/(Math.max(...w.map(v=>v.length))*.8)));return `<div class="bst"><div class="bg" aria-hidden="true" style="font-size:${fs}px">${bg||w.map(esc).join('<br>')}</div><img class="b" decoding="sync" src="${img}" alt="${esc(alt)}">${x}</div>`};
+const big=a=>`<div class="big">${a.map(([v,u,l,x,c])=>`<div ${x||''}><b${c?` class="${c}"`:''}>${v}${u?`<small>${u}</small>`:''}</b><span>${l}</span></div>`).join('')}</div>`;
+const nextSvc=it=>{const h=S.H[it.s];if(it.due==null||h==null)return[esc(it.d?it.d.t:'Set'),'',esc(it.n)];const l=it.due-h;return[Math.abs(l),'h',(l<0?'Over · ':'Next · ')+esc(it.n),l<0?'x':'']};
+// Source: vanquish-yachts.com/yachts/vq58 (17.25 m, 5.12 m, 1.25 m, 21.5 t, 1,595 L, 45 kn). Rows the builder does not publish are left out, not invented.
+const SPEC=()=>{const f=S.ab.f;return{dim:['Dimensions',[['Length overall',"56' 7\""],['Beam',"16' 10\""],['Draft',"4' 1\""]]],
+ wt:['Weight &amp; tanks',[['Weight, light ship, estimate','47,400 lb'],['Fuel','421 gal'],['Fresh water','105 gal'],['Black water','19 gal']]], // water and holding from broker listings of other VQ58s, not the builder: confirm on this hull
+ eng:['Engines',[['Engines',f.eng],['Power','2 x 1,000 hp at 2,400 rpm'],['Displacement','12.8 L, in-line 6'],['Drive','IPS pods, twin counter-rotating propellers'],['Top speed, estimate','45 knots'],['Cruise speed, listings','28 to 32 knots'],['Voltage','24 V'],['Generator',f.gen]]],
+ acc:['Accommodation',[['Owner cabin','Full beam, king-size bed'],['Cabins, by layout','1 or 2'],['Sleeps, by layout','2 to 4'],['Tender bay','Fits a VQ11']]],
+ bld:['Build',[['Builder',f.make],['Model year',f.year],['Hull ID',S.ab.hin],['Hull','Aluminum'],['Hull color','Azzurro Met'],['Color code','592'],['Paint','PPG, waterborne. Ferrari original color'],['Roof','Matte black'],['Pin stripe','Veuve Clicquot']]]}};
+const JALL=()=>Object.entries(JOBS).flatMap(([k,js])=>js.map(([d,w,a])=>({k,d,w,a}))).sort((x,y)=>new Date(y.d)-new Date(x.d));
+const AL=[['svc','Service due'],['war','Warranty ending'],['px','Price changes']];
+const THEME={home:'t-sand',contacts:'t-peach',creds:'t-peach',share:'t-peach',transfer:'t-peach',broker:'t-peach',presale:'t-peach',add:'t-mint',addboat:'t-mint'};
+const SC={
+home(){
+ const L=IT.map(i=>({i,s:stat(i)})),ov=L.filter(x=>x.s.st=='err').length,ds=L.filter(x=>x.s.st=='warn').length;
+ const due=[...L].sort((a,b)=>RANK[a.s.st]-RANK[b.s.st]||b.s.p-a.s.p).slice(0,3), f=S.ab.f;
+ const b2=S.bi==1;
+ return topHd(b2?'Blue Heron':S.name,me()).replace('class="lt"',b2?'$&':'class="lt pg"')+
+ `<div class="sub hs" style="display:flex;align-items:center;gap:8px"><span>${esc(f.make)} ${esc(f.model)}</span><span class="gt" ${tap('reg')} aria-label="Open registration documents" style="margin-left:auto;white-space:nowrap;cursor:pointer">${KYF}George Town</span></div><div class="body">
+ ${b2?'':`<div class="seg" aria-label="Quick actions"><button ${at('go','lights')}>Lights</button><button ${at('go','engs')}>Engines</button><button ${at('go','cams')}>Cameras</button><button ${at('sheet','vqmodes')}>Get ready</button></div>`}
+ <div class="boats" aria-label="Your boats, swipe to switch"><section class="hero">${stage(f.model,S.hero,S.name+', side view')}
+ <div class="hmeta">${big(HM().map(([k,n,x])=>[S.H[k]??'–',S.H[k]==null?'':'h',n,tap('go',x?'sys:'+x:SC.engs?'engs':'sys:'+k)+` class="engtap" aria-label="Open ${n.toLowerCase()}, ${S.H[k]} hours"`]))}
+ ${b2||!SC.vqglance?'':SC.vqglance()}
+ <div class="status"${S.autoH&&!ov?' hidden':''}><span class="s">${S.autoH?'Hours update automatically':'Last logged '+S.logged}</span>${ov?chip('err',ov+' overdue'):''}${ov||ds?'':chip('ok','All up to date')}${S.autoH?'':`<a ${tap('sheet','hours')}>Log hours</a>`}</div></div></section></div>
+ ${b2||!SC.vqhome?'':SC.vqhome()}
+ ${b2?`<section class="card"><div class="ch"><h2>Due next</h2></div><div class="row"><div class="grow"><div class="t">Outboard 100 hour service</div><div class="s">Due at 100 hours</div></div>${chip('warn','Due soon')}</div></section><section class="card"><div class="ch"><h2>Home slip</h2></div><div class="row"><div class="grow"><div class="t">Trailer, home driveway</div></div></div></section></div>`:`
+ <section class="card"><div class="ch"><h2>Due next</h2><a ${tap('go','service')}>See all</a></div>
+ ${due.map(({i,s})=>`<div class="row" ${tap('sheet','item',i.id)}><div class="grow"><div class="t">${esc(i.t)}</div><div class="s">${esc(s.m)}</div><div class="meter"><i style="width:${s.p}%;background:${COL[s.st]}"></i></div></div>${chip(s.st,WORD[s.st])}</div>`).join('')}</section>
+ <section class="card"><div class="ch"><h2>Home slip</h2>${can(1)?`<a ${tap('sheet','slip')}>Edit</a>`:''}</div><div class="row"><div class="grow"><div class="t">${esc(S.slip)}</div><div class="s">${slipLine()}</div></div><a class="btn sm" href="${dirUrl()}" target="_blank" rel="noopener">Directions</a></div>${mcRows()}</section>
+ <section class="card"><div class="ch"><h2>Insurance and registration</h2><a ${tap('go','docs')}>All</a></div>${keyDocs()}</section></div>`}`;
+},
+boat(){
+ const row=id=>{const s=SYS[id],q=sysSt(id);return `<div class="row" ${tap('go','sys:'+id)}>${thumb(s)}<div class="grow"><div class="t">${esc(s.n)}</div><div class="s">${esc(sub(id))}</div></div>${chip(q.c,q.w)}</div>`};
+ const ids=Object.keys(SYS),q=(S.bq||'').trim().toLowerCase(),hit=ids.filter(i=>[SYS[i].n,SYS[i].m,SYS[i].model,sub(i)].join(' ').toLowerCase().includes(q));
+ const nph=S.photos.length+Object.values(S.sp).reduce((a,x)=>a+x.length,0);
+ const rec=[['Service schedule',IT.length+' items','service'],['Photos',nph,'gallery'],['Warranties',S.wars.length+1,'war'],['Documents',S.docCount,'docs'],['Contacts',Object.keys(C).length,'contacts'],['Spend',money(sum(SP().sys)),'spend'],['Invoices',INV.length,'invs'],['Credentials',S.creds.length,'creds'],['Reminders',S.trial?'Trial':'1 on','rem']].filter(([,,k])=>(k!='spend'&&k!='invs'||can(4))&&(k!='creds'||can(3)));
+ const f=S.ab.f,sp=SPEC(),J=JALL(),L0=J[0],vn=k=>{const b=SYS[k].by;return b&&C[b]?C[b].sh:''};
+ const ar=(d)=>`<svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">${d}</svg>`;
+ const prof=`<section class="bare">${stage(f.model,S.hero,`${f.make} ${f.model}, side view`,`<span class="tag">${esc(f.make)} · ${esc(f.year)}</span>`)}
+ <div class="dim" role="img" aria-label="Length overall ${sp.dim[1][0][1]}"><div class="l"></div><div class="v"><i>LOA</i>${sp.dim[1][0][1]}</div></div>
+ <div class="mrow"><div>${ar('<path d="M2 11h18M5 8l-3 3 3 3M17 8l3 3-3 3"/>')}<div><b>${sp.dim[1][1][1]}</b><span>Beam</span></div></div><div>${ar('<path d="M11 2v18M8 5l3-3 3 3M8 17l3 3 3-3"/>')}<div><b>${sp.dim[1][2][1]}</b><span>Draft</span></div></div></div></section>
+ <section class="card"><div class="ch spx" role="button" tabindex="0" aria-expanded="${!S.spx}" ${at('tog','spx')}><h2>Specs</h2><span class="chev" aria-hidden="true">›</span></div>${S.spx?'':`<div class="ptabs" role="tablist" aria-label="Specs">${Object.entries(sp).map(([k,[l]])=>`<button role="tab" aria-selected="${S.spec==k}" ${at('set','spec',k)}>${l}</button>`).join('')}</div>
+ ${sp[S.spec][1].map(([k,v])=>`<div class="kv"><span>${k}</span><b>${esc(v)}</b></div>`).join('')}`}</section>`;
+ const svc=L0?`<section class="card"><div class="ch"><h2>Service history</h2><span class="s">${J.length} job${J.length==1?'':'s'}</span></div>
+ <div class="lead" ${tap('go','invoice:4471')}><div class="th"><img src="${SYS[L0.k].img}" alt=""></div><div class="grow"><div class="s">${esc(L0.d)} · ${esc(SYS[L0.k].n)}</div><div class="t">${esc(L0.w)}</div><div class="amt">${money(L0.a)}</div></div><span class="chev" aria-hidden="true">›</span></div>
+ ${J.slice(1,4).map(j=>`<div class="row" ${tap('sheet','hist',j.k)}><div class="grow"><div class="t">${esc(j.w)}</div><div class="s">${esc(j.d)} · ${esc(SYS[j.k].n)}${vn(j.k)?' · '+esc(vn(j.k)):''}</div></div><span class="s">${money(j.a)}</span><span class="chev">›</span></div>`).join('')}</section>`:'';
+ const alr=`<section class="card"><div class="ch"><h2>Alerts</h2><a ${tap('go','rem')}>Reminders</a></div><div class="achips">${AL.map(([k,l])=>`<button ${at('tog','al.'+k)} aria-pressed="${!!S.al[k]}">${l}</button>`).join('')}</div></section>`;
+ return topHd('Boat',can(1)?`<button class="btn sm" ${at('sheet','mm','new')}>Add</button>`:'')+`<div class="body">${q?'':prof}<input class="inp" id="bq" type="search" data-in="bq" data-rr="1" placeholder="Search ${ids.length} systems" value="${esc(S.bq||'')}" aria-label="Search systems" autocomplete="off">
+ ${q?`<section class="card">${hit.length?hit.map(row).join(''):`<div class="row"><span class="s">Nothing matches "${esc(S.bq)}". Try a make, a model or a type.</span></div>`}</section>`:`<section class="card"><div class="row" ${can(1)?tap('sheet','neng'):''}><div class="grow t">Engines</div><span class="s">${S.nE}</span>${can(1)?'<span class="chev">›</span>':''}</div>${[...ids].sort((a,b)=>RANK[sysSt(a).c]-RANK[sysSt(b).c]).map(row).join('')}</section>
+ ${svc}<section class="card">${rec.map(([t,n,r])=>`<div class="row" ${r=='gallery'?tap('sheet','gallery'):tap('go',r)}><div class="grow t">${t}</div><span class="s">${n}</span><span class="chev">›</span></div>`).join('')}</section>${alr}`}</div>`;
+},
+sys(id){
+ const s=SYS[id],its=IT.filter(i=>i.s==id),c=C[s.by];
+ const U=units(id),sn=U?'':`<div class="row" ${tap('sheet','plate',id)}><div class="grow t">Serial number</div><span class="s mono">${esc(s.plate||'Add')}</span><span class="chev">›</span></div>`;
+ let h=nav(s.n)+`<div class="body"><section class="card"><div class="row" style="padding:16px 0">${thumb(s,1)}<div class="grow"><div class="t" style="font-weight:600">${esc(s.model||s.m||'Model not set')}</div>
+ ${s.hk?`<div style="display:flex;align-items:center;gap:4px;margin-top:8px">${hm(S.H[s.hk],0)}${S.autoH?'':`<button class="ib" ${at('sheet','hours',s.hk)} aria-label="Edit ${esc(s.n.toLowerCase())} hours">${svg(I.pen,20)}</button>`}</div><div class="s" style="margin-top:4px">${S.autoH?'Hours update automatically':'Last logged '+S.logged}</div>`:`<div class="s">${esc(s.model?s.m:'')}</div>`}</div></div></section>`;
+ if(s.ty)h+=`<section class="card"><div class="row" ${can(1)?tap('sheet','mm',id):''}><div class="grow"><div class="t">Make and model</div><div class="s">${esc(s.ty)} · ${esc(s.model||s.m||'Not set')}</div></div>${can(1)?'<span class="chev">›</span>':''}</div>${sn}</section>`;
+ if(s.nd)h+=`<section class="card pad"><div class="t">No data yet</div><div class="s">Add a photo of the data plate. Waylo fills in the model, the serial and the service intervals.</div><button class="btn" ${at('file','plate',id)}>${svg(I.cam,20)}Add a plate photo</button></section>`;
+ if(its.length)h+=`<section class="card"><div class="ch"><h2>Service</h2><span class="src">${esc(s.sched||'Owner set')}</span></div>${its.map(i=>itemRow(i)).join('')}</section>`;
+ if(U)h+=`<section class="card"><div class="ch"><h2>${s.dish?'Dishes':'Displays'}</h2><span class="src">${U.length}${s.dish?' of 10':''}</span></div>${U.map((d,i)=>`<div class="row" ${can(1)?tap('sheet','dish',id+'|'+i):''}><div class="grow"><div class="t">${esc(d.n)}</div><div class="s mono">${esc(d.sn||'Add serial number')}</div></div>${can(1)?'<span class="chev">›</span>':''}</div>`).join('')}${s.dish?(U.length<10?`<div class="row" ${tap('sheet','dish','sl|new')}><div class="grow t">Add a dish</div><span class="chev">›</span></div>`:'')+'<div class="s" style="padding:8px 0 12px">All dishes share one network. Its password is under Credentials.</div>':''}</section>`;
+ h+=`<section class="card"><div class="ch"><h2>Serviced by</h2><a ${tap('sheet','pickpro',id)}>Change</a></div>${c?`<div class="row" ${tap('sheet','call',s.by)}><div class="av">${c.i}</div><div class="grow"><div class="t">${esc(c.n)}</div><div class="s">${esc(c.p)} · Call, text or email</div></div><span class="chev">›</span></div>`:`<div class="row" ${tap('sheet','pickpro',id)}><div class="grow"><div class="t">Pick a service provider</div><div class="s">From your contacts, or add a new one</div></div><span class="chev">›</span></div>`}</section>`;
+ h+=`<section class="card">
+ <div class="row" ${(wi=>wi!=null&&wi>-1?tap('sheet','wdet',wi):s.war?tap('go','war'):tap('sheet','addwar',id))(id=='hull'?'boat':s.img?S.wars.findIndex(w=>w.img==s.img):null)}><div class="grow t">Warranty</div><span class="s">${esc(s.war||'Add')}</span><span class="chev">›</span></div>
+ <div class="row" ${s.hist?tap('sheet','hist',id):''}><div class="grow t">Service history</div><span class="s">${s.hist?`${(JOBS[id]||[]).length} job${(JOBS[id]||[]).length==1?'':'s'} · ${money(s.hist)}`:'None yet'}</span>${s.hist?'<span class="chev">›</span>':''}</div>
+ ${s.ty?'':sn}
+ ${(m=>m?`<a class="row" style="color:inherit;text-decoration:none" href="${m[1]}" target="_blank" rel="noopener"><div class="grow t">Manual</div><span class="s">${esc(m[0])}</span><span class="chev">›</span></a>`:'')(man(s))}
+ </section>${phSec(id)}${(r=>r&&can(3)?`<section class="card"><div class="ch"><h2>Credentials</h2><a ${tap('go','creds')}>See all credentials</a></div>${r}</section>`:'')(S.creds.map((c,i)=>c.sys==id?credRow(c,i):'').join(''))}</div>`;
+ if(s.hk&&!S.autoH||c)h+=`<div class="foot">${s.hk&&!S.autoH?`<button class="btn" ${at('sheet','hours',s.hk)}>Log hours</button>`:''}${c?`<button class="btn pri" ${at('sheet','call',s.by)}>Contact ${esc(cn(s.by))}</button>`:''}</div>`;
+ return h;
+},
+service(){
+ const L=IT.map(i=>({i,s:stat(i)}));
+ const row=({i,s})=>{const k=SYS[i.s].by;return `<div class="row" ${tap('sheet','item',i.id)}><div class="grow"><div class="t">${esc(i.t)}</div><div class="s">${esc(i.iv)} · ${esc(i.src)}</div></div><div style="text-align:right">${chip(s.st,WORD[s.st])}<div class="s">${esc(s.m)}</div></div></div>`+
+  (s.st!='ok'?`<div class="row acts" style="gap:8px">${k?`<button class="btn sm" ${at('sheet','call',k)}>Contact ${esc(cn(k))}</button>`:''}<button class="btn sm" ${at('sheet','markdone',i.id)}>Mark done</button></div>`:'')};
+ let g='';
+ if(S.svcSeg=='status')g=['err','warn','ok'].map(st=>{const x=L.filter(y=>y.s.st==st).sort((a,b)=>b.s.p-a.s.p);return x.length?`<div class="grp">${WORD[st]}</div><section class="card">${x.map(row).join('')}</section>`:''}).join('');
+ else if(S.svcSeg=='sys')g=Object.keys(SYS).map(id=>{const x=L.filter(y=>y.i.s==id);return x.length?`<div class="grp">${esc(SYS[id].n)}</div><section class="card">${x.map(row).join('')}</section>`:''}).join('');
+ else{const MO=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],key=t=>{const[m,y]=t.split(' '),mi=MO.indexOf(m);return y.length==4?+y*100+mi:(mi>=10?2026:2027)*100+mi+(+y)/100};
+  const dt=L.filter(y=>y.i.d).sort((a,b)=>key(a.i.d.t)-key(b.i.d.t)),hr=L.filter(y=>!y.i.d).sort((a,b)=>(a.i.due-S.H[SYS[a.i.s].hk])-(b.i.due-S.H[SYS[b.i.s].hk]));
+  g=`<div class="grp">By date</div><section class="card">${dt.map(({i,s})=>`<div class="row" ${tap('sheet','item',i.id)}><span class="mono" style="width:76px;flex:none;font-size:15px">${esc(i.d.t)}</span><div class="grow t">${esc(i.t)}</div>${chip(s.st,WORD[s.st])}</div>`).join('')}</section>
+  <div class="grp">By engine hours</div><section class="card">${hr.map(({i,s})=>`<div class="row" ${tap('sheet','item',i.id)}><span class="mono" style="width:76px;flex:none;font-size:15px">${i.due} h</span><div class="grow t">${esc(i.t)}</div>${chip(s.st,WORD[s.st])}</div>`).join('')}</section>`}
+ return nav('Service')+`<div class="body"><section class="card"><div class="ch"><h2>Hours</h2>${S.autoH?'':`<a ${tap('sheet','hours')}>Log hours</a>`}</div>
+ ${[...EN(),'gen'].map(k=>`<div class="row"><div class="grow t">${HN[k]}</div>${hm(S.H[k])}</div>`).join('')}<div class="row"><span class="s">${S.autoH?'Hours update automatically':'Last logged '+S.logged}</span></div></section>
+ ${seg('svcSeg',[['status','By status'],['sys','By system'],['cal','Calendar']])}${g}</div>`;
+},
+invs(){
+ const cs=['All',...new Set(INV.map(v=>v.c))],L=INV.filter(v=>S.invCat=='All'||v.c==S.invCat);
+ return nav('Invoices',can(2)?`<button class="btn sm" ${at('tab','add')}>Add</button>`:'')+`<div class="body">${seg('invCat',cs.map(c=>[c,c]))}
+ <section class="card">${L.map(v=>`<div class="row" ${tap('go','invoice:'+v.id)}>${thumb(SYS[v.l[0][0]]||{ic:v.l[0][0]})}<div class="grow"><div class="t">${esc(v.v)}</div><div class="s">${esc(v.d)} · ${esc(v.c)}</div></div><span class="amt">${money(invTot(v))}</span><span class="chev">›</span></div>`).join('')}</section>
+ <div class="note">${L.length} ${L.length==1?'invoice':'invoices'} · ${money(L.reduce((a,v)=>a+invTot(v),0))}</div></div>`;
+},
+invoice(id){
+ const v=INV.find(v=>v.id==id)||INV[1],tot=invTot(v);
+ if(v.url&&!v.img&&!v.pages)pdfPages(v);
+ // the original: the uploaded photo, the PDF pages, or a demo copy drawn from the lines
+ const orig=`<section class="card" ${tap('sheet','orig',v.id)} style="cursor:pointer" aria-label="Open the original file"><div class="ch"><h2>Original file</h2><span class="s">${esc(v.f)}</span></div><div style="padding:0 12px 12px;display:flex;flex-direction:column;gap:8px">${origIn(v)}</div><div class="row"><div class="grow t">Open full size</div><span class="chev">›</span></div></section>`;
+ if(v.id!='4471')return nav('Invoice')+`<div class="body"><section class="card"><div class="ch"><h2>${esc(v.v)}</h2><span class="s">${esc(v.d)} · ${esc(v.c)}</span></div>
+ ${v.l.map(([k,w,a])=>`<div class="row">${thumb(SYS[k]||{ic:k})}<div class="grow"><div style="display:flex;justify-content:space-between;gap:8px"><span class="t">${esc(w)}</span><span class="amt">${money(a)}</span></div><div class="s">${esc(SYS[k]?SYS[k].n:v.c)}</div><div class="meter"><i style="width:${Math.round(a/tot*100)}%;background:var(--l1)"></i></div></div></div>`).join('')}
+ <div class="row tot"><span class="grow t">Invoice total</span><span class="amt">${money(tot)}</span></div></section>${orig}</div>`;
+ const L=[['p-engine.jpg','Port engine service','Next at 512 h or Oct 2027',720],['p-engine.jpg','Starboard engine service','Next at 498 h or Oct 2027',720],['p-gen.jpg','Generator oil and filter','Next at 286 h or Oct 2027',180],['p-seakeeper.jpg','Seakeeper annual service','Next Oct 2027',450],['p-engine.jpg','Exhaust elbow gasket','Added during service',220]];
+ return nav('Invoice')+`<div class="body"><section class="card"><div class="ch"><h2>Harbor Marine Service</h2><span class="s">Oct 12</span></div>
+ ${L.map(([img,t,s,a])=>`<div class="row"><div class="th"><img src="${img}" alt=""></div><div class="grow"><div class="t">${t}</div><div class="s">${s}</div></div><span class="amt">${money(a)}</span></div>`).join('')}
+ <div class="row tot"><span class="grow t">Invoice total</span><span class="amt">$2,290</span></div></section>
+ ${orig}</div>
+ <div class="foot"><button class="btn pri" ${at('invSave')}>Save</button></div>`;
+},
+docs(){
+ const q=S.q.trim().toLowerCase(),hit=S.docs.filter(d=>qhit(d,q));
+ const drow=(d)=>{const i=S.docs.indexOf(d);return `<div class="row" ${tap('sheet','doc',i)}>${svg(I.doc)}<div class="grow"><div class="t">${esc(d.n)}</div><div class="s">${esc(d.k)} · ${esc(d.d)}</div></div><span class="chev">›</span></div>`};
+ const body=q?`<section class="card">${hit.length?hit.map(drow).join(''):`<div class="row"><span class="s">Nothing matches "${esc(S.q)}" in the documents you can see here.</span></div>`}</section>`
+ :`<section class="card"><div class="ch"><h2>Expiring</h2></div>${S.docs.filter(d=>d.exp).sort((a,b)=>daysTo(a.exp)-daysTo(b.exp)).map(d=>{const i=S.docs.indexOf(d),n=daysTo(d.exp);return `<div class="row" ${tap('sheet','doc',i)}><div class="grow"><div class="t">${esc(d.n)}</div><div class="s">${n<0?'Expired '+esc(d.exp):'Expires '+esc(d.exp)+' · '+n+' days left'}</div>${n<0?'':`<div class="s">${renewBy(d)}</div>`}</div>${expChip(d.exp)}</div>`}).join('')}</section>
+ <section class="card"><div class="row" ${tap('sheet','expired')}><div class="grow t">Expired, kept</div><span class="s">6</span><span class="chev">›</span></div></section>
+ <div class="grp">Recent</div><section class="card">${S.docs.filter(d=>!d.exp).map(drow).join('')}</section>
+ <section class="card"><div class="row"><div class="grow"><div class="t">Storage</div><div class="s">${S.mb} MB of 1 GB · ${S.docCount} documents</div><div class="meter"><i style="width:${Math.round(S.mb/10.24)}%;background:var(--l1)"></i></div></div></div></section>`;
+ return nav('Documents',`<button class="btn sm" ${at('file','doc')}>Upload</button>`)+`<div class="body"><input class="inp" id="q" type="search" data-in="q" data-rr="1" placeholder="Search ${S.docCount} documents" value="${esc(S.q)}" aria-label="Search documents">${body}</div>`;
+},
+war(){
+ const b=S.boatWar;
+ return nav('Warranties',`<button class="btn sm" ${at('sheet','addwar')}>Add</button>`)+`<div class="body">
+ ${S.recall?`<section class="card"><div class="ch"><h2>Open recall</h2>${chip('err','Action')}</div><div class="row" ${tap('sheet','recall')}><div class="grow"><div class="t">Fuel line clamp</div><div class="s">USCG 24E-031 · free at any Vanquish dealer</div></div><span class="chev">›</span></div></section>`:''}
+ <section class="card"><div class="ch"><h2>Boat warranty</h2><a ${tap('sheet','addwar','boat')}>Edit</a></div><div class="row" ${tap('sheet','wdet','boat')}><div class="grow"><div class="t">${esc(b.n)}</div><div class="s">${esc(b.d)}</div></div>${chip('ok','Active')}</div></section>
+ <section class="card"><div class="ch"><h2>Components</h2></div>${S.wars.map((w,i)=>`<div class="row" ${tap('sheet',w.id=='vic'&&!S.victron?'victron':'wdet',i)}>${w.img?`<div class="th"><img src="${w.img}" alt=""></div>`:`<div class="th g">${svg(I.plate)}</div>`}<div class="grow"><div class="t">${esc(w.n)}</div><div class="s">${esc(w.d)}</div></div>${chip(w.c,w.w)}</div>`).join('')}</section>
+ <section class="card"><div class="row" ${tap('sheet','claims')}><div class="grow t">Claims</div><span class="s">${S.claims.length}</span><span class="chev">›</span></div></section></div>`;
+},
+rem(){
+ return nav('Reminders',`<span class="s">${S.trial?'Trial':'Free plan'}</span>`)+`<div class="body">
+ <div class="grp">On for you · ${S.trial?'Trial: every reminder':'Free: 1 reminder'}</div>
+ <section class="card"><div class="row"><div class="grow"><div class="t">Registration renewal</div><div class="s">Email 30 days before Jan 14</div></div>${tg(S.rem.reg,'tog','rem.reg','Registration renewal')}</div></section>
+ <div class="grp">${S.trial?'Alerts':'Paid'}</div>
+ <section class="card">${S.trial?'':`<div class="ch"><h2>Alerts before anything is due</h2>${svg(I.lock,16)}</div>`}
+ ${PAID.map(([k,t,d])=>`<div class="row"><div class="grow"><div class="t">${t}</div><div class="s">${d}</div></div>${S.trial?tg(S.rem[k],'tog','rem.'+k,t):`<button class="tg off" ${at('sheet','trial')} role="switch" aria-checked="false" aria-label="${t}, paid"></button>`}</div>`).join('')}</section>
+ ${S.trial?`<div class="note">Trial ends Dec 8. Alerts cover 14 items on this boat.</div>`:`<section class="card pad"><div class="t" style="font-weight:600">Never miss a service</div><div class="s">Alerts for every system, warranty and document. 14 items on this boat would get alerts.</div><button class="btn pri" ${at('sheet','trial')}>Start free trial</button></section>`}</div>`;
+},
+spend(){
+ const sp=SP(),tot=sum(sp.sys);let card;
+ if(S.spendSeg=='mon'){const mx=Math.max(...sp.mon);
+  card=`<section class="card pad"><div class="bars">${sp.mon.map((v,i)=>`<button style="height:${Math.max(3,Math.round(v/mx*100))}%;background:${S.monSel==i?'var(--l1)':'var(--l3)'};opacity:${S.monSel==i?1:.5}" ${at('set','monSel',i)} aria-label="${MON[i]}: ${money(v)}"></button>`).join('')}</div>
+  <div class="blbl">${MON.map(m=>`<span>${m[0]}</span>`).join('')}</div><div class="row" style="border-top:.5px solid var(--sep);margin-top:8px"><span class="grow t">${MON[S.monSel]} 2026</span><span class="amt">${money(sp.mon[S.monSel])}</span></div></section>`}
+ else{const e=Object.entries(S.spendSeg=='sys'?sp.sys:sp.ven).sort((a,b)=>b[1]-a[1]),mx=e[0][1];
+  card=`<section class="card">${e.map(([k,v])=>`<div class="row"><div class="grow"><div style="display:flex;justify-content:space-between;gap:8px"><span class="t">${esc(k)}</span><span class="amt">${money(v)}</span></div><div class="meter"><i style="width:${Math.round(v/mx*100)}%;background:var(--l1)"></i></div></div></div>`).join('')}</section>`}
+ return nav('Spend',`<button class="btn sm" ${at('csv')}>Export CSV</button>`)+`<div class="body">
+ <section class="card pad"><div class="s">2026 so far</div><div class="big">${money(tot)}</div><div class="s"><a ${tap('go','invs')} style="text-decoration:underline">${INV.length} invoices</a> · ${money(Math.max(0,11520+slipMo()*12-tot))} less than 2025</div></section>
+ ${seg('spendSeg',[['sys','By system'],['ven','By vendor'],['mon','By month']])}${card}</div>`;
+},
+contacts(){
+ const ks=Object.keys(C),groups={};
+ ks.forEach(k=>(S.conSeg=='sys'?C[k].sys:[C[k].tr]).forEach(g=>(groups[g]=groups[g]||[]).push(k)));
+ return nav('Contacts',`<button class="btn sm" ${at('sheet','addcontact')}>Add</button>`)+`<div class="body">${seg('conSeg',[['sys','By system'],['tr','By trade']])}
+ ${Object.entries(groups).map(([g,list])=>`<div class="grp">${esc(g)}</div><section class="card">${list.map((k,j)=>`<div class="row" ${tap('sheet','call',k)}><div class="av">${C[k].i}</div><div class="grow"><div class="t">${esc(C[k].n)}</div><div class="s">${esc(C[k].tr)} · ${esc(C[k].d)}</div></div>${j==0&&S.conSeg=='sys'?'<span class="src">Primary</span>':''}${callBtn(k)}</div>`).join('')}</section>`).join('')}</div>`;
+},
+creds(){
+ return nav('Credentials',`<button class="btn sm" ${at('sheet','credadd')}>Add</button>`)+`<div class="body">
+ <div class="note">Hidden by default. To show one, sign in again if your last sign in was more than 10 minutes ago. Every reveal is logged.</div>
+ <section class="card">${S.creds.map(credRow).join('')}${can(1)?`<div class="row" ${tap('sheet','credadd')}><div class="av">+</div><span class="grow t">Add a credential</span></div>`:''}</section>
+ <section class="card"><div class="ch"><h2>Reveal log</h2></div>${S.log.map(l=>`<div class="row" style="font-size:13px"><div class="grow">${esc(l.w)}</div><span class="s">${esc(l.t)}</span></div>`).join('')}</section>
+ <div class="lock">${svg(I.lock,14,2)}Left out of a transfer unless you add them</div></div>`;
+},
+share(){
+ if(S.as!='Owner')return topHd('Share')+`<div class="body"><section class="card"><div class="row"><div class="av">HP</div><div class="grow"><div class="t">Shared with you by Heigo P.</div><div class="s">Owner of ${esc(S.name)}</div></div><span class="role">${S.as}</span></div></section>
+ <div class="grp">What you can do</div><section class="card">${PERM.map((t,j)=>`<div class="row" style="font-size:15px"><span class="grow">${t}</span>${can(j)?chip('ok','Yes'):chip('','No')}</div>`).join('')}<div class="row" style="font-size:15px"><span class="grow">${ENGEN}</span>${S.as=='Captain'&&S.capGen?chip('ok','Yes'):chip('','No')}</div></section>
+ <div class="note">Only the owner can change your access, invite people or start a transfer.</div><button class="btn red" ${at('sheet','confirm','leave')}>Leave this boat</button></div>`;
+ const P=S.perms[S.permRole];
+ return topHd('Share',`<button class="btn sm" ${at('sheet','invite')}>Invite</button>`)+`<div class="body">
+ <div class="grp">People · ${S.people.length} of 7 roles used</div>
+ <section class="card">${S.people.map((p,i)=>`<div class="row" ${tap('sheet','person',i)}><div class="av">${esc(p.i)}</div><div class="grow"><div class="t">${esc(p.n)}</div><div class="s">${esc(p.m)}</div></div><span class="role">${p.r}</span><span class="chev">›</span></div>`).join('')}</section>
+ <div class="grp">Access by role</div>
+ <section class="card"><div class="row"><div class="seg" style="flex:1">${Object.keys(S.perms).map(r=>`<button class="${S.permRole==r?'on':''}" ${at('permRole',r)}>${r}</button>`).join('')}</div></div>
+ ${PERM.map((t,j)=>{const on=P[j],lk=j==5;return `<div class="row" style="font-size:15px"><span class="grow">${t}</span>${lk?`<span class="s" style="display:flex;align-items:center;gap:4px">${svg(I.lock,14,2)}Owner only</span>`:tg(on,'perm',j,t)}</div>`}).join('')}<div class="row" style="font-size:15px"><span class="grow">${ENGEN}</span>${S.permRole=='Captain'?tg(S.capGen,'capGen','',ENGEN):`<span class="s" style="display:flex;align-items:center;gap:4px">${svg(I.lock,14,2)}Captain and owner only</span>`}</div></section>
+ <div class="grp">Selling</div>
+ <section class="card"><div class="row" ${tap('go','broker')}><div class="grow"><div class="t">Share with your broker</div><div class="s">${S.brk.sent?'Shared with '+esc(S.brk.sent):'Your listing broker sees the file to market the boat'}</div></div><span class="chev">›</span></div>
+ <div class="row" ${tap('go','presale')}><div class="grow"><div class="t">Pre-sale buyer link</div><div class="s">${S.pre.link?'Link is on':'Read only, you pick what they see'}</div></div><span class="chev">›</span></div><div class="row" ${tap('go','transfer')}><div class="grow"><div class="t">Transfer to buyer</div><div class="s">${S.tr.sent?'Sent to '+esc(S.tr.sent)+' · waiting':'Hand the whole file to the new owner'}</div></div><span class="chev">›</span></div></section></div>`;
+},
+transfer(){
+ const t=S.tr,on=TRK.filter(([k])=>t.on[k]),off=TRK.filter(([k])=>!t.on[k]);
+ const row=([k,l])=>`<div class="row"><span class="grow t">${l}</span>${t.sent?(t.on[k]?svg(I.check,20,2):''):tg(t.on[k],'tog','tr.on.'+k,l)}</div>`;
+ const recs=38-(t.on.svc?0:14)-(t.on.inv?0:11)-(t.on.war?0:6)-(t.on.sur?0:1);
+ if(t.sent)return nav('Transfer',`<span class="s">Free</span>`)+`<div class="body"><section class="card pad"><div class="s">Sent to</div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="t" style="font-weight:600;min-width:0;overflow-wrap:anywhere">${esc(t.sent)}</span><span style="flex:none">${chip('warn','Waiting for the buyer')}</span></div><div class="s">Sent today · the link expires in 14 days</div></section>
+ <section class="card"><div class="ch"><h2>Included</h2></div>${on.map(row).join('')}</section>
+ <div class="note">When the buyer accepts, every share ends. You keep a read only archive.</div></div>
+ <div class="foot"><button class="btn" ${at('trCancel')}>Cancel transfer</button><button class="btn" ${at('toast','Reminder sent to '+t.sent)}>Resend</button></div>`;
+ return nav('Transfer',`<span class="s">Free</span>`)+`<div class="body">
+ <section class="card"><div class="ch"><h2>What the buyer sees</h2><a ${tap('sheet','preview')}>Preview</a></div><div class="row"><div class="grow"><div class="big">${recs}</div><div class="s">verified records of 52 total · 11 sent by vendors · 3 owner uploads</div></div></div></section>
+ <div><label class="lbl" for="tre">Buyer email</label><input class="inp" id="tre" type="email" data-in="tr.email" placeholder="buyer@email.com" value="${esc(t.email)}" autocomplete="off"></div>
+ ${S.sheet?'':(t.err?`<div class="errt">${esc(t.err)}</div>`:'')}
+ <div class="grp">Included</div><section class="card">${on.length?on.map(row).join(''):'<div class="row"><span class="s">Nothing included yet</span></div>'}</section>
+ <div class="grp">Left out</div><section class="card">${off.length?off.map(row).join(''):'<div class="row"><span class="s">Nothing left out</span></div>'}</section>
+ <div class="note">When the buyer accepts, every share ends. You keep a read only archive. Closing on EasySign offers this to both sides.</div>
+ <div class="note">YachtWay hosts records submitted by owners and vendors as they are. YachtWay does not warrant the condition of the boat.</div></div>
+ <div class="foot"><button class="btn" ${at('back')}>Cancel</button><button class="btn pri" ${at('trSend')}>Send transfer</button></div>`;
+},
+broker(){
+ const b=S.brk;
+ return nav('Your broker')+`<div class="body">
+ <div class="note">Your broker gets a read only copy of the file to market the boat. You pick what they see and can stop sharing any time. This is not a transfer.</div>
+ ${b.sent?`<section class="card"><div class="row"><div class="grow"><div class="t">${esc(b.sent)}</div><div class="s">Listing broker · invite sent</div></div>${chip('ok','Shared')}</div><div class="row"><span class="grow"></span><a class="s" ${tap('sheet','confirm','brk')} style="color:var(--red)">Stop sharing</a></div></section>`:`<section class="card pad">${fld('bk','Broker email',b.sent,'email','autocomplete="email"')}${b.err?`<div class="s" style="color:var(--red);margin-top:6px">${b.err}</div>`:''}</section>`}
+ <section class="card"><div class="ch"><h2>Your broker sees</h2></div>${PRE.map(([k,l])=>`<div class="row"><span class="grow t">${l}</span>${tg(b.on[k],'tog','brk.on.'+k,l)}</div>`).join('')}
+ <div class="row"><div class="grow"><div class="t">Can send buyer links</div><div class="s">Buyers see only what is on above</div></div>${tg(b.buy,'tog','brk.buy','Can send buyer links')}</div></section></div>
+ ${b.sent?'':`<div class="foot"><button class="btn" ${at('back')}>Cancel</button><button class="btn pri" ${at('brkSend')}>Share with broker</button></div>`}`;
+},
+presale(){
+ const p=S.pre;
+ return nav('Pre-sale link')+`<div class="body">
+ <div class="note">A read only link for buyers before the sale. They see only what you turn on here. You can turn the link off any time.</div>
+ <section class="card"><div class="ch"><h2>Buyers see</h2></div>${PRE.map(([k,l])=>`<div class="row"><span class="grow t">${l}</span>${tg(p.on[k],'tog','pre.on.'+k,l)}</div>`).join('')}</section>
+ ${p.link?`<section class="card"><div class="ch"><h2>Your link</h2>${chip('ok','On')}</div><div class="row"><span class="grow mono sel" style="font-size:14px;word-break:break-all">${p.link}</span><button class="btn sm" ${at('copy','https://'+p.link)}>Copy</button></div><div class="row">${p.pw?`<span class="grow s">Password on. Send it to the buyer separately.</span><a class="s" ${tap('sheet','prepw')}>Change</a><a class="s" ${tap('prePwOff')} style="margin-left:14px;color:var(--red)">Remove</a></div><div class="row">`:`<span class="grow s">No password</span><a class="s" ${tap('sheet','prepw')}>Add password</a></div><div class="row">`}<span class="grow s">0 views so far</span><a class="s" ${tap('preOff')} style="color:var(--red)">Turn off</a></div></section>`:`<section class="card pad">${fld('ppw','Password, optional','','password','autocomplete="new-password"')}<div class="s" style="margin-top:6px">Buyers enter it to open the link.</div></section>`}</div>
+ ${p.link?'':`<div class="foot"><button class="btn pri" ${at('preMake')}>Create link</button></div>`}`;
+},
+add(){
+ if(!can(2))return topHd('Add')+`<div class="body"><section class="card pad"><div class="t">Adding is off for ${S.as}</div><div class="s">Ask the owner to turn on Add invoices and service for your role. You can still read the boat file.</div></section></div>`;
+ return topHd('Add')+`<div class="body" id="chat" style="gap:12px">${S.chat.map(msg).join('')}
+ ${S.chat.length==1?`<div class="sugs"><button class="btn sm" ${at('chatSample')}>Try a sample invoice</button><button class="btn sm" ${at('go','addboat')}>Add a boat</button></div>`:''}</div>
+ <div class="compose"><div class="tools"><button class="btn sm" ${at('file','add','scan')}>${svg(I.scan,18)}Scan</button><button class="btn sm" ${at('file','add')}>${svg(I.cam,18)}Photo</button><button class="btn sm" ${at('sheet','fwd')}>${svg(I.fwd,18)}Forward email</button></div>
+ <div class="cin"><input class="inp" id="draft" data-in="draft" placeholder="Tell Waylo what was done" value="${esc(S.draft)}" aria-label="Message to Waylo" autocomplete="off"><button class="ib" ${at('chatSend')}${S.draft.trim()?'':' disabled'} aria-label="Send">${svg(I.send,20,2)}</button></div></div>`;
+},
+addboat(){
+ const a=S.ab,st=`<span class="s">Step ${a.step} of 3</span>`;
+ if(a.step==1)return nav('Add a boat',st)+`<div class="body">
+ <div class="note">Take a photo of the hull ID plate on the transom. Waylo reads the 12 characters and fills in the boat from the YachtWay catalog.</div>
+ <div class="metal plate"><span class="rv" style="left:8px;top:8px"></span><span class="rv" style="right:8px;top:8px"></span><span class="rv" style="left:8px;bottom:8px"></span><span class="rv" style="right:8px;bottom:8px"></span><div style="font-size:12px">HULL ID</div><div class="v">· · · · · · · · · · · ·</div></div>
+ <button class="btn" ${at('abSample')}>Use a sample plate</button></div>
+ <div class="foot"><button class="btn" ${at('sheet','hand')}>Enter by hand</button><button class="btn pri" ${at('file','scan','scan')}>${svg(I.cam,20)}Scan plate</button></div>`;
+ if(a.step==2)return nav('Add a boat',st)+`<div class="body">
+ ${a.img?`<img src="${a.img}" alt="Your plate photo" style="width:100%;border-radius:12px;display:block;flex:none">`:''}
+ <div class="metal plate"><span class="rv" style="left:8px;top:8px"></span><span class="rv" style="right:8px;top:8px"></span><span class="rv" style="left:8px;bottom:8px"></span><span class="rv" style="right:8px;bottom:8px"></span><div style="font-size:12px">HULL ID</div><div class="v">${esc(a.hin)}</div></div>
+ <div class="note" style="margin-top:-16px">${a.img?'Demo: the read uses the sample plate':'Read from the transom plate'}</div>
+ <div class="grp">Check all 12 characters</div>
+ <section class="card pad"><div class="hin">${a.hin.split('').map((ch,i)=>`<button class="${a.bad===i?'bad':''}" ${at('sheet','hinfix',i)} aria-label="Character ${i+1}: ${ch}${a.bad===i?', hard to read':''}">${esc(ch)}</button>`).join('')}</div>
+ <div style="text-align:center">${a.bad!==null?`<span class="s warn">Character ${a.bad+1} is hard to read. Tap it to fix it.</span>`:chip('ok','All 12 checked')}</div></section>
+ <section class="card"><div class="ch"><h2>Your boat</h2><span class="src">YachtWay catalog</span></div>${ABF.map(([k,l])=>`<div class="row" ${k!='year'&&k!='len'?tap('sheet','mm','ab'+k):tap('sheet','abfield',k)}><span class="s" style="width:96px;flex:none">${l}</span><span class="grow t">${esc(a.f[k])}</span>${a.set[k]?'<span class="src">Owner set</span>':''}<span class="chev">›</span></div>`).join('')}</section>
+ <div class="note">You can edit any field. Edited fields change to Owner set.</div>
+ <div><label class="lbl" for="abn">Boat name</label><input class="inp" id="abn" data-in="ab.name" value="${esc(a.name)}"></div>
+ ${a.err?`<div class="errt">${esc(a.err)}</div>`:''}</div>
+ <div class="foot"><button class="btn" ${at('sheet','hand')}>Enter by hand</button><button class="btn pri" ${at('abConfirm')}>Confirm boat</button></div>`;
+ return nav('Add a boat',st)+`<div class="body"><section class="card pad" style="align-items:center;text-align:center;padding:24px 16px">
+ <span class="ok">${svg(I.check,40,2)}</span><div class="t" style="font:400 26px/30px var(--fig)">${esc(S.name)} is ready</div>
+ <div class="s">${Object.keys(SYS).length} systems and ${IT.length} service items loaded with OEM intervals. Hull ID ${esc(a.hin)}.</div></section>
+ <section class="card">${ABF.map(([k,l])=>`<div class="row"><span class="s" style="width:96px;flex:none">${l}</span><span class="grow t">${esc(a.f[k])}</span>${a.set[k]?'<span class="src">Owner set</span>':''}</div>`).join('')}</section></div>
+ <div class="foot"><button class="btn pri" ${at('abOpen')}>Open the boat</button></div>`;
+}};
+
+function msg(m){
+ if(m.card)return parsedCard();
+ if(m.att){const a=m.att;
+  if(a.sample)return `<div class="att"><div class="t" style="font-weight:600">Harbor Marine Service</div><div class="s">Oct 12, 2026</div><div class="ln"><span>100 h service</span><span>$1,320</span></div><div class="ln"><span>Parts</span><span>$520</span></div><div class="ln"><b>Total</b><b>$1,840</b></div></div>`;
+  return `<div class="att">${a.img?`<img src="${a.img}" alt="${esc(a.name)}">`:`<div style="display:flex;gap:8px;align-items:center">${svg(I.doc)}<span class="t">${esc(a.name)}</span></div>`}</div>`;}
+ if(m.w)return `<div class="msg w">${esc(m.t)}${m.btn?`<div style="margin-top:8px"><button class="btn sm" ${at(m.btn[1])}>${m.btn[0]}</button></div>`:''}</div>`;
+ return `<div class="msg u">${esc(m.t)}</div>`;
+}
+function parsedCard(){
+ const p=S.parsed,F=[['vendor','Vendor'],['date','Date'],['work','Work'],['hours','Engine hours'],['total','Total']];
+ return `<section class="card" style="flex:none"><div class="ch"><h2>Check what Waylo read</h2><span class="src">From your ${p.from}</span></div>
+ ${F.map(([k,l])=>`<div class="row" ${p.saved?'':tap('sheet','pfield',k)}><div class="grow"><div class="s">${l}</div><div class="t">${k=='total'?money(p[k]):esc(p[k])}</div></div>${p.set[k]?'<span class="src">Owner set</span>':''}${p.saved?'':'<span class="chev">›</span>'}</div>`).join('')}
+ <div class="row" style="flex-direction:column;align-items:stretch;gap:8px"><div style="display:flex;justify-content:space-between"><span class="s">System</span>${p.sys?'':chip('warn','Which engine?')}</div>
+ ${p.saved?`<div class="t">${p.sys} engine${p.sys=='Both'?'s':''}</div>`:`<div class="seg">${['Port','Starboard','Both'].map(v=>`<button class="${p.sys==v?'on':''}" ${at('chatSys',v)}>${v}</button>`).join('')}</div>`}</div>
+ ${p.err?`<div class="row acts"><span class="s err">${esc(p.err)}</span></div>`:''}
+ ${p.saved?`<div class="row">${chip('ok','Saved')}</div>`:`<div class="row" style="gap:8px"><button class="btn sm" ${at('sheet','form')}>Show me the form</button><span class="grow"></span><button class="btn sm pri" ${at('chatSave')}>Save</button></div>`}</section>`;
+}
+
+/* ---------- sheets ---------- */
+const AS={Owner:['HP','You'],Captain:['AL','Alex Lee'],Family:['MP','Mia P.'],Service:['HM','Harbor Marine'],Crew:['JD','Jordan Diaz']};
+/* what the current viewer may do: index into PERM; the owner can do everything */
+const can=j=>S.as=='Owner'||!!S.perms[S.as][j];
+console.assert(Object.values(S.perms).every(p=>p.length==PERM.length),'every role has a value per permission');
+const me=()=>`<button class="av" ${at('sheet','acct')} aria-label="Account and settings">${AS[S.as][0]}</button>`;
+const err=()=>S.sheet.err?`<div class="errt" role="alert">${esc(S.sheet.err)}</div>`:'';
+const goes=k=>C[k]?`<div class="grp">Goes to</div><section class="card"><div class="row"><div class="av">${C[k].i}</div><div class="grow"><div class="t">${esc(C[k].n)}</div><div class="s">${esc(C[k].tr)}</div></div>${callBtn(k)}</div></section>`:'';
+const wOf=i=>i=='boat'?{n:S.boatWar.n,d:S.boatWar.d,c:'ok',w:'Active',by:'sr'}:S.wars[i];
+const btns=(...b)=>`<div class="sbtns">${b.join('')}<button class="btn" ${at('close')}>${b.length?'Cancel':'Close'}</button></div>`;
+const fld0=(id,l,v='',type='text',extra='')=>`<div><label class="lbl" for="${id}">${l}</label><input class="inp" id="${id}" type="${type}" value="${esc(v)}" ${extra}></div>`;
+const fld=(id,l,v='',type='text',extra='')=>type!='date'?fld0(id,l,v,type,extra):`<div><label class="lbl" for="${id}-b">${l}</label><button type="button" class="inp calbtn${v?'':' cph'}" id="${id}-b" data-cal="${id}" data-l="${esc(l)}" aria-haspopup="dialog">${v?fmtDate(v):'Pick a date'}${svg(I.cal,18)}</button><input type="hidden" id="${id}" value="${esc(v)}"></div>`;
+const commas=v=>{const[a,b]=String(v).replace(/[^\d.]/g,'').split('.');return (a?(+a).toLocaleString('en-US'):'')+(b!==undefined?'.'+b.slice(0,2):'')};
+const mfld=(id,l,v='')=>`<div><label class="lbl" for="${id}">${l}</label><div class="money"><span>$</span><input class="inp" id="${id}" type="text" inputmode="decimal" data-money value="${v===''||v==null?'':commas(v)}" autocomplete="off"></div></div>`;
+const num=id=>+val(id).replace(/,/g,'');
+const LEAD={Registration:60,Insurance:45},renewBy=d=>{const t=new Date(d.exp+' 12:00');t.setDate(t.getDate()-(LEAD[d.k]||30));return t<TODAY?'Start the renewal now':'Start the renewal by '+t.toLocaleDateString('en-US',{month:'short',day:'numeric'})};
+const PHH={port:'a leak, a belt or hose part number, or the data plate',stbd:'a leak, a belt or hose part number, or the data plate',gen:'a leak, a belt or hose part number, or the data plate',sk:'the data plate, or a seal or hose that needs watching',wl:'the gypsy and chain, or the motor and wiring under the deck',bw:'the winch raised and lowered, or the data plate',bt:'the tunnel and propellers at haul out, or the motor data plate',hull:'blisters, paint condition at haul out, or the zincs',safe:'extinguisher gauges and tags, flare expiry dates, or where the life jackets are stowed',sl:'where each unit is mounted, or the cable runs',elec:'where each unit is mounted, the cable runs, or the back of the chartplotter'};
+const phSec=id=>{const ph=S.sp[id]||[];return `<section class="card"><div class="ch"><h2>Photos</h2>${can(1)&&ph.length?`<button class="btn sm" ${at0('file','sysph',id)}>${svg(I.cam,16)}+ Add photo</button>`:''}</div>${ph.length?`<div class="gal" style="padding:4px 0 12px">${ph.map((p,k)=>`<button ${at('sheet','sphoto',id+'|'+k)} aria-label="Photo from ${p.d}${p.n?', '+esc(p.n):''}"><img src="${p.u}" alt=""><span>${p.d}</span></button>`).join('')}</div>`:`<div class="row" style="flex-wrap:wrap;gap:10px"><span class="s grow">No photos yet. Keep a record here, for example ${PHH[id]||'the data plate, a part number or something to keep an eye on'}.</span>${can(1)?`<button class="btn sm" ${at0('file','sysph',id)}>${svg(I.cam,16)}Take or add a photo</button>`:''}</div>`}</section>`};
+const TODAY=new Date('2026-11-24T12:00:00'),daysTo=x=>Math.round((new Date(x+' 12:00')-TODAY)/864e5);
+const expChip=x=>{const n=daysTo(x);return n<0?chip('err','Expired'):n<=60?chip('warn','Due soon'):chip('ok','OK')};
+// shortcut: demo list stands in for Google Places autocomplete; swap for the Places API with a restricted key in the real app
+const MARINAS=[['Pier 66 Marina','2301 SE 17th St, Fort Lauderdale, FL 33316'],['Bahia Mar Yachting Center','801 Seabreeze Blvd, Fort Lauderdale, FL 33316'],['Las Olas Marina','240 E Las Olas Cir, Fort Lauderdale, FL 33316'],['Hall of Fame Marina','435 Seabreeze Blvd, Fort Lauderdale, FL 33316'],['Lauderdale Marina','1900 SE 15th St, Fort Lauderdale, FL 33316'],['Miami Beach Marina','300 Alton Rd, Miami Beach, FL 33139']];
+const placeHits=q=>{q=q.trim().toLowerCase();return q?MARINAS.filter(m=>(m[0]+' '+m[1]).toLowerCase().includes(q)).slice(0,5):[]};
+const dirUrl=()=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(S.addr?S.marina+', '+S.addr:S.slip);
+console.assert(placeHits('pier')[0][0]=='Pier 66 Marina'&&placeHits('33139').length==1&&!placeHits(' ').length,'placeHits');
+const slipMo=()=>S.slipRate+(S.elecInc?0:S.elec);
+const slipLine=()=>`${money(slipMo())} a month`;
+// Marina is the slip cost, Jan to Nov 2026; base S.spend holds service spend only
+const SP=()=>{const m=slipMo(),sp=S.spend;return{sys:{...sp.sys,Marina:m*11},ven:{...sp.ven,'Miami Beach Marina':(sp.ven['Miami Beach Marina']||0)+m*11},mon:sp.mon.map(v=>v+m)}};
+console.assert(sum(SP().sys)==8420+1630*11&&sum(SP().ven)==sum(SP().sys)&&SP().mon.reduce((a,b)=>a+b)==sum(SP().sys),'marina spend agrees');
+console.assert(commas('1234567.891')=='1,234,567.89'&&commas('$1,450')=='1,450','commas');
+// Make and model picker. Source: MM (equipment, by type) and BM (boats), from cat.js
+// shortcut: top 60 models per make in the prototype, prod reads the full DB
+const mmSrc=h=>h.t?MM[h.t]||{}:h.v.startsWith('ab')?BM:{};
+const mmStep=h=>h.v=='new'&&!h.t?'t':!h.mk?'mk':'md';
+function mmList(h){const q=(h.q||'').toLowerCase().trim(),st=mmStep(h),all=st=='t'?Object.keys(MM).sort():st=='mk'?Object.keys(mmSrc(h)).filter(k=>!/^\d+$/.test(k)):mmSrc(h)[h.mk]||[];
+ return all.filter(x=>!q||x.toLowerCase().includes(q)).slice(0,q?20:12)}
+function mmOpen(v){const h={k:'mm',v,err:'',q:''};
+ if(v=='abeng')h.t='Engine';else if(v=='abgen')h.t='Generator';
+ if(v=='abmodel')h.mk=S.ab.f.make in BM?S.ab.f.make:'';
+ else if(SYS[v]){const s=SYS[v];h.t=s.ty;h.mk=Object.keys(MM[s.ty]||{}).find(k=>(s.model||s.m||'').startsWith(k+' '))||''}
+ return h}
+function mmDone(mk,md,t){const h=S.sheet,v=h.v;S.sheet=null;
+ if(v=='abeng'||v=='abgen'){const k=v.slice(2),f=S.ab.f,n=k=='eng'&&/^\d+ x /.exec(f[k]),x=(n?n[0]:'')+mk+(md?' '+md:'');if(x!=f[k]){f[k]=x;S.ab.set[k]=1}return}
+ if(v.startsWith('ab')){const f=S.ab.f;if(mk!=f.make){f.make=mk;S.ab.set.make=1}if(md&&md!=f.model){f.model=md;S.ab.set.model=1}return}
+ const full=md?mk+' '+md:mk;
+ if(v=='new'){SYS['u'+Date.now()]={n:t,ty:t,m:full,model:md?full:'',by:'',g:'other',nd:md?0:1,war:'',plate:''};toast(`${t} added`);return}
+ const s=SYS[v];s.m=full;s.model=full;s.nd=0;toast('Make and model saved')}
+const SH={
+acct:()=>[S.name,`<div><span class="lbl">View as</span><div class="seg">${Object.keys(AS).map(v=>`<button class="${S.as==v?'on':''}" ${at('viewAs',v)}>${v}</button>`).join('')}</div></div><div class="note">See the app the way someone you share with sees it. Prototype only.</div><section class="card">${[['Add a boat','addboat'],['Service schedule','service'],['Reminders','rem'],['Warranties','war'],['Credentials','creds'],['Documents','docs']].filter(([,k])=>k!='creds'||can(3)).map(([t,r])=>`<div class="row" ${tap('go',r)}><span class="grow t">${t}</span><span class="chev">›</span></div>`).join('')}</section><section class="card"><div class="row" ${tap('sheet','confirm','del')}><span class="grow t" style="color:var(--red)">Delete account</span><span class="chev">›</span></div></section>${btns(`<button class="btn red" ${at('reset')}>Start the demo over</button>`)}`],
+confirm:k=>{const c={leave:['Leave VQ58?','You lose access to this boat file. The owner can invite you again.','Leave','viewAs','Owner'],brk:['Stop sharing?','Your broker loses access to the boat file right away.','Stop sharing','brkOff',''],del:['Delete your account?','This deletes your account and every boat file you own. It cannot be undone.','Delete account','reset','']}[k];return[c[0],`<div class="note" style="text-align:center">${c[1]}</div>${btns(`<button class="btn red" ${at(c[3],c[4])}>${c[2]}</button>`)}`]},
+hours:x=>{const ks=x?[x]:[...EN(),'gen'];return['Log hours',`<div class="note">Enter the total on each hour meter. It replaces the last reading.</div>${ks.map(k=>fld('h-'+k,`${HN[k]}${S.H[k]!=null?` · now ${S.H[k]} h`:''}`,S.H[k]??'','number',`inputmode="numeric" min="${S.H[k]??0}" class="inp mono"`)).join('')}${err()}${btns(`<button class="btn pri" ${at('hoursSave',ks.join(','))}>Save</button>`)}`]},
+gallery:()=>['Photos',`<div class="gal">${S.photos.map((u,k)=>`<button ${can(1)?at('cover',k):'disabled'} aria-pressed="${u==S.hero}" aria-label="Photo ${k+1}${u==S.hero?', cover':', make cover'}"><img src="${u}" alt="">${u==S.hero?'<span>Cover</span>':''}</button>`).join('')}</div>${can(1)?`<div class="s">Tap a photo to make it the cover.</div>`:''}${Object.entries(S.sp).filter(([,x])=>x.length).map(([id,x])=>`<div class="grp">${esc(SYS[id].n)}</div><div class="gal">${x.map((p,k)=>`<button ${at('sheet','sphoto',id+'|'+k)} aria-label="${esc(SYS[id].n)} photo from ${p.d}"><img src="${p.u}" alt=""><span>${p.d}</span></button>`).join('')}</div>`).join('')}${can(1)?`<div class="s">To add a photo of a part, open it in Boat and use Photos there.</div>`:''}${can(1)?btns(`<button class="btn pri" ${at0('file','photo')}>Add photos</button>`+(S.photos.length>1?`<button class="btn" ${at('rmPhoto',S.photos.indexOf(S.hero))}>Remove cover photo</button>`:'')):btns()}`],
+sphoto:v=>{const[id,k]=v.split('|'),p=S.sp[id][+k];return[SYS[id].n,`<img src="${p.u}" alt="${esc(p.n||SYS[id].n+' photo')}" style="display:block;width:100%;max-height:60vh;object-fit:contain;background:#f6f7f9;border-radius:12px"><div class="s">Added ${p.d}</div>${can(1)?`<div><label class="lbl" for="pn">Note</label><textarea class="inp" id="pn" data-in="sp.${id}.${k}.n" placeholder="For example, small leak at the bilge pump hose">${esc(p.n)}</textarea></div>`:p.n?`<div>${esc(p.n)}</div>`:''}${can(1)?btns(`<button class="btn pri" ${at('close')}>Done</button>`,`<button class="btn" ${at('rmSysPh',v)}>Remove photo</button>`):btns()}`]},
+markdone:id=>[it(id).t,`<div class="s">The next date starts from today.</div><div><label class="lbl" for="dnote">Note, if you want</label><textarea class="inp" id="dnote" placeholder="For example, done by Harbor Marine, new gasket"></textarea></div>${btns(`<button class="btn pri" ${at('done',id)}>Mark done</button>`)}`],
+item:id=>{const i=it(id),s=stat(i),k=SYS[i.s].by;return[i.t,`<section class="card"><div class="row"><span class="grow t">Status</span>${chip(s.st,WORD[s.st])}<span class="s">${esc(s.m)}</span></div><div class="row"><span class="grow t">Interval</span><span class="s">${esc(i.iv)}</span>${i.d?'':`<button class="btn sm" ${at('sheet','ivedit',id)}>Change</button>`}</div><div class="row"><span class="grow t">Source</span><span class="src">${esc(i.pg?SYS[i.s].sched.replace(' schedule',' service manual')+', page '+i.pg:i.src)}</span></div>${i.note?`<div class="row"><span class="grow t">Last note</span><span class="src">${esc(i.note)}</span></div>`:''}${i.d?'':`<div class="row"><span class="grow t">Next at</span><span class="s mono">${i.due} h</span></div>`}${k?`<div class="row"><span class="grow t">Serviced by</span><span class="s">${esc(cn(k))}</span></div>`:''}</section>
+ ${err()}
+ ${btns(`<button class="btn pri" ${at('sheet','markdone',id)}>Mark done</button>`,k?`<button class="btn" ${at('sheet','call',k)}>Contact ${esc(cn(k))}</button>`:'')}`]},
+ivedit:id=>{const i=it(id),o=i.oem??=i.ev;return['Change interval',`<div class="note">The maker interval for this item is every ${o} h. A longer interval can void the warranty and lets wear go unnoticed.</div>
+ ${fld('iv','New interval, in engine hours',i.ev,'number','inputmode="numeric" min="1"')}${S.sheet.cf?`<div class="note" style="color:var(--red)">${S.sheet.cf} h is longer than the maker interval of ${o} h. Tap Change interval again to confirm.</div>`:''}${err()}
+ <div class="sbtns"><button class="btn pri" ${at('ivSave',id)}>Change interval</button>${i.ev!=o?`<button class="btn" ${at('ivReset',id)}>Use maker interval, ${o} h</button>`:''}<button class="btn" ${at('sheet','item',id)}>Cancel</button></div>`]},
+call:k=>{const c=C[k];return[c.n,`<div class="note" style="text-align:center">${esc(c.tr)} · ${esc(c.d)}</div><section class="card"><div class="row">${svg(I.phone,20)}<span class="grow t mono sel">${c.p}</span><button class="btn sm" ${at('copy',c.p)}>Copy</button></div><div class="row">${svg(I.mail,20)}<span class="grow t sel" style="font-size:15px;word-break:break-all">${esc(c.e)}</span><button class="btn sm" ${at('copy',c.e)}>Copy</button></div></section><div class="note">Demo numbers and addresses. Nothing here reaches a real business.</div>${btns(`<a class="btn pri" href="tel:${c.p.replace(/\D/g,'')}">Call</a><button class="btn" ${at('shareContact',k)}>Share</button>`)}`]},
+pickpro:x=>[`${SYS[x].n} is serviced by`,`<section class="card">${Object.keys(C).map(k=>`<div class="row" ${tap('pick',k,x)}><div class="av">${C[k].i}</div><div class="grow"><div class="t">${esc(C[k].n)}</div><div class="s">${esc(C[k].tr)}</div></div>${SYS[x].by==k?`<span class="ok">${svg(I.check,20,2)}</span>`:''}</div>`).join('')}<div class="row" ${tap('sheet','addcontact',x)}><div class="av">+</div><span class="grow t">Add a new one</span></div></section>${btns()}`],
+addcontact:x=>['New contact',`<button class="btn" style="width:100%" ${at('importContact')}>${svg(I.contact,18)} Import from contacts</button>${fld('cn','Name')}${fld('ct','Trade','','text','placeholder="Mechanic, yard, rigger"')}${fld('cp','Phone','','tel')}${fld('ce','Email','','email')}${x=='marina'?`<div class="note">Shows under ${esc(S.marina)} and in Contacts.</div>`:x?`<div class="note">Becomes the service provider for ${esc(SYS[x].n.toLowerCase())}.</div>`:''}${err()}${btns(`<button class="btn pri" ${at('contactSave',x||'')}>Save</button>`)}`],
+neng:()=>['Engines',`<div class="note">How many engines this boat has. Each one gets its own hour meter.</div><div class="row" style="justify-content:center;gap:24px"><button class="btn" ${at('set','nE',Math.max(1,S.nE-1))} aria-label="One fewer engine" ${S.nE<2?'disabled':''}>−</button><span class="t" style="font-size:28px;min-width:2ch;text-align:center" aria-live="polite">${S.nE}</span><button class="btn" ${at('set','nE',Math.min(6,S.nE+1))} aria-label="One more engine" ${S.nE>5?'disabled':''}>+</button></div>${btns(`<button class="btn pri" ${at('close')}>Done</button>`)}`],
+slip:()=>{const inc=S.sheet.inc!=null?S.sheet.inc==1:S.elecInc;return['Home slip',`<div class="place"><label class="lbl" for="mar">Marina</label><input class="inp" id="mar" value="${esc(S.marina)}" data-addr="${esc(S.addr||'')}" data-place autocomplete="off" placeholder="Search marinas"><div class="paddr" id="paddr">${esc(S.addr||'')}</div><div class="places" id="places" role="listbox"></div></div>${fld('slipno','Slip',S.slipNo||'','text','placeholder="B14"')}${mfld('srate','Monthly rate',S.slipRate)}<div><span class="lbl">Electricity</span><div class="seg">${[[0,'Separate'],[1,'Included in rate']].map(([v,l])=>`<button class="${+inc==v?'on':''}" ${at('set','sheet.inc',v)}>${l}</button>`).join('')}</div></div>${inc?'':mfld('selec','Electricity per month',S.elec)}${err()}${btns(`<button class="btn pri" ${at('slipSave')}>Save</button>`)}`]},
+mm:v=>{const h=S.sheet,ab=v.startsWith('ab'),T=ab?{abeng:'Engines',abgen:'Generator'}[v]||'Your boat':v=='new'?'Add a system':SYS[v].n;
+ if(h.man)return[T,`${h.man=='make'?fld('mmk','Make',h.q||''):`<div class="s">${esc(h.mk)}</div>`}${fld('mmd','Model',h.man=='model'?h.q||'':'')}${v=='new'&&!h.t?fld('mmt','Type','','text','placeholder="Watermaker"'):''}<div class="note">${v=='new'?'Leave the model empty and it shows as No data until you add a plate photo.':'We add it to the YachtWay catalog after a check.'}</div>${err()}${btns(`<button class="btn pri" ${at('mmSave')}>Save</button>`)}`];
+ const st=mmStep(h),L=mmList(h),q=(h.q||'').trim(),lab={t:'Type',mk:'Make',md:'Model'}[st];
+ const crumb=[h.t&&v=='new'?`<a ${tap('mmUp','t')}>${esc(h.t)}</a>`:'',h.mk?`<a ${tap('mmUp','mk')}>${esc(h.mk)}</a>`:''].filter(Boolean).join(' › ');
+ return[T,`${crumb?`<div class="s">${crumb} <span class="s">· tap to change</span></div>`:''}<input class="inp" id="mmq" type="search" data-in="sheet.q" data-rr="1" value="${esc(h.q||'')}" placeholder="Search ${lab.toLowerCase()}s" aria-label="Search ${lab.toLowerCase()}s" autocomplete="off">
+ <section class="card"><div class="ch"><h2>${q?'Matches':st=='md'?'Models':st=='mk'?'Makes':'Types'}</h2><span class="src">YachtWay catalog</span></div>${L.length?L.map((x,i)=>`<div class="row" ${tap('mmPick',i)}><div class="grow t">${esc(x)}</div><span class="chev">›</span></div>`).join(''):`<div class="row"><span class="grow s">Nothing in the catalog matches</span></div>`}
+ ${st!='t'?`<div class="row" ${tap('mmOther')}><div class="grow"><div class="t">Other ${st=='mk'?'make':'model'}</div><div class="s">Not listed? Type it in</div></div><span class="chev">›</span></div>`:''}</section>${btns()}`]},
+hist:x=>{const s=SYS[x],v=s.by&&C[s.by]?C[s.by].sh:'';return['Service history',`<section class="card">${(JOBS[x]||[]).map(([d,w,a])=>`<div class="row" ${tap('go','invoice:4471')}><div class="grow"><div class="t">${esc(w)}</div><div class="s">${esc(d)}${v?' · '+esc(v):''}</div></div><span class="s">${money(a)}</span><span class="chev">›</span></div>`).join('')}</section><div class="note">${esc(s.n)} total ${money(s.hist)}. Tap a job to see its invoice.</div>`]},
+plate:x=>{const s=SYS[x];return['Serial number',`${s.plate?`<div class="metal plate"><span class="rv" style="left:8px;top:8px"></span><span class="rv" style="right:8px;top:8px"></span><div style="font-size:12px">${esc(s.model||s.m)}</div><div class="v" style="font-size:20px">${esc(s.plate)}</div></div>`:''}${fld('pl','Serial number',s.plate,'text','class="inp mono" autocapitalize="characters"')}${err()}${btns(`<button class="btn pri" ${at('plateSave',x)}>Save</button>`)}`]},
+recall:()=>['Fuel line clamp',`<section class="card"><div class="row"><span class="grow t">Recall</span><span class="src">USCG 24E-031</span></div><div class="row"><span class="grow t">Cost to you</span><span class="s">Free</span></div><div class="row"><span class="grow t">Where</span><span class="s">Any Vanquish dealer</span></div></section><div class="note">Book it with a dealer. When the work is done, mark it fixed so the record shows it to a buyer.</div>${goes('sr')}${btns(`<button class="btn pri" ${at('recallFix')}>Mark as fixed</button>`)}`],
+victron:()=>['Victron charger',`<div class="note">Victron asks you to register the charger to get the full warranty. Register by Jan 20.</div><section class="card"><div class="row"><span class="grow t">Serial</span><span class="s mono sel">HQ2241A9XK7</span><button class="btn sm" ${at('copy','HQ2241A9XK7')}>Copy</button></div></section>${btns(`<button class="btn pri" ${at('vicReg')}>Mark as registered</button>`)}`],
+wdet:i=>{const w=wOf(i);return[w.n,`<section class="card"><div class="row"><span class="grow t">Status</span>${chip(w.c,w.w)}</div><div class="row"><span class="s">${esc(w.d)}</span></div></section>${goes(w.by)}${w.w=='Expired'?'<div class="note">This warranty has ended. You can still contact them for paid repairs.</div>':''}${btns(w.w=='Expired'?'':`<button class="btn pri" ${at('sheet','claimNew',i)}>Start a claim</button>`)}`]},
+claimNew:i=>{const w=wOf(i);return['Start a claim',`<div><label class="lbl" for="cw">What went wrong</label><textarea class="inp" id="cw" placeholder="Generator stops after 10 minutes under load"></textarea></div>${fld('cd','When it started','2026-11-24','date')}<button class="btn" ${at('file','add')}>${svg(I.cam,18)}Add photos</button><div class="note">We attach the serial number, the warranty dates and the last service invoice for ${esc(w.n)}.</div>${goes(w.by)}${err()}${btns(`<button class="btn pri" ${at('claim',i)}>Send claim</button>`)}`]},
+cdet:j=>{const c=S.claims[j];return[c.n,`<section class="card"><div class="row"><span class="grow t">Status</span>${chip(c.c,c.st)}</div><div class="row"><span class="s">${esc(c.what)}</span></div><div class="row"><span class="grow s">${esc(c.d)}</span></div></section>${goes(c.by)}${btns()}`]},
+addwar:x=>{const b=x=='boat',pre=b?S.boatWar.n:(x&&SYS[x]?SYS[x].n:'');return[b?'Boat warranty':'Add a warranty',`${fld('wn','What it covers',pre)}${fld('we','Ends','','date')}<div><label class="lbl" for="wc">Covered by</label><select class="inp" id="wc">${b?'<option value="">Vanquish dealer</option>':''}${Object.keys(C).map(k=>`<option value="${k}">${esc(C[k].n)}</option>`).join('')}</select></div>${err()}${btns(`<button class="btn pri" ${at('warSave',x||'')}>Save</button>`)}`]},
+claims:()=>['Claims',`<section class="card">${S.claims.map((c,j)=>`<div class="row" ${tap('sheet','cdet',j)}><div class="grow"><div class="t">${esc(c.n)}</div><div class="s">${esc(cn(c.by))} · ${esc(c.d)}</div></div>${chip(c.c,c.st)}<span class="chev">›</span></div>`).join('')}</section><div class="note">To start a claim, open a warranty and tap Start a claim.</div>${btns()}`],
+trial:()=>['Start free trial',`<div class="note" style="text-align:center">30 days free. Alerts for every system, warranty and document. Cancel any time before Dec 24 and you pay nothing.</div><div class="s" style="text-align:center">Then $9 a month, or $89 a year. Renews automatically until you cancel in Settings, Apple ID, Subscriptions.</div>${btns(`<button class="btn pri" ${at('trialOn')}>Start free trial</button>`)}<div class="s" style="display:flex;justify-content:center;gap:20px"><a class="s" ${tap('restore')}>Restore purchases</a><a class="s" href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms</a><a class="s" href="https://yachtway.com/legal/?tab=privacy" target="_blank" rel="noopener">Privacy</a></div>`],
+auth:x=>['Confirm it is you',`<div class="note" style="text-align:center">Your last sign in was more than 10 minutes ago. Confirm it is you to show ${esc(S.creds[x].t)}.</div>${btns(`<button class="btn pri" ${at('authOk',x)}>Use Face ID</button>`,`<button class="btn" ${at('authOk',x)}>Use passcode</button>`)}`],
+orig:x=>{const v=INV.find(v=>v.id==x);return[v.f||'Original file',`${seg('origZ',[[1,'Fit'],[2,'Zoom']])}<div style="overflow:auto;max-height:62vh;border-radius:8px"><div style="width:${S.origZ*100}%;display:flex;flex-direction:column;gap:8px">${origIn(v)}</div></div>${btns()}`]},
+dish:x=>{const [id,i]=x.split('|'),d=i=='new'?{n:'',sn:''}:units(id)[i];return[i=='new'?'Add a dish':id=='sl'?'Dish':'Display',`${fld('dn','Name',d.n,'text',id=='sl'?'placeholder="Mast, port"':'')}${fld('ds','Serial number',d.sn,'text','autocomplete="off"'+(id=='sl'?' placeholder="KIT304125678"':''))}${err()}${btns(`<button class="btn pri" ${at('dishSave')}>Save</button>`)}`]},
+prepw:()=>[S.pre.pw?'Change password':'Add a password',`${fld('ppw','Password','','password','autocomplete="new-password"')}<div class="note">Buyers enter it to open the link. Send it to them separately.</div>${err()}${btns(`<button class="btn pri" ${at('prePw')}>Save</button>`)}`],
+credadd:()=>['Add a credential',`${fld('kn','Name','','text','placeholder="Dock box code"')}${fld('kv','Password','','password','autocomplete="off"')}${err()}${btns(`<button class="btn pri" ${at('credSave')}>Save</button>`)}`],
+invite:()=>{const r=S.sheet.role||'Crew';return['Invite',`${fld('inm','Name','','text','autocomplete="off"')}${fld('ie','Email','','email','placeholder="name@email.com" autocomplete="off"')}<div><span class="lbl">Role</span><div class="seg">${['Captain','Family','Service','Crew'].map(v=>`<button class="${r==v?'on':''}" ${at('set','sheet.role',v)}>${v}</button>`).join('')}</div></div><div class="note">${S.perms[r].filter(Boolean).length} of 6 permissions. Change them on the Share screen.</div>${err()}${btns(`<button class="btn pri" ${at('inviteSend')}>Send invite</button>`)}`]},
+person:i=>{const p=S.people[i];if(p.r=='Owner')return['You',`<div class="note" style="text-align:center">You own this boat. Only you can manage sharing or start a transfer.</div>${btns()}`];
+ return[p.n,`<div><span class="lbl">Role</span><div class="seg">${['Captain','Family','Service','Crew'].map(v=>`<button class="${p.r==v?'on':''}" ${at('personRole',i,v)}>${v}</button>`).join('')}</div></div><div class="note">${esc(p.m)}</div>
+ ${S.sheet.confirm?`<div class="note" style="color:var(--red)">${esc(p.n)} loses access right away.</div><div class="sbtns"><button class="btn dk" ${at('personRemove',i)}>Yes, remove</button><button class="btn" ${at('close')}>Keep</button></div>`:`<div class="sbtns">${p.inv?`<button class="btn" ${at('toast','Invite sent again')}>Resend invite</button>`:''}<button class="btn red" ${at('set','sheet.confirm',1)}>Remove access</button><button class="btn" ${at('close')}>Done</button></div>`}`]},
+trconfirm:()=>['Send transfer',`<div class="note" style="text-align:center">${esc(S.tr.email)} gets the whole file. When they accept, every share ends and you keep a read only archive.</div>${btns(`<button class="btn pri" ${at('trGo')}>Send transfer</button>`)}`],
+preview:()=>['What the buyer sees',`<section class="card">${TRK.map(([k,l])=>`<div class="row"><span class="grow t">${l}</span>${S.tr.on[k]?chip('ok','Shown'):chip('','Hidden')}</div>`).join('')}</section>${btns()}`],
+doctype:i=>{const h=S.sheet,t=h.t,custom=[...new Set(S.docs.map(d=>d.k))].filter(k=>k!='Other'&&!DTYPES.includes(k));return['What is this document?',`${fld0('dn','Document name',h.dn,'text','data-in="sheet.dn" autocomplete="off"')}<div><span class="lbl">Type</span><div style="display:flex;flex-wrap:wrap;gap:8px">${[...DTYPES,...custom,'Other'].map(k=>`<button class="btn sm${t==k?' pri':''}" aria-pressed="${t==k}" ${at('set','sheet.t',k)}>${esc(k)}</button>`).join('')}</div></div>${t=='Other'?fld0('dl','Name the type',h.lab,'text','data-in="sheet.lab" placeholder="For example, Crew contract" autocomplete="off"'):''}${err()}${btns(`<button class="btn pri" ${at('docType',i)}>Save</button>`)}`]},
+docdate:i=>[S.docs[i].n,`${fld('dd','Expiry date','','date')}${err()}${btns(`<button class="btn pri" ${at('docDate',i)}>Save</button>`)}`],
+doc:i=>{const d=S.docs[i];return[d.n,`<section class="card"><div class="row"><span class="grow t">Type</span><span class="s">${esc(d.k)}</span>${can(1)?`<button class="btn sm" ${at('docTypeOpen',i)}>Change</button>`:''}</div><div class="row"><span class="grow t">Added</span><span class="s">${esc(d.d.replace('Added ',''))}</span></div><div class="row"><span class="grow t">Expires</span>${d.exp?`<span class="s">${esc(d.exp)}</span>`:''}${can(2)?`<button class="btn sm" ${at('sheet','docdate',i)}>${d.exp?'Change':'Add expiry date'}</button>`:d.exp?'':'<span class="s">No date</span>'}</div>${d.f?`<div class="row"><span class="grow t">File</span><a class="btn sm" href="${d.f}" target="_blank" rel="noopener">Open</a></div>`:''}<div class="row"><span class="grow t">Original</span>${d.orig?`<span class="s">${esc(d.orig)}</span>`:''}${can(2)?`<button class="btn sm" ${at('file','orig',i)}>${d.orig?'Replace':'Upload original'}</button>`:d.orig?'':'<span class="s">None yet</span>'}</div></section>${S.sheet.confirm?`<div class="sbtns"><button class="btn dk" ${at('docDel',i)}>Yes, delete</button><button class="btn" ${at('close')}>Keep</button></div>`:`<div class="sbtns"><button class="btn red" ${at('set','sheet.confirm',1)}>Delete</button><button class="btn" ${at('close')}>Close</button></div>`}`]},
+expired:()=>['Expired, kept',`<section class="card">${['Insurance policy 2025','Insurance policy 2024','Florida registration 2025','Florida registration 2024','Haul out contract 2025','Slip lease 2024'].map(n=>`<div class="row"><span class="grow t">${n}</span><span class="s">Kept</span></div>`).join('')}</section><div class="note">Expired documents stay in the record. A buyer sees the history.</div>${btns()}`],
+pfield:k=>{const L={vendor:'Vendor',date:'Date',work:'Work',hours:'Engine hours',total:'Total'};return[L[k],`${k=='total'?mfld('pf',L[k],S.parsed[k]):fld('pf',L[k],S.parsed[k],k=='hours'?'number':'text',k=='hours'?'inputmode="decimal"':'')}${err()}${btns(`<button class="btn pri" ${at('pfSave',k)}>Save</button>`)}`]},
+form:()=>{const p=S.parsed;return['Service form',`${fld('f-vendor','Vendor',p.vendor)}${fld('f-date','Date',p.date)}${fld('f-work','Work',p.work)}${fld('f-hours','Engine hours',p.hours,'number','inputmode="numeric"')}${mfld('f-total','Total',p.total)}${err()}${btns(`<button class="btn pri" ${at('formSave')}>Save</button>`)}`]},
+fwd:()=>['Forward an email',`<div class="note" style="text-align:center">Forward an invoice or a quote to this address. Waylo reads it and asks you to check it.</div><section class="card"><div class="row"><span class="grow mono sel" style="font-size:14px">secondwind@in.yachtway.com</span><button class="btn sm" ${at('copy','secondwind@in.yachtway.com')}>Copy</button></div></section><div class="note">Demo address.</div>${btns()}`],
+hinfix:i=>{const a=S.ab,ch=a.hin[i],o=a.bad===+i?['7','1','2']:[ch];return[`Character ${+i+1}`,`<div class="note" style="text-align:center">${a.bad===+i?'Waylo could not tell. Pick what the plate shows.':'Fix this character if the plate shows something else.'}</div><div class="opts">${o.map(c=>`<button class="btn" ${at('hinSet',i,c)}>${c}</button>`).join('')}</div>${fld('hc','Or type it','','text','maxlength="1" class="inp mono" autocapitalize="characters" style="text-align:center"')}${err()}${btns(`<button class="btn pri" ${at('hinType',i)}>Use typed character</button>`)}`]},
+abfield:k=>{const l=ABF.find(f=>f[0]==k)[1];return[l,`${fld('abf',l,S.ab.f[k],'text',k=='year'?`inputmode="numeric" pattern="[0-9]*" maxlength="4" oninput="this.value=this.value.replace(/\\D/g,'')"`:'')}<div class="note">An edited field changes to Owner set.</div>${err()}${btns(`<button class="btn pri" ${at('abfSave',k)}>Save</button>`)}`]},
+hand:()=>['Enter the hull ID',`${fld('hh','12 characters',S.ab.step==2?S.ab.hin:'','text','maxlength="12" class="inp mono" autocapitalize="characters" autocomplete="off"')}${err()}${btns(`<button class="btn pri" ${at('handSave')}>Continue</button>`)}`]
+};
+function sheetHtml(){if(!S.sheet)return '';const[t,h]=SH[S.sheet.k](S.sheet.v);return `<div class="ov" ${at('ovclose')}><div class="sh" role="dialog" aria-modal="true" aria-label="${esc(t)}"><div class="grab"></div><button class="btn sm x" ${at('close')}>Close</button><h3>${esc(t)}</h3>${h}</div></div>`}
+const val=id=>{const e=document.getElementById(id);return e?e.value.trim():''};
+const fail=m=>{S.sheet.err=m};
+
+/* ---------- actions ---------- */
+let toastT;
+function toast(m){S.toast=m;clearTimeout(toastT);toastT=setTimeout(()=>{S.toast='';render()},2400)}
+function copy(t){(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{toast('Copied');render()},()=>{toast('Copy is blocked here. Select the text instead.');render()})}
+const A={
+go(v){S.st[S.tab].push(v);S.anim=1;S.sheet=null},
+reg(){S.q='Registration, Insurance';A.go('docs')},
+back(){if(S.st[S.tab].length>1){S.st[S.tab].pop();S.anim=1}},
+tab(v){if(S.tab==v)S.st[v]=[S.st[v][0]];S.tab=v;S.sheet=null;S.anim=1},
+sheet(v,x){S.sheet=v=='mm'?mmOpen(x):{k:v,v:x,err:''}},
+close(){S.sheet=null},ovclose(){S.sheet=null},
+set(p,x){setP(p,isNaN(x)||x===''?x:+x)},
+tog(p){setP(p,getP(p)?0:1)},
+toast(v){toast(v)},
+copy(v){copy(v);return false},
+shareContact(k){const c=C[k],t=[c.n,c.p,c.e].filter(Boolean).join('\n');if(navigator.share){navigator.share({title:c.n,text:t}).catch(()=>{});return false}copy(t);return false},
+importContact(){const f=(id,v)=>{const e=document.getElementById(id);if(e&&v)e.value=v};if(!(navigator.contacts&&navigator.contacts.select)){fail('Import is not available in this browser. Type the details below.');setTimeout(()=>{const e=document.getElementById('cn');if(e)e.focus()});return}
+ navigator.contacts.select(['name','tel','email']).then(([c])=>{if(!c)return;f('cn',(c.name||[])[0]);f('cp',(c.tel||[])[0]);f('ce',(c.email||[])[0])}).catch(()=>{});return false},
+viewAs(v){S.as=v;for(const k in S.st)S.st[k]=[S.st[k][0]];S.tab='home';S.sheet=null;S.anim=1;toast(v=='Owner'?'Back to your view':`${AS[v][1]}, ${v}`)},
+reset(){location.reload();return false},
+restore(){S.sheet=null;toast('No purchases to restore')},
+file(v,x){S.fileFor=v;S.fileX=x;fi.accept=v=='doc'||v=='orig'?'':v=='add'?'image/*,application/pdf':'image/*';x=='scan'?fi.setAttribute('capture','environment'):fi.removeAttribute('capture');fi.click();return false},
+hoursSave(v){const ks=v.split(','),n={};
+ for(const k of ks){const x=val('h-'+k);if(!/^\d+$/.test(x))return fail(`Enter whole hours for the ${HN[k].toLowerCase()}`);n[k]=+x;
+  if(S.H[k]!=null&&n[k]<S.H[k])return fail(`${HN[k]} cannot go below ${S.H[k]} h. Meters only count up.`);
+  if(S.H[k]!=null&&n[k]-S.H[k]>500)return fail(`${HN[k]}: that is more than 500 h since the last log. Check the number.`)}
+ Object.assign(S.H,n);S.logged='Nov 24, by you';S.sheet=null;toast('Hours saved')},
+cover(k){S.hero=S.photos[+k];toast('Cover photo set')},
+rmSysPh(v){const[id,k]=v.split('|');S.sp[id].splice(+k,1);S.sheet=null;toast('Photo removed')},
+rmPhoto(k){S.photos.splice(+k,1);S.hero=S.photos[0];toast('Photo removed')},
+done(id){const i=it(id),nt=val('dnote');i.note=nt;if(i.d)i.d={t:'Nov 2027',p:0,st:'ok',l:'Done today'};else i.due=S.H[SYS[i.s].hk]+i.ev;S.sheet=null;toast(`${i.t}: marked done`)},
+ivSave(id){const i=it(id),o=i.oem??=i.ev,v=+val('iv');if(!Number.isInteger(v)||v<1||v>2000)return fail('Enter an interval from 1 to 2,000 hours');if(v>o&&S.sheet.cf!==v){S.sheet.err='';S.sheet.cf=v;return}A.ivSet(id,v)},
+ivReset(id){A.ivSet(id,it(id).oem)},
+ivSet(id,v){const i=it(id),o=i.oem;i.due+=v-i.ev;i.ev=v;i.iv=v==o?`Every ${v} h`:`Every ${v} h (maker ${o} h)`;i.src=v==o?'Maker interval':'Owner set';S.sheet={k:'item',v:id,err:''};toast(v==o?'Back to the maker interval.':'Interval changed. Source is now Owner set.')},
+pick(k,x){SYS[x].by=k;S.sheet=null;toast(`${cn(k)} now services the ${SYS[x].n.toLowerCase()}`)},
+contactSave(x){const n=val('cn'),p=val('cp'),e=val('ce');if(!n)return fail('Add a name');if(!p&&!e)return fail('Add a phone or an email');if(e&&!okEmail(e))return fail('Check the email');
+ const id='c'+Date.now();C[id]={n,i:initials(n),tr:val('ct')||(x=='marina'?'Marina':'Other'),d:x=='marina'?S.marina:'Added today',p:p||'No phone',e:e||'No email',sys:[x=='marina'?'Marina':x?SYS[x].n:'Other']};if(SYS[x])SYS[x].by=id;S.sheet=null;toast(`${n} added`)},
+slipSave(){const mar=val('mar').trim(),no=val('slipno').trim(),ad=document.getElementById('mar').dataset.addr||'',v=mar&&(no?mar+', Slip '+no:mar),r=num('srate'),inc=S.sheet.inc!=null?S.sheet.inc==1:S.elecInc,e=inc?0:num('selec');if(!mar)return fail('Add the marina');if(!(r>0))return fail('Enter the monthly rate');if(!inc&&!(e>0))return fail('Enter the electricity amount, or pick Included in rate');S.slip=v;S.marina=mar;S.addr=ad;S.slipNo=no;S.slipRate=r;S.elecInc=inc;if(!inc)S.elec=e;S.sheet=null},
+mmPick(i){const h=S.sheet,x=mmList(h)[i],st=mmStep(h);h.q='';if(st=='t')h.t=x;else if(st=='mk'){h.mk=x;if(!(mmSrc(h)[x]||[]).length)h.man='model'}else mmDone(h.mk,x,h.t)},
+mmUp(k){const h=S.sheet;h.q='';h.man=0;if(k=='t'){h.t='';h.mk=''}else h.mk=''},
+mmOther(){const h=S.sheet;h.man=h.mk?'model':'make'},
+mmSave(){const h=S.sheet,mk=h.man=='make'?val('mmk'):h.mk,md=val('mmd'),t=h.t||val('mmt');if(!mk)return fail('Add a make');if(h.v=='new'&&!t)return fail('Add a type');if(h.v.startsWith('ab')&&!md)return fail('Add a model');mmDone(mk,md,t)},
+plateSave(x){const v=val('pl').toUpperCase();if(!v)return fail('Add the serial number');SYS[x].plate=v;S.sheet=null;toast('Serial saved')},
+recallFix(){S.recall=false;S.sheet=null;toast('Recall marked as fixed')},
+vicReg(){const w=S.wars.find(w=>w.id=='vic');Object.assign(w,{d:'Registered Nov 24 · Bluewater Electronics',c:'ok',w:'Active'});S.victron=true;S.sheet=null;toast('Victron charger registered')},
+claim(i){const w=wOf(i),what=val('cw');if(!what)return fail('Say what went wrong');S.claims.unshift({n:w.n,what,by:w.by,d:'Sent Nov 24',st:'Waiting',c:'warn'});S.sheet=null;toast(`Claim sent to ${cn(w.by)||'the provider'}`)},
+warSave(x){const n=val('wn'),e=val('we'),c=val('wc');if(!n)return fail('Say what it covers');if(!e)return fail('Pick the end date');
+ const end=fmtDate(e),by=c?cn(c):'Vanquish dealer';
+ if(x=='boat'){S.boatWar={n,d:`Structural · to ${end} · ${by}`}}
+ else{const soon=(new Date(e)-new Date('2026-11-24'))/864e5;S.wars.unshift({n,by:c,d:`Till ${end} · ${by}`,c:soon<0?'':soon<90?'warn':'ok',w:soon<0?'Expired':soon<90?'Expiring':'Active'});if(x&&SYS[x])SYS[x].war=`Till ${end}`}
+ S.sheet=null;toast('Warranty saved')},
+trialOn(){S.trial=true;Object.assign(S.rem,{d30:1,d7:1,hrs:1});S.sheet=null;toast('Trial started. 3 alerts are on.')},
+show(i){if(!S.authed){S.sheet={k:'auth',v:i,err:''};return}A.authOk(i)},
+authOk(i){S.authed=true;S.shown[i]=1;S.log.unshift({w:'You showed '+S.creds[i].t,t:'Nov 24, now'});S.sheet=null},
+hide(i){delete S.shown[i]},
+dishSave(){const n=val('dn'),sn=val('ds'),[id,x]=S.sheet.v.split('|'),L=units(id);if(!n||!sn)return fail('Add a name and a serial number');if(x=='new'){if(L.length>=10)return fail('One network holds up to 10 dishes');L.push({n,sn})}else Object.assign(L[x],{n,sn});S.sheet=null;toast(`${n} saved`)},
+credSave(){const n=val('kn'),v=val('kv');if(!n||!v)return fail('Add a name and a value');S.creds.push({t:n,v});S.sheet=null;toast(`${n} saved, hidden`)},
+inviteSend(){const nm=val('inm'),e=val('ie'),r=S.sheet.role||'Crew';if(!nm)return fail('Enter their name');if(!okEmail(e))return fail('Enter a valid email');if(S.people.length>=7)return fail('All 7 roles are used. Remove someone first.');
+ S.people.push({i:initials(nm),n:nm,m:e+' · Invite expires in 7 days',r,inv:1});S.sheet=null;toast('Invite sent')},
+personRole(i,r){S.people[i].r=r;toast(`${S.people[i].n} is now ${r}`)},
+personRemove(i){const p=S.people.splice(i,1)[0];S.sheet=null;toast(`${p.n} removed`)},
+perm(j){const P=S.perms[S.permRole];P[j]=P[j]?0:1},
+permRole(r){S.permRole=r;S.sheet=null},
+trSend(){const e=S.tr.email.trim();if(!okEmail(e)){S.tr.err='Enter the buyer email first';return}S.tr.err='';S.tr.email=e;S.sheet={k:'trconfirm',err:''}},
+trGo(){S.tr.sent=S.tr.email;S.sheet=null;toast('Transfer sent')},
+trCancel(){S.tr.sent=null;toast('Transfer canceled')},
+brkSend(){const e=val('bk');if(!okEmail(e)){S.brk.err='Enter your broker email';return}S.brk.err='';S.brk.sent=e;toast('Shared with your broker')},
+brkOff(){S.brk.sent='';S.sheet=null;toast('Stopped sharing with your broker')},
+preMake(){const w=val('ppw');if(w&&w.length<6)return toast('Use 6 or more characters for the password');S.pre.pw=w;S.pre.link='yachtway.com/b/second-wind-7k2q';toast(w?'Link created with a password':'Link created')},
+prePw(){const w=val('ppw');if(w.length<6)return fail('Use 6 or more characters');S.pre.pw=w;S.sheet=null;toast('Password saved')},
+prePwOff(){S.pre.pw='';toast('Password removed')},
+preOff(){S.pre.link='';toast('Link turned off')},
+capGen(){S.capGen=!S.capGen},
+invSave(){S.invSaved=true;A.back();toast('Invoice saved')},
+csv(){const sp=SP().sys,e=Object.entries(sp);copy('System,Spend 2026\n'+e.map(([k,v])=>`${k},${v}`).join('\n')+`\nTotal,${sum(sp)}`);return false},
+docDate(i){const v=val('dd');if(!v)return fail('Pick a date');S.docs[i].exp=fmtDate(v);S.sheet=null},
+docTypeOpen(i){const d=S.docs[i],c=DTYPES.includes(d.k)||S.docs.some((x,j)=>j!=i&&x.k==d.k);S.sheet={k:'doctype',v:i,err:'',t:c?d.k:'Other',dn:d.n,lab:c?'':d.k}},
+docType(i){const h=S.sheet,n=val('dn'),k=h.t=='Other'?val('dl'):h.t;if(!n)return fail('Type a name for the document');if(!h.t)return fail('Pick a type');if(!k)return fail('Type a name for the type, for example Crew contract');Object.assign(S.docs[i],{n,k});S.sheet=null;toast(n+' saved')},
+docDel(i){S.docs.splice(i,1);S.docCount--;S.sheet=null;toast('Document deleted')},
+chatSample(){S.chat.push({u:1,att:{sample:1}},{u:1,t:'Harbor Marine did the 100 hour service'});readInvoice('photo')},
+chatSend(){const t=S.draft.trim();if(!t)return;S.chat.push({u:1,t});S.draft='';
+ S.chat.push(S.parsed&&!S.parsed.saved?{w:1,t:'Noted. Check the card above, then save.'}:{w:1,t:'Got it. Send a photo of the invoice and I will read the vendor, the work and the total. Or I can save this as a note.',btn:['Save as a note','note']});S.chatScroll=1},
+note(){S.chat.push({w:1,t:'Saved as a note on VQ58.'});S.chatScroll=1;toast('Note saved')},
+chatSys(v){S.parsed.sys=v;S.parsed.err=''},
+chatSave(){const p=S.parsed;if(!p.sys){p.err='Pick Port, Starboard or Both first';return}
+ if(!(p.total>0))return void(p.err='Total must be more than $0');
+ p.saved=true;S.spend.sys.Engines+=p.total;S.spend.ven['Harbor Marine Service']=(S.spend.ven['Harbor Marine Service']||0)+p.total;S.spend.mon[10]+=p.total;{const a=(S.chat.findLast(m=>m.att)||{}).att||{};INV.unshift({id:'new'+INV.length,v:p.vendor,d:p.date,c:'Service',f:a.name||'invoice.jpg',img:a.img,url:a.url,l:(p.sys=='Both'?['port','stbd']:[p.sys=='Port'?'port':'stbd']).map((k,i,ks)=>[k,p.work,p.total/ks.length])})}
+ const ks=p.sys=='Both'?['port','stbd']:[p.sys=='Port'?'port':'stbd'],next=[];
+ ks.forEach(k=>{if(p.hours>S.H[k])S.H[k]=+p.hours;const o=IT.find(i=>i.s==k&&i.n=='Oil and filter');o.due=S.H[k]+o.ev;next.push(`${HN[k].toLowerCase()} next at ${o.due} h`)});
+ S.chat.push({w:1,t:`Saved to ${p.sys=='Both'?'both engines':HN[ks[0]].toLowerCase()}. ${money(p.total)} is in Spend. Oil and filter is reset: ${next.join(', ')}.`});S.chatScroll=1;toast('Saved')},
+pfSave(k){let v=val('pf');if(k=='hours'||k=='total'){v=num('pf');if(!(v>0))return fail('Enter a number above 0')}else if(!v)return fail('This cannot be empty');S.parsed[k]=v;S.parsed.set[k]=1;S.sheet=null},
+formSave(){const p=S.parsed,h=+val('f-hours'),t=num('f-total');if(!val('f-vendor'))return fail('Add the vendor');if(!(h>0)||!(t>0))return fail('Hours and total must be above 0');
+ [['vendor',val('f-vendor')],['date',val('f-date')],['work',val('f-work')],['hours',h],['total',t]].forEach(([k,v])=>{if(v!=p[k]){p[k]=v;p.set[k]=1}});S.sheet=null},
+abSample(){S.ab.step=2;S.anim=1},
+hinSet(i,c){const a=S.ab;a.hin=a.hin.slice(0,+i)+c+a.hin.slice(+i+1);if(a.bad===+i)a.bad=null;S.sheet=null},
+hinType(i){const c=val('hc').toUpperCase();if(!/^[A-Z0-9]$/.test(c))return fail('Type one letter or number');A.hinSet(i,c)},
+abfSave(k){const v=val('abf');if(!v)return fail('This cannot be empty');if(k=='year'&&!(/^\d{4}$/.test(v)&&v>=1900&&v<=new Date().getFullYear()+1))return fail('Enter a 4-digit year from 1900 to '+(new Date().getFullYear()+1));if(v!=S.ab.f[k]){S.ab.f[k]=v;S.ab.set[k]=1}S.sheet=null},
+handSave(){const v=val('hh').toUpperCase().replace(/[\s-]/g,'');if(!/^[A-Z0-9]{12}$/.test(v))return fail(`A hull ID has 12 letters and numbers. This has ${v.length}.`);S.ab.hin=v;S.ab.bad=null;S.ab.img='';S.ab.step=2;S.sheet=null;S.anim=1},
+abConfirm(){const a=S.ab;if(a.bad!==null){a.err=`Check character ${a.bad+1} first`;return}if(!a.name.trim()){a.err='Give the boat a name';return}a.err='';S.name=a.name.trim();a.step=3;S.anim=1},
+abOpen(){S.ab.step=1;S.ab.img='';S.st={home:['home'],boat:['boat'],add:['add'],share:['share']};S.tab='boat';S.anim=1;toast(`${S.name} is in your boats`)}
+};
+// Draws an uploaded PDF as page images with pdf.js, loaded only when a PDF invoice is opened.
+// shortcut: first 5 pages only, raise the cap if longer invoices show up.
+setTimeout(()=>console.assert(INV.every(v=>v.l.length&&v.l.every(([k,,n])=>(SYS[k]||I[k])&&n>0)),'invoice line without an icon or amount'));
+function pdfPages(v){if(v.busy)return;v.busy=1;
+ const ld=u=>new Promise((ok,no)=>{const e=document.createElement('script');e.src=u;e.onload=ok;e.onerror=no;document.head.append(e)}),B='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+ (window.pdfjsLib?Promise.resolve():ld(B+'pdf.min.js').then(()=>ld(B+'pdf.worker.min.js'))).then(async()=>{
+  const d=await pdfjsLib.getDocument({data:Uint8Array.from(atob(v.url.split(',')[1]),c=>c.charCodeAt(0))}).promise,out=[];
+  for(let i=1;i<=Math.min(d.numPages,5);i++){const p=await d.getPage(i),vp=p.getViewport({scale:2}),c=document.createElement('canvas');c.width=vp.width;c.height=vp.height;await p.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;out.push(c.toDataURL())}
+  v.pages=out}).catch(()=>{v.pages=[]}).then(render)}
+function readInvoice(from){S.parsed={from,vendor:'Harbor Marine Service',date:'Oct 12, 2026',work:'100 h service',hours:412,total:1840,sys:'',set:{},saved:false,err:''};
+ S.chat.push({w:1,t:'Here is what I read. Check it, then save.'},{card:1});S.chatScroll=1}
+fi.onchange=()=>{const f=fi.files[0];fi.value='';if(!f)return;const r=new FileReader();
+ r.onload=()=>{const u=r.result,img=f.type.startsWith('image/');
+  switch(S.fileFor){
+  case 'orig':S.docs[S.fileX].orig=f.name;S.mb+=Math.max(1,Math.round(f.size/1048576));toast('Original added to '+S.docs[S.fileX].n);break;
+  case 'hero':S.hero=u;toast('Photo added');break;
+  case 'sysph':(S.sp[S.fileX]=S.sp[S.fileX]||[]).unshift({u,d:'Nov 25, 2026',n:''});S.sheet={k:'sphoto',v:S.fileX+'|0',err:''};toast('Photo added');break;
+  case 'photo':S.photos.push(u);if(S.hero=='boat.jpg')S.hero=u;toast('Photo added');break;
+  case 'doc':S.docs.unshift({n:f.name.replace(/\.[^.]+$/,''),k:'Other',d:'Added Nov 24, 2026'});S.docCount++;S.mb+=Math.max(1,Math.round(f.size/1048576));S.sheet={k:'doctype',v:0,err:'',t:'',dn:S.docs[0].n,lab:''};break;
+  case 'plate':Object.assign(SYS[S.fileX],{nd:0,img:img?u:'',m:'Garmin chartplotter',model:'Garmin chartplotter',plate:'E70659-0412'});toast('Plate read. Demo values.');break;
+  case 'scan':S.ab.img=img?u:'';S.ab.step=2;S.anim=1;break;
+  case 'add':S.chat.push({u:1,att:{name:f.name,img:img?u:'',url:u}});readInvoice(img?'photo':'PDF');S.chat.splice(-2,1,{w:1,t:'Here is what I read. Check it, then save. Demo: the values come from a sample invoice.'});break;}
+  render()};
+ r.readAsDataURL(f)};
+
+const qhit=(d,q)=>!q||q.split(',').some(t=>(t=t.trim())&&(d.n+' '+d.k).toLowerCase().includes(t));
+console.assert(qhit({n:'A',k:'Insurance'},'registration, insurance')&&!qhit({n:'A',k:'Survey'},'registration, insurance')&&qhit({n:'A',k:'x'},''));
+const keyDocs=()=>{const sub={Insurance:'J. Ruiz · renews May 1'};return S.docs.map((d,i)=>({d,i})).filter(({d})=>d.k=='Insurance'||d.k=='Registration').map(({d,i})=>`<div class="row"><div class="grow" ${tap('sheet','doc',i)}><div class="t">${esc(d.n)}</div><div class="s">${esc(sub[d.k]||(d.exp?'Expires '+d.exp:d.k))}</div></div>${d.orig?`<button class="btn sm" ${at('sheet','doc',i)}>View original</button>`:can(2)?`<button class="btn sm" ${at('file','orig',i)}>Upload original</button>`:'<span class="s">No original yet</span>'}</div>`).join('')};
+/* ---------- desktop: sidebar, top bar, and table views for the busiest screens ---------- */
+const isD=()=>document.body.classList.contains('desk');
+const SIDE=[['Boat',[['home','Overview'],['boat','Systems'],['service','Service'],['docs','Documents'],['war','Warranties'],['spend','Spend',4],['invs','Invoices',4],['contacts','Contacts'],['creds','Credentials',3],['rem','Reminders']]],['Share',[['share','People and access'],['transfer','Transfer'],['broker','Your broker'],['presale','Pre-sale file']]]];
+const SIDEK=SIDE.flatMap(g=>g[1].map(x=>x[0])),SHAREK=SIDE[1][1].map(x=>x[0]);
+S.gq='';S.dsel='port';S.sf='all';
+const pnl=(t,a,h)=>`<section class="pnl"><div class="ch"><h2>${t}</h2>${a||''}</div>${h}</section>`;
+const tbl=(hd,rows)=>`<table class="dt"><thead><tr>${hd.map(h=>`<th${h[0]=='>'?' class="r"':''}>${h.replace('>','')}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>`;
+const acts=(i,s)=>{const k=SYS[i.s].by;return `<div class="acts">${s.st!='ok'?`${k?`<button class="btn sm" ${at('sheet','call',k)}>Contact</button>`:''}<button class="btn sm" ${at('sheet','markdone',i.id)}>Mark done</button>`:''}</div>`};
+function dSide(){
+ const n=cur().split(':')[0],on=n=='sys'?'boat':n,ov=IT.filter(i=>stat(i).st=='err').length;
+ const cnt={service:ov?`<small class="err">${ov} overdue</small>`:'',docs:`<small>${S.docCount}</small>`,war:`<small>${S.wars.length+1}</small>`,contacts:`<small>${Object.keys(C).length}</small>`};
+ return `<aside class="dside"><div class="dbrand">${YWL}<div style="margin-top:12px">My Boat</div></div>${can(2)?`<button class="btn pri" ${at('dnav','add')}>${svg(I.add,18)}Add to the record</button>`:''}`+
+  SIDE.map(([g,L])=>`<h6>${g}</h6>`+L.filter(x=>x[2]==null||can(x[2])).map(([k,l])=>`<a ${tap('dnav',k)}${on==k?' aria-current="page"':''}>${l}${cnt[k]||''}</a>`).join('')).join('')+`</aside>`;
+}
+function dTop(){
+ const q=(S.gq||'').trim().toLowerCase();let res='';
+ if(q){const m=s=>String(s).toLowerCase().includes(q),G=[
+  ['Systems',Object.keys(SYS).filter(i=>m(SYS[i].n+' '+(SYS[i].model||'')+' '+(SYS[i].m||''))).map(i=>[SYS[i].n,'go|sys:'+i,sysSt(i).w])],
+  ['Service',IT.filter(i=>m(i.t)).map(i=>[i.t,'sheet|item|'+i.id,WORD[stat(i).st]])],
+  ['Documents',S.docs.map((d,i)=>[d,i]).filter(([d])=>m(d.n+' '+d.k)).map(([d,i])=>[d.n,'sheet|doc|'+i,d.k])],
+  ['Contacts',Object.keys(C).filter(k=>m(C[k].n+' '+(C[k].tr||''))).map(k=>[C[k].n,'sheet|call|'+k,C[k].tr])]].filter(g=>g[1].length);
+  res=`<div class="dres">${G.length?G.map(([h,L])=>`<h6>${h}</h6>`+L.slice(0,5).map(([t,v,s])=>`<a ${tap('gpick',v)}><span>${esc(t)}</span><span class="s">${esc(s||'')}</span></a>`).join('')).join(''):`<p>Nothing matches "${esc(S.gq)}". Try a system, a part or a document.</p>`}</div>`}
+ const o=S.as=='Owner',role=`<b>${AS[S.as][1]}</b>${S.as}${o?'':'<span>Back to owner</span>'}`;
+ return `<header class="dtop"><div class="dsearch"><input class="inp" id="gq" type="search" data-in="gq" data-rr="1" placeholder="Search systems, service, documents, contacts" value="${esc(S.gq)}" aria-label="Search everything" autocomplete="off">${res}</div>${o?`<span class="drole">${role}</span>`:`<button class="drole" ${at('viewAs','Owner')}>${role}</button>`}${me()}</header>`;
+}
+const SCD={
+home(){
+ const b2=S.bi==1,f=S.ab.f,L=IT.map(i=>({i,s:stat(i)})),ov=b2?0:L.filter(x=>x.s.st=='err').length,ds=b2?1:L.filter(x=>x.s.st=='warn').length;
+ const due=b2?[]:[...L].sort((a,b)=>RANK[a.s.st]-RANK[b.s.st]||b.s.p-a.s.p).slice(0,5);
+ const kpi=(l,n,c,v)=>`<button class="kpi" ${at('go',v)}><span>${l}</span><b class="${c}">${n}</b></button>`;
+ const eng=b2?`<div><div class="s">Outboard</div>${hm(96)}</div>`:HM().map(([k,n])=>`<div><div class="s">${n}</div>${hm(S.H[k])}</div>`).join('');
+ const hero=`<section class="bhero"><div class="pic"><img src="${b2?'boat.jpg':S.hero}" alt="${b2?'Blue Heron':esc(S.name)}, side view">${b2?'':`<button class="ph-add" ${at('sheet','gallery')}>${svg(I.cam,16)}${S.photos.length==1?'1 photo':S.photos.length+' photos'}</button>`}</div>
+  <div class="meta"><div class="eng">${eng}</div>${b2||!SC.vqglance?'':SC.vqglance()}<div class="s">${b2?'Last logged Oct 30, by you':S.autoH?'Hours update automatically':'Last logged '+S.logged}</div><div class="status">${ov?chip('err',ov+' overdue'):''}${ds?chip('warn',ds+' due soon'):''}${ov||ds?'':chip('ok','All up to date')}</div>${b2||S.autoH?'':`<div><button class="btn sm" ${at('sheet','hours')}>Log hours</button></div>`}</div></section>`;
+ const kpis=[kpi('Overdue',ov,ov?'err':'','service'),kpi('Due soon',ds,ds?'warn':'','service'),can(4)&&!b2?kpi('Spend 2026',money(sum(SP().sys)),'','spend'):kpi('Warranties',b2?1:S.wars.length+1,'','war'),kpi('Documents',b2?3:S.docCount,'','docs')].join('');
+ const rows=b2?`<tr><td><div class="t">Outboard 100 hour service</div><div class="s">Due at 100 hours</div></td><td>Outboard</td><td>${chip('warn','Due soon')}</td><td></td></tr>`
+  :due.map(({i,s})=>`<tr ${tap('sheet','item',i.id)}><td><div class="t">${esc(i.t)}</div><div class="s">${esc(s.m)}</div></td><td>${esc(SYS[i.s].n)}</td><td>${chip(s.st,WORD[s.st])}</td><td>${acts(i,s)}</td></tr>`).join('');
+ const slip=b2?`<div class="row"><div class="grow t">Trailer, home driveway</div></div>`:`<div class="row"><div class="grow"><div class="t">${esc(S.slip)}</div><div class="s">${slipLine()}</div></div><a class="btn sm" href="${dirUrl()}" target="_blank" rel="noopener">Directions</a></div>`+mcRows();
+ const con=['cl','hm','dm','jr'].map(k=>`<div class="row" ${tap('sheet','call',k)}><div class="av">${C[k].i}</div><div class="grow"><div class="t">${esc(C[k].n)}</div><div class="s">${C[k].tr}</div></div>${callBtn(k)}</div>`).join('');
+ const docs=tbl(['Name','Type','Added'],S.docs.slice(0,5).map((d,i)=>`<tr ${tap('sheet','doc',i)}><td class="t">${esc(d.n)}</td><td>${esc(d.k)}</td><td class="s">${esc(d.d.replace('Added ',''))}</td></tr>`).join(''));
+ const wars=tbl(['Warranty','Coverage','Status'],[{n:S.boatWar.n,d:S.boatWar.d,c:'ok',w:'Active'},...S.wars].map(w=>`<tr ${tap('go','war')}><td class="t">${esc(w.n)}</td><td class="s">${esc(w.d.split(' · ')[0])}</td><td>${chip(w.c,w.w)}</td></tr>`).join(''));
+ return `<div class="hd"><div style="flex:1"><h1>${b2?'Blue Heron':esc(S.name)}</h1><div class="s">${b2?'Boston Whaler Montauk 170 · 2021 · 17 ft':`${esc(f.make)} ${esc(f.model)} · ${esc(f.year)} · ${esc(f.len)} · <span ${tap('reg')} aria-label="Open registration documents" style="white-space:nowrap;cursor:pointer">${KYF}George Town</span>`}</div></div></div><div class="body dk">
+ <div class="dg"><div class="c8" style="display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-content:start">${hero}${b2||!SC.vqhome?'':`<div class="vqd">${SC.vqhome()}</div>`}${pnl('Due next',`<a ${tap('dnav','service')}>All service</a>`,tbl(['Item','System','Status',''],rows))}${pnl('Recent documents',`<a ${tap('dnav','docs')}>All ${S.docCount}</a>`,docs)}${pnl('Warranties',`<a ${tap('dnav','war')}>All</a>`,wars)}</div>
+ <div class="c4" style="display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-content:start"><div class="kpis" style="grid-template-columns:repeat(2,minmax(0,1fr))">${kpis}</div>${pnl('Insurance and registration',`<a ${tap('dnav','docs')}>All</a>`,keyDocs())}${pnl('Home slip',can(1)?`<a ${tap('sheet','slip')}>Edit</a>`:'',slip)}${pnl('Key contacts',`${can(1)?`<a ${tap('sheet','addcontact')} aria-label="Add contact">+ Add</a> `:''}<a ${tap('dnav','contacts')}>All ${Object.keys(C).length}</a>`,con)}</div></div></div>`;
+},
+boat(){
+ const ids=Object.keys(SYS),q=(S.bq||'').trim().toLowerCase(),hit=ids.filter(i=>[SYS[i].n,SYS[i].m,SYS[i].model,sub(i)].join(' ').toLowerCase().includes(q));
+ const sel=SYS[S.dsel]?S.dsel:ids[0],s=SYS[sel],st=sysSt(sel);
+ const rows=hit.map(id=>{const x=SYS[id],c=sysSt(id);return `<tr ${tap('set','dsel',id)} aria-selected="${id==sel}"><td><div class="cell">${thumb(x)}<div><div class="t">${esc(x.n)}</div><div class="s">${esc(sub(id))}</div></div></div></td><td>${esc(x.model||x.m||'Not set')}</td><td>${chip(c.c,c.w)}</td></tr>`}).join('');
+ const det=SC.sys(sel).replace(/^<div class="hd">[\s\S]*?<\/div>/,'');
+ return `<div class="hd"><h1>Systems</h1>${can(1)?`<button class="btn sm" ${at('sheet','mm','new')}>Add system</button>`:''}</div><div class="body dk"><div class="split"><div style="display:grid;gap:14px">
+ <div class="tools"><input class="inp" id="bq" type="search" data-in="bq" data-rr="1" placeholder="Search ${ids.length} systems" value="${esc(S.bq||'')}" aria-label="Search systems" autocomplete="off"></div>
+ <section class="pnl tb">${hit.length?tbl(['System','Make and model','Status'],rows):`<p class="s" style="padding:14px">Nothing matches "${esc(S.bq)}". Try a make, a model or a type.</p>`}</section></div>
+ <aside class="dpanel" aria-label="${esc(s.n)}"><div class="dph"><h2>${esc(s.n)}</h2>${chip(st.c,st.w)}</div>${det}</aside></div></div>`;
+},
+service(){
+ const L=IT.map(i=>({i,s:stat(i)})),f=S.sf,x=L.filter(y=>f=='all'||y.s.st==f).sort((a,b)=>RANK[a.s.st]-RANK[b.s.st]||b.s.p-a.s.p),n=st=>L.filter(y=>y.s.st==st).length;
+ const rows=x.map(({i,s})=>`<tr ${tap('sheet','item',i.id)}><td class="t">${esc(i.t)}</td><td>${esc(SYS[i.s].n)}</td><td>${esc(i.iv)}</td><td class="s">${esc(i.src)}</td><td>${chip(s.st,WORD[s.st])}</td><td class="r">${esc(s.m)}</td><td>${acts(i,s)}</td></tr>`).join('');
+ return `<div class="hd"><h1>Service</h1>${S.autoH?'':`<button class="btn sm" ${at('sheet','hours')}>Log hours</button>`}</div><div class="body dk">
+ <div class="kpis">${[...EN(),'gen','sk'].map(k=>`<div class="kpi"><span>${HN[k]}</span><b>${S.H[k].toLocaleString('en-US')} h</b></div>`).join('')}</div>
+ <div class="tools">${seg('sf',[['all','All '+L.length],['err','Overdue '+n('err')],['warn','Due soon '+n('warn')],['ok','OK '+n('ok')]])}<span class="s" style="margin-left:auto">${S.autoH?'Hours update automatically':'Last logged '+S.logged}</span></div>
+ <section class="pnl tb">${x.length?tbl(['Item','System','Interval','Source','Status','>Due',''],rows):'<p class="s" style="padding:14px">Nothing in this group.</p>'}</section></div>`;
+},
+docs(){
+ const q=S.q.trim().toLowerCase(),L=S.docs.map((d,i)=>({d,i})).filter(({d})=>qhit(d,q));
+ const rows=L.map(({d,i})=>`<tr ${tap('sheet','doc',i)}><td><div class="cell">${svg(I.doc)}<span class="t">${esc(d.n)}</span></div></td><td>${esc(d.k)}</td><td class="s">${esc(d.d.replace('Added ',''))}</td><td>${d.exp?`<span class="s">${esc(d.exp)}</span> ${expChip(d.exp)}`:''}</td></tr>`).join('');
+ return `<div class="hd"><h1>Documents</h1><button class="btn sm pri" ${at('file','doc')}>Upload</button></div><div class="body dk">
+ <div class="tools"><input class="inp" id="q" type="search" data-in="q" data-rr="1" placeholder="Search ${S.docCount} documents" value="${esc(S.q)}" aria-label="Search documents" autocomplete="off"><button class="btn sm" ${at('sheet','expired')}>Expired, kept: 6</button><span class="s" style="margin-left:auto">${S.mb} MB of 1 GB · ${S.docCount} documents</span></div>
+ <section class="pnl tb">${L.length?tbl(['Name','Type','Added','Expires'],rows):`<p class="s" style="padding:14px">Nothing matches "${esc(S.q)}" in the documents you can see here.</p>`}</section></div>`;
+}};
+const _go=A.go;
+A.go=v=>{if(isD()){if(v.startsWith('sys:')){S.dsel=v.slice(4);return A.dnav('boat')}if(SIDEK.includes(v))return A.dnav(v)}_go(v)};
+A.dnav=v=>{S.sheet=null;S.gq='';S.anim=1;const r=['home','boat','add','share','ctl'].includes(v)?v:SHAREK.includes(v)?'share':'boat';S.tab=r;S.st[r]=r==v?[v]:[r,v]};
+A.gpick=v=>{S.gq='';const[a,b,c]=v.split('|');return A[a](b,c)};
+/* ---------- render ---------- */
+let lastKey='',lastSh='',lastTab='',lastLen=0;const SCROLL={};
+const cur=()=>S.st[S.tab][S.st[S.tab].length-1];
+function render(){
+ const D=isD(),r=cur(),[n,arg]=r.split(':'),key=S.tab+S.st[S.tab].length+r,b=app.querySelector(D?'.scr':'.scr .body');if(b&&lastKey)SCROLL[lastKey]=b.scrollTop;
+ // a push to a deeper screen starts at the top; back, tab switch and same-screen renders restore
+ const scroll=key==lastKey?SCROLL[key]||0:S.tab==lastTab&&S.st[S.tab].length>lastLen?0:SCROLL[key]||0;
+ const ae=document.activeElement,aid=ae&&app.contains(ae)&&ae.id?ae.id:null,sel=aid&&ae.selectionStart;
+ const sk=S.sheet?S.sheet.k+'|'+S.sheet.v:'',vals={};
+ if(sk&&sk==lastSh)app.querySelectorAll('.sh input,.sh textarea,.sh select').forEach(e=>{if(e.id)vals[e.id]=e.value});
+ app.className='ph '+(THEME[n]||'t-sky');
+ const tabs=[['home','Home',I.home],['boat','Boat',I.boat],['ctl','Control',I.ctl],['add','Add',I.add],['share','Share',I.share]].filter(([k])=>k!='add'||can(2));
+ if(D)app.innerHTML=dSide()+dTop()+`<main class="scr${S.anim?' in':''}">${(SCD[n]||SC[n])(arg)}</main>${sheetHtml()}${S.toast?`<div class="toast" role="status">${esc(S.toast)}</div>`:''}`;
+ else app.innerHTML=`<div class="scr${S.anim?' in':''}">${S.as=='Owner'?SC[n](arg):SC[n](arg).replace(/<div class="body"[^>]*>/,m=>m+`<button class="asbar" ${at('viewAs','Owner')}><b>${AS[S.as][1]}</b> · ${S.as}<span>Back to owner</span></button>`)}</div><nav class="tabbar">${tabs.map(([k,l,p])=>`<button class="${S.tab==k?'on':''}" ${at('tab',k)}${S.tab==k?' aria-current="page"':''}>${svg(p,24)}${l}</button>`).join('')}</nav>${sheetHtml()}${S.toast?`<div class="toast" role="status">${esc(S.toast)}</div>`:''}`;
+ for(const id in vals){const e=document.getElementById(id);if(e)e.value=vals[id]}
+ const nb=app.querySelector(D?'.scr':'.scr .body');if(nb){if(S.chatScroll&&n=='add'){nb.scrollTop=nb.scrollHeight;S.chatScroll=0}else nb.scrollTop=scroll}
+ if(aid){const e=document.getElementById(aid);if(e){e.focus({preventScroll:true});try{if(sel!=null)e.setSelectionRange(sel,sel)}catch(_){}}}
+ if(S.sheet&&sk!=lastSh){const f=app.querySelector('.sh input:not([type=date]),.sh textarea');if(f&&matchMedia('(hover:hover)').matches)f.focus()}
+ const bx=app.querySelector('.boats');if(bx){bx.scrollLeft=bx.children[S.bi].offsetLeft-bx.offsetLeft;let t;bx.onscroll=()=>{clearTimeout(t);t=setTimeout(()=>{const i=Math.round(bx.scrollLeft/bx.clientWidth);if(i!=S.bi){S.bi=i;render()}},120)}}
+ if(!D&&nb&&app.querySelector('.sub.hs')){const sc=nb.parentNode;const f=()=>sc.classList.toggle('col',nb.scrollTop>(sc.classList.contains('col')?4:20));f();nb.onscroll=f}
+ S.anim=0;lastKey=key;lastSh=sk;lastTab=S.tab;lastLen=S.st[S.tab].length;
+}
+
+/* EasySign calendar dialog (proto/calendar-dialog.tsx): month and year pickers, staged day, Use and Clear */
+const CAL_M=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const calIso=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+// past events may go back to 1990; everything else stops at last month, as in EasySign
+const calFloor=l=>{const n=new Date();return /start|built|bought|birth/i.test(l)?1990*12:n.getFullYear()*12+n.getMonth()-1};
+function openCal(id,label,back){
+ const inp=document.getElementById(id),now=new Date(),floor=calFloor(label);
+ const p=/^(\d{4})-(\d{2})-(\d{2})$/.exec(inp.value);
+ let y=p?+p[1]:now.getFullYear(),m=p?+p[2]-1:now.getMonth(),st=inp.value,menu=false,foc=st;
+ const bd=document.createElement('div');bd.className='cal-bd';document.body.append(bd);
+ const close=()=>{bd.remove();removeEventListener('keydown',key,true);back.focus()};
+ const go=(ny,nm)=>{const d=new Date(ny,nm,1);y=d.getFullYear();m=d.getMonth();if(y*12+m<floor){y=Math.floor(floor/12);m=floor%12}};
+ const draw=()=>{
+  const first=new Date(y,m,1).getDay(),n=new Date(y,m+1,0).getDate(),tIso=calIso(now.getFullYear(),now.getMonth(),now.getDate());
+  if(!foc||foc.slice(0,7)!=calIso(y,m,1).slice(0,7))foc=st&&st.slice(0,7)==calIso(y,m,1).slice(0,7)?st:tIso.slice(0,7)==calIso(y,m,1).slice(0,7)?tIso:calIso(y,m,1);
+  const yrs=[];for(let k=Math.max(now.getFullYear()+(floor<1991*12?0:30),y);k>=Math.min(Math.floor(floor/12),y);k--)yrs.push(k);
+  let cells='';for(let k=0;k<first;k++)cells+='<span></span>';
+  for(let d=1;d<=n;d++){const iso=calIso(y,m,d);cells+=`<button type="button" data-d="${iso}" class="${iso==st?'on':iso==tIso?'td':''}" tabindex="${iso==foc?0:-1}" aria-pressed="${iso==st}" aria-label="${new Date(y,m,d).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})}">${d}</button>`}
+  bd.innerHTML=`<div class="cal" role="dialog" aria-modal="true" aria-label="Choose ${esc(label.toLowerCase())}"><div class="cal-h"><button type="button" class="ib" data-k="prev" aria-label="Previous month" ${y*12+m>floor?'':'disabled'}><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 2.5 4 6l3.5 3.5"/></svg></button><div class="mid"><button type="button" class="mm" data-k="menu" aria-expanded="${menu}">${CAL_M[m]} ${menu?'▴':'▾'}</button><select aria-label="Year">${yrs.map(k=>`<option ${k==y?'selected':''}>${k}</option>`).join('')}</select></div><button type="button" class="ib" data-k="next" aria-label="Next month"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg></button><button type="button" class="ib" data-k="x" aria-label="Close date picker">×</button></div>${menu?`<div class="cal-months">${CAL_M.map((nm,k)=>`<button type="button" data-mo="${k}" class="${k==m?'on':''}" ${y*12+k<floor?'disabled':''}>${nm.slice(0,3)}</button>`).join('')}</div>`:''}<p class="cal-hint">Choose ${esc(label.toLowerCase())}</p><div class="cal-grid" role="group" aria-label="${CAL_M[m]} ${y}. Use the arrow keys to move between days.">${['Su','Mo','Tu','We','Th','Fr','Sa'].map(w=>`<span class="wd">${w}</span>`).join('')}${cells}</div><div class="cal-f"><button type="button" class="clr" data-k="clr">Clear</button><button type="button" class="use" data-k="use" ${st?'':'disabled'}>${st?'Use '+fmtDate(st):'Select a date'}</button></div></div>`;
+ };
+ const set=v=>{inp.value=v;back.classList.toggle('cph',!v);back.firstChild.textContent=v?fmtDate(v):'Pick a date';close()};
+ const key=e=>{
+  if(e.key=='Escape'){e.preventDefault();e.stopPropagation();close();return}
+  const d=e.target.dataset&&e.target.dataset.d,step={ArrowLeft:-1,ArrowRight:1,ArrowUp:-7,ArrowDown:7}[e.key];
+  if(!d||step==null)return;e.preventDefault();
+  const t=new Date(d+'T12:00:00');t.setDate(t.getDate()+step);if(t.getFullYear()*12+t.getMonth()<floor)return;
+  foc=calIso(t.getFullYear(),t.getMonth(),t.getDate());go(t.getFullYear(),t.getMonth());draw();bd.querySelector(`[data-d="${foc}"]`).focus()};
+ addEventListener('keydown',key,true);
+ bd.onclick=e=>{if(e.target==bd)return close();const b=e.target.closest('button');if(!b)return;const k=b.dataset.k;
+  if(b.dataset.d){st=foc=b.dataset.d;menu=false}else if(b.dataset.mo){go(y,+b.dataset.mo);menu=false}
+  else if(k=='prev')go(y,m-1);else if(k=='next')go(y,m+1);else if(k=='menu')menu=!menu;
+  else if(k=='x')return close();else if(k=='clr')return set('');else if(k=='use')return set(st);
+  draw();(bd.querySelector(b.dataset.d?`[data-d="${st}"]`:`[data-k="${k}"]`)||bd.querySelector('.cal')).focus()};
+ bd.onchange=e=>{go(+e.target.value,m);draw()};
+ draw();(bd.querySelector('.cal-grid [tabindex="0"]')).focus();
+}
+app.addEventListener('click',e=>{const cb=e.target.closest('[data-cal]');if(cb){openCal(cb.dataset.cal,cb.dataset.l,cb);return}const pi=e.target.closest('[data-pi]');if(pi){const[n,a]=MARINAS[pi.dataset.pi],m=document.getElementById('mar');m.value=n;m.dataset.addr=a;document.getElementById('paddr').textContent=a;document.getElementById('places').innerHTML='';document.getElementById('slipno').focus();return}const el=e.target.closest('[data-a]');if(!el)return;const a=el.dataset.a;if(a=='ovclose'&&e.target!==el)return;
+ if(!A[a])return;e.preventDefault();if(A[a](el.dataset.v,el.dataset.x,el)!==false)render()});
+app.addEventListener('keydown',e=>{
+ if(e.key=='Escape'&&(S.sheet||S.gq)){S.sheet?S.sheet=null:S.gq='';render();return}
+ if(e.target.id=='draft'&&e.key=='Enter'){A.chatSend();render();return}
+ if((e.key=='Enter'||e.key==' ')&&e.target.getAttribute('role')=='button'){e.preventDefault();e.target.click()}});
+app.addEventListener('input',e=>{const el=e.target;if(el.dataset.place!=null){el.dataset.addr='';document.getElementById('paddr').textContent='';document.getElementById('places').innerHTML=placeHits(el.value).map(([n,a],i)=>`<button type="button" role="option" data-pi="${MARINAS.findIndex(m=>m[0]==n)}"><b>${esc(n)}</b><span>${esc(a)}</span></button>`).join('')}if(el.dataset.money!=null){const fromEnd=el.value.length-el.selectionStart;el.value=commas(el.value);const p=Math.max(0,el.value.length-fromEnd);el.setSelectionRange(p,p)}if(!el.dataset.in)return;setP(el.dataset.in,el.value);if(el.id=='draft')el.nextElementSibling.disabled=!el.value.trim();if(el.dataset.rr)render()});
+/* phone or desktop layout; the choice is remembered in this browser only */
+const modeBar=document.querySelector('.mode');
+function setMode(d){d=d&&innerWidth>=900;document.body.classList.toggle('desk',d);modeBar.querySelectorAll('button').forEach(b=>{const on=(b.dataset.m=='1')==d;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)})}
+let wantDesk=innerWidth>=1100;try{const v=localStorage.getItem('mb-desk');if(v!=null)wantDesk=v=='1'}catch(_){}
+modeBar.onclick=e=>{const b=e.target.closest('button');if(!b)return;wantDesk=b.dataset.m=='1';try{localStorage.setItem('mb-desk',wantDesk?'1':'0')}catch(_){}setMode(wantDesk);render()};
+addEventListener('resize',()=>{const d=isD();setMode(wantDesk);if(d!=isD())render()});
+setMode(wantDesk);
+</script>
+<script src="rules.js"></script>
+<script src="vq58.js"></script>

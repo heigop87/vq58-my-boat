@@ -1,0 +1,7 @@
+.env
+.env.*
+!.env.example
+.DS_Store
+*.bak
+app/_t.html
+app/_a.html
