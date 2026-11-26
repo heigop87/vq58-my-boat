@@ -292,7 +292,7 @@ input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
 .dt .cell{display:flex;align-items:center;gap:12px}.dt .th{width:40px;height:40px;border-radius:10px}.dt .th img{max-width:34px;max-height:34px}
 .pnl.tb{padding:6px 8px}
 .tools{display:flex;gap:10px;align-items:center}.tools>*{white-space:nowrap}.seg button{white-space:nowrap}.tools .seg button{padding:0 14px}.tools .btn.sm{height:40px;border-radius:10px}.tools input[type=search].inp{height:40px;min-height:40px;border-radius:10px;padding-left:40px;background-position:12px center;max-width:360px;font-size:14px}
-.split{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:20px;height:calc(100dvh - 220px)}.split>*{min-height:0}.split>div{grid-template-rows:auto minmax(0,1fr)}.split .tb{overflow:auto}
+.split{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:20px;height:calc(100dvh - 280px)}.split>*{min-height:0}.split .tb{overflow:auto}
 @media (max-width:1180px){.split{grid-template-columns:minmax(0,1fr) 360px}}
 .dpanel{background:#fff;border-radius:14px;box-shadow:var(--elev1);overflow:auto}
 .dpanel .dph{display:flex;align-items:center;gap:14px;padding:18px 20px 4px}
@@ -577,7 +577,7 @@ sys(id){
  const s=SYS[id],its=IT.filter(i=>i.s==id),c=C[s.by];
  const U=units(id),sn=U?'':`<div class="row" ${tap('sheet','plate',id)}><div class="grow t">Serial number</div><span class="s mono">${esc(s.plate||'Add')}</span><span class="chev">›</span></div>`;
  let h=nav(s.n)+`<div class="body"><section class="card"><div class="row" style="padding:16px 0">${thumb(s,1)}<div class="grow"><div class="t" style="font-weight:600">${esc(s.model||s.m||'Model not set')}</div>
- ${s.hk?`<div style="display:flex;align-items:center;gap:4px;margin-top:8px">${hm(S.H[s.hk],0)}${S.autoH?'':`<button class="ib" ${at('sheet','hours',s.hk)} aria-label="Edit ${esc(s.n.toLowerCase())} hours">${svg(I.pen,20)}</button>`}</div><div class="s" style="margin-top:4px">${S.autoH?'Hours update automatically':'Last logged '+S.logged}</div>`:`<div class="s">${esc(s.model?s.m:'')}</div>`}</div></div></section>`;
+ ${s.hk?`<div style="display:flex;align-items:center;gap:4px;margin-top:8px">${hm(S.H[s.hk],0)}${S.autoH?'':`<button class="ib" ${at('sheet','hours',s.hk)} aria-label="Edit ${esc(s.n.toLowerCase())} hours">${svg(I.pen,20)}</button>`}</div><div class="s" style="margin-top:4px">${S.autoH?'Hours update automatically':'Last logged '+S.logged}</div>`:`<div class="s">${esc(s.model?s.m:'')}</div>`}</div></div></section>`+(SC.vqsys?SC.vqsys(id):'');
  if(s.ty)h+=`<section class="card"><div class="row" ${can(1)?tap('sheet','mm',id):''}><div class="grow"><div class="t">Make and model</div><div class="s">${esc(s.ty)} · ${esc(s.model||s.m||'Not set')}</div></div>${can(1)?'<span class="chev">›</span>':''}</div>${sn}</section>`;
  if(s.nd)h+=`<section class="card pad"><div class="t">No data yet</div><div class="s">Add a photo of the data plate. Waylo fills in the model, the serial and the service intervals.</div><button class="btn" ${at('file','plate',id)}>${svg(I.cam,20)}Add a plate photo</button></section>`;
  if(its.length)h+=`<section class="card"><div class="ch"><h2>Service</h2><span class="src">${esc(s.sched||'Owner set')}</span></div>${its.map(i=>itemRow(i)).join('')}</section>`;
@@ -1080,9 +1080,8 @@ boat(){
  const sel=SYS[S.dsel]?S.dsel:ids[0],s=SYS[sel],st=sysSt(sel);
  const rows=hit.map(id=>{const x=SYS[id],c=sysSt(id);return `<tr ${tap('set','dsel',id)} aria-selected="${id==sel}"><td><div class="cell">${thumb(x)}<div><div class="t">${esc(x.n)}</div><div class="s">${esc(sub(id))}</div></div></div></td><td>${esc(x.model||x.m||'Not set')}</td><td>${chip(c.c,c.w)}</td></tr>`}).join('');
  const det=SC.sys(sel).replace(/^<div class="hd">[\s\S]*?<\/div>/,'');
- return `<div class="hd"><h1>Systems</h1>${can(1)?`<button class="btn sm" ${at('sheet','mm','new')}>Add system</button>`:''}</div><div class="body dk"><div class="split"><div style="display:grid;gap:14px">
- <div class="tools"><input class="inp" id="bq" type="search" data-in="bq" data-rr="1" placeholder="Search ${ids.length} systems" value="${esc(S.bq||'')}" aria-label="Search systems" autocomplete="off"></div>
- <section class="pnl tb">${hit.length?tbl(['System','Make and model','Status'],rows):`<p class="s" style="padding:14px">Nothing matches "${esc(S.bq)}". Try a make, a model or a type.</p>`}</section></div>
+ return `<div class="hd"><h1>Systems</h1>${can(1)?`<button class="btn sm" ${at('sheet','mm','new')}>Add system</button>`:''}</div><div class="body dk"><div class="tools"><input class="inp" id="bq" type="search" data-in="bq" data-rr="1" placeholder="Search ${ids.length} systems" value="${esc(S.bq||'')}" aria-label="Search systems" autocomplete="off"></div><div class="split">
+ <section class="pnl tb">${hit.length?tbl(['System','Make and model','Status'],rows):`<p class="s" style="padding:14px">Nothing matches "${esc(S.bq)}". Try a make, a model or a type.</p>`}</section>
  <aside class="dpanel" aria-label="${esc(s.n)}"><div class="dph"><h2>${esc(s.n)}</h2>${chip(st.c,st.w)}</div>${det}</aside></div></div>`;
 },
 service(){

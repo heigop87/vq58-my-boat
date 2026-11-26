@@ -117,6 +117,12 @@ SC.ctl = () => {
  </div>`;
 };
 
+// On and off on a system's own page, only where a command exists. Same A.cmd path, so every rule and the log apply.
+// Windlass, winch, thruster, Starlink and chartplotters are records only: no card.
+SC.vqsys = id => id == 'gen' ? card('Control', row(V.gen.on ? 'Running' : 'Off', 'Checked before remote start', V.gen.on ? `<button class="btn sm" ${at('cmd', 'gen.stop')}>Stop</button>` : `<button class="btn sm" ${at('cmd', 'gen.start')}>Start</button>`) + checks(VQ.genChecks(V)))
+  : id == 'sk' ? card('Control', row(SKL[V.sk.st], 'Stays locked. Engage at the helm', V.sk.st == 'off' || V.sk.st == 'spindown' ? `<button class="btn sm" ${at('cmd', 'sk.spin')}>Spin up</button>` : `<button class="btn sm" ${at('cmd', 'sk.stop')}>Stop</button>`))
+  : id == 'port' || id == 'stbd' ? card('Control', row('Monitoring only', 'Start and stop stay at the helm'))
+  : '';
 SC.pwr = () => {
   const b = V.batt, ok = VQ.genChecks(V);
   return nav('Power') + `<div class="body">
