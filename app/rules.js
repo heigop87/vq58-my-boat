@@ -46,6 +46,8 @@ const VQ = (() => {
 
   const no = why => ({ ok: false, why });
   const ddm = (v, pos, neg) => { const a = Math.abs(v), d = Math.floor(a); return `${d}°${((a - d) * 60).toFixed(3)}'${v < 0 ? neg : pos}`; };
+  // Web Mercator tile position (fractional x, y) of a point at a zoom level.
+  const tile = (lat, lon, z) => { const n = 2 ** z, r = lat * Math.PI / 180; return [(lon + 180) / 360 * n, (1 - Math.asinh(Math.tan(r)) / Math.PI) / 2 * n]; };
   const clamp = (v, a, b) => Math.max(a, Math.min(b, +v));
 
   function check(s, c) {
@@ -125,6 +127,6 @@ const VQ = (() => {
     return r;
   }
 
-  return { fresh, check, plan, run, genChecks, doneChecks, ddm, GUEST_OK, PROTECTED };
+  return { fresh, check, plan, run, genChecks, doneChecks, ddm, tile, GUEST_OK, PROTECTED };
 })();
 if (typeof module !== 'undefined') module.exports = VQ;

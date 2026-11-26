@@ -87,11 +87,16 @@ const modeChip = () => V.mode ? chip('ok', MODE[V.mode] + ' active') : chip('', 
 const modeBtns = () => `<div class="vq2">${Object.keys(MODE).map(m => `<button class="btn${V.mode == m ? ' pri' : ''}" aria-pressed="${V.mode == m}" ${at('cmd', 'mode.' + m)}>${MODE[m]}${V.mode == m ? ' · On' : ''}</button>`).join('')}</div>`;
 // shortcut: simulator fix, UNVERIFIED, no tracker aboard yet. The live fix and last moved time come from the tracker over the VPN, never from the public site.
 // The map is an OpenStreetMap embed. The artifact viewer blocks embeds, so there it is the Map link only.
-// Mapbox public token (pk., URL-restricted to the hosted site). Empty until the owner supplies one, then the black and white Mapbox map replaces the OpenStreetMap embed.
+// Mapbox public token (pk., URL-restricted to the hosted site). Empty until the owner supplies one, then the Mapbox Light image replaces the OpenStreetMap tiles.
 const MAPBOX = '';
+// Black and white map from OpenStreetMap tiles in grayscale, no token needed. 5 by 3 tiles around the fix, pin in the center.
+// shortcut: fixed zoom 15 and no panning, swap for a real map library when routes and tracks are drawn.
+const mapTiles = (lat, lon) => { const [x, y] = VQ.tile(lat, lon, 15), x0 = Math.floor(x) - 2, y0 = Math.floor(y) - 1; let h = '';
+  for (let r = 0; r < 3; r++) for (let c = 0; c < 5; c++) h += `<img alt="" width="256" height="256" style="position:absolute;left:${c * 256}px;top:${r * 256}px;max-width:none" src="https://tile.openstreetmap.org/15/${x0 + c}/${y0 + r}.png">`;
+  return `<div role="img" aria-label="Map with the boat position" style="position:relative;height:240px;overflow:hidden;border-radius:12px;background:#f2f2f2"><div style="position:absolute;left:50%;top:50%;width:1280px;height:768px;filter:grayscale(1) contrast(1.1);transform:translate(${-(x - x0) * 256}px,${-(y - y0) * 256}px)">${h}</div><span style="position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-10px;border-radius:50%;background:#111;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)"></span><span style="position:absolute;right:6px;bottom:4px;font-size:10px;color:#555">© OpenStreetMap</span></div>`; };
 const locCard = map => { const { lat, lon, moved } = V.pos, d = .004, when = new Date(moved).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
   const host = /github\.io$|^localhost$|^$/.test(location.hostname);
-  return card('Location', (map && host ? (MAPBOX ? `<img alt="Map with the boat position" style="width:100%;height:240px;object-fit:cover;border-radius:12px;display:block" src="https://api.mapbox.com/styles/v1/mapbox/light-v11/static/pin-s+111111(${lon},${lat})/${lon},${lat},15/1040x240@2x?access_token=${MAPBOX}">` : `<iframe title="Map with the boat position" style="width:100%;height:240px;border:0;border-radius:12px;display:block;filter:grayscale(1) contrast(1.15)" src="https://www.openstreetmap.org/export/embed.html?bbox=${lon - d},${lat - d},${lon + d},${lat + d}&layer=mapnik&marker=${lat},${lon}"></iframe>`) : '')
+  return card('Location', (map && host ? (MAPBOX ? `<img alt="Map with the boat position" style="width:100%;height:240px;object-fit:cover;border-radius:12px;display:block" src="https://api.mapbox.com/styles/v1/mapbox/light-v11/static/pin-s+111111(${lon},${lat})/${lon},${lat},15/1040x240@2x?access_token=${MAPBOX}">` : mapTiles(lat, lon)) : '')
     + row(VQ.ddm(lat, 'N', 'S') + ' ' + VQ.ddm(lon, 'E', 'W'), 'At the home slip', !host ? `<a class="btn sm" target="_blank" rel="noopener" href="https://maps.apple.com/?ll=${lat},${lon}&q=PEGASU5">Open in Maps</a>` : map ? '' : `<button class="btn sm" ${at('go', 'ctl')}>Map</button>`)
     + row('Last moved', 'Simulator position, no tracker yet', `<span class="t">${when}</span>`)); };
 // Mode run: one row per kind of step, shown in order. [title, what, ok, why]
@@ -110,8 +115,8 @@ SC.vqhome = () => `${V.guest ? `<div class="lock">${chip('', 'Guest mode')}</div
  ${card('Controls', acRow('salon') + row('Exterior lights', 'Courtesy and deck', sw(V.light.courtesy, 'light.set', 'courtesy', 'Exterior lights')) + link('All controls', 'AC, lighting, audio, Seakeeper, cameras', 'ctl'))}
  ${(c => { const bad = c.filter(x => !x[1]); // Home shows only what failed; tap for every check
   return `<section class="card" ${tap('sheet', 'vqchecks')} style="cursor:pointer"><div class="ch" style="padding-top:0;min-height:56px"><h2>Systems check</h2><span style="display:flex;align-items:center;gap:8px">${chip(bad.length ? 'err' : 'ok', bad.length ? bad.length + ' to check' : 'All ' + c.length + ' pass')}<span class="chev"></span></span></div>${checks(bad)}</section>`; })(sysChecks())}
- ${locCard()}
  ${card('Cameras', link('View cameras', 'Cockpit, bow, engine room, swim platform', 'cams'))}
+ ${locCard(1)}
  ${card('Start a mode', `<div class="s" style="padding-bottom:4px">Outing spins up the Seakeeper and brings AC, lights and audio on. Back home shuts the boat down safely.</div>${modeBtns()}${link('Edit modes', 'Steps and checks', 'modes')}`, modeChip())}`;
 
 SC.ctl = () => {

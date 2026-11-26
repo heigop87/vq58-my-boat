@@ -100,3 +100,4 @@ Contacts, service history, invoices, documents, warranty dates, slip electric (s
 - Version 65: map only on Control (Overview keeps coordinates and Map link), map loads at once.
 - Version 66: black and white map on Control (grayscale filter on the map embed; Mapbox Light swaps in when a token is set), hosted site only
 - Version 67: Map button on Overview opens the in-app map on Control (hosted site); Apple Maps link only in the claude.ai viewer, which blocks embedded maps
+- Version 68: black and white map drawn in the app from OpenStreetMap tiles (no token), on Overview and Control; no Apple Maps link on the hosted site
